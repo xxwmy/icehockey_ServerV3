@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/login/main.css">
+    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/Checkboxes/css/build.css">
+</head>
+<body>
+<script>
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if(!clientWidth) return;
+                docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
+            };
+
+
+        if(!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+    <div class="app">
+        <section class="box">
+            <header class="login-header">
+                <a href="../views/login.html"></a>
+                <span>登录遇到问题</span>
+            </header>
+            <section class="content-error">
+                <h2>请选择遇到的问题</h2>
+                <ul>
+                    <li>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <input id="checkbox1" class="styled" type="checkbox" checked>
+                            <label for="checkbox1">
+                                无登陆记录
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <input id="checkbox2" class="styled" type="checkbox" checked>
+                            <label for="checkbox2">
+                                手机收不到验证码
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="checkbox checkbox-info checkbox-circle">
+                            <input id="checkbox3" class="styled" type="checkbox" checked>
+                            <label for="checkbox3">
+                                其他注册或问题
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <textarea name="" id="" class="errorMain" placeholder="请简要说明">
+                </textarea>
+                <input type="text" class="phone" placeholder="你的联系方式：手机号或邮箱">
+                <p>登陆</p>
+            </section>
+        </section>
+    </div>
+</body>
+<script src="../js/jQuery/jquery-2.2.3.min.js"></script>
+<script>
+    $('body').css({'height':$(window).height()})
+</script>
+</html>
