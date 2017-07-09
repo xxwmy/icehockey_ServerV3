@@ -29,7 +29,7 @@ public class ClubDao {
 			System.out.println(sql);
 			rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-
+				System.out.println(sql);
 				int clubId = rs.getInt("clubId");
 				String organization = rs.getString("organization");
 				String clubManager = rs.getString("clubManager");

@@ -86,6 +86,7 @@ public class Club {
 		this.buildTime = buildTime;
 		this.resource = resource;
 		this.construct = construct;
+		
 	}
 	@Override
 	public String toString() {
