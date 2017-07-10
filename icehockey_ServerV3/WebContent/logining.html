@@ -1,62 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>欢迎页面</title>
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login/logining.css">
-    <style>
-        .container-fluid{display: none;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>欢迎页面</title>
+<link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/login/logining.css">
+<style>
+.container-fluid {
+	display: none;
+}
+</style>
 </head>
 <body>
-<script>
-    (function(doc, win) {
-        var docEl = doc.documentElement,
-            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-            recalc = function() {
-                var clientWidth = docEl.clientWidth;
-                if(!clientWidth) return;
-                docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
-            };
+	<script>
+		(function(doc, win) {
+			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
+					: 'resize', recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth)
+					return;
+				docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
+			};
 
+			if (!doc.addEventListener)
+				return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<div class="container-fluid">
+		<div class="col-xs-10 col-xs-offset-1 footer">
+			<a href=""> <i></i> 微信登录
+			</a> <a href="views/login.html" class="other"> 其他方式登录 </a>
+		</div>
 
-        if(!doc.addEventListener) return;
-        win.addEventListener(resizeEvt, recalc, false);
-        doc.addEventListener('DOMContentLoaded', recalc, false);
-    })(document, window);
-</script>
-<div class="container-fluid">
-    <div class="col-xs-10 col-xs-offset-1 footer">
-            <a href="">
-                <i></i>
-                微信登录
-            </a>
-        <a href="views/login.html" class="other">
-            其他方式登录
-        </a>
-    </div>
-
-</div>
-<div class="wait">
-
-</div>
+	</div>
+	<div class="wait"></div>
 </body>
 <script src="js/jQuery/jquery-2.2.3.min.js"></script>
 <script src="js/login/login.js"></script>
 <script>
-    setTimeout(function(){
-        $('.wait').fadeOut();
-    },1000);
-    setTimeout(function(){
-        $('.container-fluid').fadeIn();
-    },1500);
-    $('.other').on('click',function(){
-        $('.container-fluid').fadeOut();
-        this.location=''
-    });
+	setTimeout(function() {
+		$('.wait').fadeOut();
+	}, 1000);
+	setTimeout(function() {
+		$('.container-fluid').fadeIn();
+	}, 1500);
+	$('.other').on('click', function() {
+		$('.container-fluid').fadeOut();
+		this.location = ''
+	});
 </script>
 </html>

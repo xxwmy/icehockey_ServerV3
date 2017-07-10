@@ -29,7 +29,7 @@ $(function() {
 		 * type：可选。返回数据的类型。可以是：string或json、xml等类型。
 		 * 
 		 */
-		var url = 'http://127.0.0.1:8080/icehockey_ServerV3/jsp/login.jsp';
+		var url = '../jsp/login.jsp';
 		var data = {
 			phoneNumber : phoneNumber,
 			verificationCode : verificationCode
@@ -45,9 +45,9 @@ $(function() {
 			if (result != null) {
 				var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 				alert(typeof jsonReturn + " 转换后内容  " + jsonReturn);
+
 				// 解析JSON对象
 				alert(jsonReturn.userName + " , " + jsonReturn.password);
-				//session
 			} else {
 				alert("手机号码为：" + phoneNumber + "的用户不存在");
 			}

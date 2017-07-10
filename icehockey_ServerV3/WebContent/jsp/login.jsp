@@ -38,6 +38,7 @@
 		//通过拿到的querystring转换为map
 		Map<String, Object> map = baseSevice.getMapFromQueryString(jsonString);
 		System.out.println("map:"+map);
+		
 		//遍历map得到前端传入的值
 		String telephone=null;
 		String password=null;
