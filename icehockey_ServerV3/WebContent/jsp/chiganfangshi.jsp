@@ -1,6 +1,3 @@
-<%@page import="java.net.URLEncoder"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
 <%@page import="com.icehockey.entity.User"%>
 <%@page import="com.icehockey.service.UserService"%>
 <%@page import="java.util.Map.Entry"%>
@@ -30,103 +27,71 @@
 		 * 获取了一个输出流 输出的对象是页面 
 		 * 这就像System.out.print（）一样 
 		 * 只不过这个输出对象的是命令提示符窗口  他们都是包装好的 实际用输出流时 之前应该指向一个文件的 
+		 
 		 * */
 		System.out
-				.println("===================================================");
+				.println("--------------------------------------------------------------");
 		PrintWriter writer = response.getWriter();
 		BaseSevice baseSevice = new BaseSevice();
 		UserService userService = new UserService();
 		User user = null;
+		Map<String, Object> map = null;
+
 		//拿到$("#editform").serialize();
 		String jsonString = baseSevice.getStringFromReq(request);
 		System.out.println("jsonString..." + jsonString);
 
 		//通过拿到的querystring转换为map
-		Map<String, Object> map = baseSevice
-				.getMapFromQueryString(jsonString);
+		map = baseSevice.getMapFromQueryString(jsonString);
 		System.out.println("map:" + map);
 
-		//遍历map得到前端传入的值
-		String telephone = null;
-		String password = null;
+		//遍历map得到前端传入的值	
+		int handlingId = -1;
 		Iterator<Entry<String, Object>> iter = map.entrySet().iterator();
 		while (iter.hasNext()) {
 			Entry<String, Object> entry = iter.next();
 			String key = entry.getKey();
 			Object value = entry.getValue();
-			if (key.equals("phoneNumber")) {
-				telephone = (String) value;
-			}
-			if (key.equals("verificationCode")) {
-				password = (String) value;
+			if (key.equals("handlingId")) {
+				handlingId =Integer.parseInt((String) value);
 			}
 			System.out.println(key + " " + value);
 		}
-		//登录函数
-		user = userService.loginByTelepone(telephone, password);
 
-		if (user != null) {//登录成功
-			System.out.println(user);
+		//获得当前会话中的用户
+		session = request.getSession();
+		user = (User) session.getAttribute("sessionUser");
+		//获取session的Id
+		String sessionId = session.getId();
+		//判断session是不是新创建的
+		if (session.isNew()) {
+			System.out.println("session创建成功，session的id是：" + sessionId);
+		} else {
+			System.out.println("服务器已经存在该session了，session的id是：" + sessionId);
+		}
+		System.out.println("user:  " + user);
+		int userId=user.getUserId();
 
-			System.out.println("user.getUserId():  " + user.getUserId());
-			//保存用户到session
-			session = request.getSession();
-			session.setAttribute("sessionUser", user);
-			//获取用户Id保存到cookie中
-			telephone = user.getTelephone();
-			telephone = URLEncoder.encode(telephone, "utf-8");
-			Cookie cookie = new Cookie("telephone", telephone);
-			cookie.setMaxAge(1 * 60 * 60 * 24);//保存一天
-			response.addCookie(cookie);
-			//获取session的Id
-			String sessionId = session.getId();
-			//判断session是不是新创建的
-			if (session.isNew()) {
-				System.out.println("session创建成功，session的id是：" + sessionId);
-			} else {
-				System.out.println("服务器已经存在该session了，session的id是："
-						+ sessionId);
-			}
-
-			System.out.println("session User:" + user);
-			System.out.println("session.getId():" + session.getId());
-
-			user = (User) session.getAttribute("sessionUser");
-			System.out.println("session User:" + user);
-			
-			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=1
-			if (user.getPlay() == null || user.getIce_player() == null
-					|| user.getSnow_play() == null) {
-				map.put("result", "1");
-			}
+		//按照userId将持竿方式插入数据库
+		user=userService.InsertHandlingByUserId(userId, handlingId);
+		
+		if(user!=null){//插入成功
+			System.out.println("更新数据库后："+user);
+		
+			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", user.getUserId());
-			map.put("userName", user.getUserName());
-			map.put("weChatId", user.getWeChatId());
-			map.put("telephone", user.getTelephone());
-			map.put("sex", user.getSex());
-			map.put("password", user.getPassword());
-			map.put("birthday", user.getBirthday());
-			map.put("country", user.getCountry());
-			map.put("city", user.getCity());
-			map.put("height", user.getHeight());
-			map.put("weight", user.getWeight());
-			map.put("play", user.getPlay());
-			map.put("ice_play", user.getIce_player());
-			map.put("snow_play", user.getSnow_play());
-			map.put("roleId", user.getRoleId());
 			map.put("handlingId", user.getHandlingId());
-			map.put("image", user.getImage());
-
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("map未找到...");
+			//第一次登陆返回result=1
 			map.put("result", "-1");
 		}
+		System.out.println("插入后的map：" + map);
 		//将转换得到的map转换为json并返回
 		ObjectMapper objectMapper = new ObjectMapper();
 		String resultJson = objectMapper.writeValueAsString(map);
-
 		//此处直接返回JSON object对象，JSP可直接使用data.key
 		System.out.println("resultJson ..." + resultJson);
 

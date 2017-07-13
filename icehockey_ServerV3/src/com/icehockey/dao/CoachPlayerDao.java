@@ -19,6 +19,12 @@ public class CoachPlayerDao {
 	List<CoachPlayer> coachPlayers = null;
 	CoachPlayer coachPlayer = null;
 
+	/**
+	 * SELECT user1.userId coachId,user1.userName coachName,user2.userId,user2.userName
+	   FROM user user1 ,user user2 ,coachplayer
+	   WHERE user1.userId =coachplayer.coachUserId AND user2.userId=coachplayer.playerUserId
+	 * 
+	 * */
 	public List<CoachPlayer> getCoachPlayerRecordByCoachId(String roleName,int userId) {
 		String sql=null;
 		if("coach".equals(roleName)){

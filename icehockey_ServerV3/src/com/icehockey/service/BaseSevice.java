@@ -32,6 +32,8 @@ public class BaseSevice {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		String[] qStrings = queryString.split("&");
+		System.out.println("qStrings"+qStrings);
+		
 		for (String string : qStrings) {
 		    String[] qStrings2 = string.split("=");
 		    map.put(qStrings2[0], qStrings2[1]);

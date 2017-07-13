@@ -484,8 +484,168 @@ public class UserDao {
 	}
 
 
-	
 
+	public User insertPlayUser(int userId, String playValue) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.play=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement.setString(1, playValue);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+	
+	public User insertSelectIceUser(int userId, String ice_play) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.ice_play=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement.setString(1, ice_play);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+
+	public User insertSelectSnowUser(int userId, String snow_play) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.snow_play=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement.setString(1, snow_play);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+
+	public User insertHandlingUser(int userId, int handlingId) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.handlingId=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement.setInt(1, handlingId);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
 	
 
 }

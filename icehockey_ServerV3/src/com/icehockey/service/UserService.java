@@ -87,8 +87,9 @@ public class UserService {
 		return user;
 	}
 
-	public User updateUserByUserId(int userId, String playValue, String ice_playValue, String snow_playValue,
-			String roleValue, String handlingValue) {
+	public User updateUserByUserId(int userId, String playValue,
+			String ice_playValue, String snow_playValue, String roleValue,
+			String handlingValue) {
 		role = roleDao.getRoleByRoleValue(roleValue);
 		System.out.println(role);
 		handling = handlingDao.getHandlingByHandlingValue(handlingValue);
@@ -97,7 +98,8 @@ public class UserService {
 			System.out.println(role.toString());
 			if (handling != null) {
 				System.out.println(handling.toString());
-				user = dao.updateUser(userId, playValue, ice_playValue, snow_playValue, role.getRoleId(),
+				user = dao.updateUser(userId, playValue, ice_playValue,
+						snow_playValue, role.getRoleId(),
 						handling.getHandlingId());
 				System.out.println("第一次登录页面更新成功");
 
@@ -112,8 +114,43 @@ public class UserService {
 		return user;
 	}
 
-	public User insertUser(int userId, int sex, double height, double weight, String country, String city,
-			String xianxiaolijvlebu, String xianshuqiudui) {
+	public User InsertPlayByUserId(int userId, String playValue) {
+
+		user = dao.insertPlayUser(userId, playValue);
+		if (user != null) {
+			System.out.println("第一次登录页面更新成功"+playValue);
+		}
+		return user;
+	}
+	public User InsertSelectIceByUserId(int userId, String ice_play) {
+
+		user = dao.insertSelectIceUser(userId, ice_play);
+		if (user != null) {
+			System.out.println("第一次登录页面更新成功"+ice_play);
+		}
+		return user;
+	}
+	public User InsertSelectSnowByUserId(int userId, String snow_play) {
+
+		user = dao.insertSelectSnowUser(userId, snow_play);
+		if (user != null) {
+			System.out.println("第一次登录页面更新成功"+snow_play);
+		}
+		return user;
+	}
+	
+	public User InsertHandlingByUserId(int userId, int handlingId) {
+
+		user = dao.insertHandlingUser(userId, handlingId);
+		if (user != null) {
+			System.out.println("第一次登录页面更新成功"+handlingId);
+		}
+		return user;
+	}
+
+	public User insertUser(int userId, int sex, double height, double weight,
+			String country, String city, String xianxiaolijvlebu,
+			String xianshuqiudui) {
 		user = dao.getUserByUserId(userId);
 		if (user != null) {
 			System.out.println("更新前" + user.toString());
@@ -126,7 +163,8 @@ public class UserService {
 			System.out.println(user.toString());
 
 			if ("教练".equals(roleName)) {// 教练
-				coach = coachService.updateCoach(userId, xianxiaolijvlebu, xianshuqiudui);
+				coach = coachService.updateCoach(userId, xianxiaolijvlebu,
+						xianshuqiudui);
 				if (coach != null) {
 					System.out.println(coach);
 				} else {
@@ -136,7 +174,8 @@ public class UserService {
 				judge = judgeService.insertJudge(userId);
 				System.out.println(judge);
 			} else {// 球员，守门员
-				player = playerService.updatePlayer(userId, xianxiaolijvlebu, xianshuqiudui);
+				player = playerService.updatePlayer(userId, xianxiaolijvlebu,
+						xianshuqiudui);
 				if (player != null) {
 					System.out.println(player);
 				} else {
@@ -152,10 +191,12 @@ public class UserService {
 
 	}
 
-	private User updateUser(int userId, int sex, double height, double weight, String country, String city) {
+	private User updateUser(int userId, int sex, double height, double weight,
+			String country, String city) {
 		user = dao.getUserByUserId(userId);
 		if (user != null) {
-			user = dao.updateUserByUserId(userId, sex, height, weight, country, city);
+			user = dao.updateUserByUserId(userId, sex, height, weight, country,
+					city);
 		} else {
 			System.out.println("该用户不存在user表");
 			user = null;
@@ -163,10 +204,12 @@ public class UserService {
 		return user;
 	}
 
-	public User updateUser(int userId, String userName, double height, double weight, String country, String city) {
+	public User updateUser(int userId, String userName, double height,
+			double weight, String country, String city) {
 		user = dao.getUserByUserId(userId);
 		if (user != null) {
-			user = dao.updateUserByUserId(userId, userName, height, weight, country, city);
+			user = dao.updateUserByUserId(userId, userName, height, weight,
+					country, city);
 		} else {
 			System.out.println("该用户不存在user表");
 			user = null;

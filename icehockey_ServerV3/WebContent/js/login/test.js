@@ -4,22 +4,10 @@
 $(function() {
 	$('body').css({
 		'height' : $(window).height()
-	})
+	}),
 
 	// 点击登录
 	$(".submitBtn").click(function() {
-
-		var phoneNumber = $("#phoneNumber").val();
-		var verificationCode = $("#verificationCode").val();
-		if (phoneNumber == "") {
-			alert("请输入手机号码");
-			return false;
-		}
-
-		if (verificationCode == "") {
-			alert("验证码不能为空!");
-			return false;
-		}
 
 		// 请求后台服务
 		/**
@@ -29,10 +17,10 @@ $(function() {
 		 * type：可选。返回数据的类型。可以是：string或json、xml等类型。
 		 * 
 		 */
-		var url = '../jsp/login.jsp';
+		var url = '../jsp/test.jsp';
 		var data = {
-			phoneNumber : phoneNumber,
-			verificationCode : verificationCode
+			play : "ice",
+			//verificationCode : verificationCode
 		};
 		$.post(url, data, function(result) {
 
@@ -44,12 +32,12 @@ $(function() {
 			// var jsonReturn = $.parseJSON(result);
 			if (result != null) {
 				var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
-				alert(typeof jsonReturn + " 转换后内容  " + jsonReturn);
-
+				//alert(typeof jsonReturn + " 转换后内容  " + jsonReturn);
 				// 解析JSON对象
-				alert(jsonReturn.userName + " , " + jsonReturn.password);
+				//alert(jsonReturn.userName + " , " + jsonReturn.password);
+				//session
 			} else {
-				alert("手机号码为：" + phoneNumber + "的用户不存在");
+				alert("手机号码为：的用户不存在");
 			}
 
 		}, "json");

@@ -1,6 +1,5 @@
 package com.icehockey.service;
 
-import com.icehockey.dao.CoachDao;
 import com.icehockey.dao.JudgeDao;
 import com.icehockey.entity.Coach;
 import com.icehockey.entity.Judge;
