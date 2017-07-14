@@ -72,12 +72,6 @@
 			//保存用户到session
 			session = request.getSession();
 			session.setAttribute("sessionUser", user);
-			//获取用户Id保存到cookie中
-			telephone = user.getTelephone();
-			telephone = URLEncoder.encode(telephone, "utf-8");
-			Cookie cookie = new Cookie("telephone", telephone);
-			cookie.setMaxAge(1 * 60 * 60 * 24);//保存一天
-			response.addCookie(cookie);
 			//获取session的Id
 			String sessionId = session.getId();
 			//判断session是不是新创建的
@@ -93,31 +87,14 @@
 
 			user = (User) session.getAttribute("sessionUser");
 			System.out.println("session User:" + user);
-			
+
 			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=1
 			if (user.getPlay() == null || user.getIce_player() == null
 					|| user.getSnow_play() == null) {
 				map.put("result", "1");
 			}
 			map.put("result", "0");
-			map.put("userId", user.getUserId());
-			map.put("userName", user.getUserName());
-			map.put("weChatId", user.getWeChatId());
-			map.put("telephone", user.getTelephone());
-			map.put("sex", user.getSex());
-			map.put("password", user.getPassword());
-			map.put("birthday", user.getBirthday());
-			map.put("country", user.getCountry());
-			map.put("city", user.getCity());
-			map.put("height", user.getHeight());
-			map.put("weight", user.getWeight());
-			map.put("play", user.getPlay());
-			map.put("ice_play", user.getIce_player());
-			map.put("snow_play", user.getSnow_play());
-			map.put("roleId", user.getRoleId());
-			map.put("handlingId", user.getHandlingId());
-			map.put("image", user.getImage());
-
+			map.put("user", user);
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("map未找到...");
@@ -138,6 +115,23 @@
 		writer.print(resultJson);
 		writer.flush();
 		writer.close();
+
+		// 		map.put("userName", user.getUserName());
+		// 		map.put("weChatId", user.getWeChatId());
+		// 		map.put("telephone", user.getTelephone());
+		// 		map.put("sex", user.getSex());
+		// 		map.put("password", user.getPassword());
+		// 		map.put("birthday", user.getBirthday());
+		// 		map.put("country", user.getCountry());
+		// 		map.put("city", user.getCity());
+		// 		map.put("height", user.getHeight());
+		// 		map.put("weight", user.getWeight());
+		// 		map.put("play", user.getPlay());
+		// 		map.put("ice_play", user.getIce_player());
+		// 		map.put("snow_play", user.getSnow_play());
+		// 		map.put("roleId", user.getRoleId());
+		// 		map.put("handlingId", user.getHandlingId());
+		// 		map.put("image", user.getImage());
 	%>
 </body>
 </html>

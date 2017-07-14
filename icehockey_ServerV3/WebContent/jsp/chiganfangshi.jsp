@@ -72,16 +72,19 @@
 		System.out.println("user:  " + user);
 		int userId=user.getUserId();
 
-		//按照userId将持竿方式插入数据库
-		user=userService.InsertHandlingByUserId(userId, handlingId);
-		
-		if(user!=null){//插入成功
-			System.out.println("更新数据库后："+user);
-		
+		//按照userId检索数据库找到user
+		user = userService.queryUserByUserId(userId);
+		if (user != null) {//插入成功
+			System.out.println("更新数据库后：" + user);
+
+			//将play放入session中
+			session = request.getSession();
+			session.setAttribute("handlingId", handlingId);
+
 			//处理成功返回result=0	
 			map.put("result", "0");
-			map.put("userId", user.getUserId());
-			map.put("handlingId", user.getHandlingId());
+			map.put("userId", userId);
+			map.put("handlingId", handlingId);
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("map未找到...");
