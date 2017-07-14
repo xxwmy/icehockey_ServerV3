@@ -70,18 +70,21 @@
 			System.out.println("服务器已经存在该session了，session的id是：" + sessionId);
 		}
 		System.out.println("user:  " + user);
-		int userId=user.getUserId();
+		int userId = user.getUserId();
 
-		//按照userId将爱好插入数据库
-		user=userService.InsertSelectSnowByUserId(userId, snow_play);
-		
-		if(user!=null){//插入成功
-			System.out.println("更新数据库后："+user);
-		
+		//按照userId检索数据库找到user
+		user = userService.queryUserByUserId(userId);
+		if (user != null) {//插入成功
+			System.out.println("更新数据库后：" + user);
+
+			//将play放入session中
+			session = request.getSession();
+			session.setAttribute("snow_play", snow_play);
+
 			//处理成功返回result=0	
 			map.put("result", "0");
-			map.put("userId", user.getUserId());
-			map.put("snow_play", user.getSnow_play());
+			map.put("userId", userId);
+			map.put("snow_play", snow_play);
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("map未找到...");
