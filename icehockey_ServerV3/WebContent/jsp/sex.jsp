@@ -46,14 +46,14 @@
 		System.out.println("map:" + map);
 
 		//遍历map得到前端传入的值	
-		String play = null;
+		String sex = null;
 		Iterator<Entry<String, Object>> iter = map.entrySet().iterator();
 		while (iter.hasNext()) {
 			Entry<String, Object> entry = iter.next();
 			String key = entry.getKey();
 			Object value = entry.getValue();
-			if (key.equals("play")) {
-				play = (String) value;
+			if (key.equals("sex")) {
+				sex = (String) value;
 			}
 			System.out.println(key + " " + value);
 		}
@@ -79,12 +79,12 @@
 
 			//将play放入session中
 			session = request.getSession();
-			session.setAttribute("play", play);
+			session.setAttribute("sex", sex);
 
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);
-			map.put("play", play);
+			map.put("sex", sex);
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("map未找到...");
