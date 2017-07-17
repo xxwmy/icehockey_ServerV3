@@ -20,7 +20,7 @@ $(function(){
     	}
     	
     	//请求后台服务
-    	var url ='http://106.14.133.233:8080/icehockey_ServerV3/jsp/login.jsp';
+    	var url ='http://127.0.0.1:8080/icehockey_ServerV3/jsp/login.jsp';
     	var data = {
     		phoneNumber : phoneNumber,
     		verificationCode : verificationCode
@@ -40,7 +40,7 @@ $(function(){
 					alert(jsonReturn.userName + " , " + jsonReturn.password);
 					//session
 	                //判断  result 的返回值 ,isFirst 为后台添加的属性,如果是第一次登陆则至hobbyChoose.html
-					if(result.isFirst){
+					if(jsonReturn.result=='isFirst'){
 						window.location.href = "./page/hobbyChoose.html";
 					}else{
 						window.location.href = "./main.html";

@@ -91,9 +91,11 @@
 			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=1
 			if (user.getPlay() == null || user.getIce_player() == null
 					|| user.getSnow_play() == null) {
-				map.put("result", "1");
+				map.put("result", "isFirst");
+			}else{
+				map.put("result", "0");
 			}
-			map.put("result", "0");
+			
 			map.put("user", user);
 			System.out.println("map找到啦..." + map);
 		} else {

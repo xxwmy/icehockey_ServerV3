@@ -23,6 +23,8 @@ $(function(){
 		var data = {
 			play:play//第一个play是传入的属性名，第二个是前端获取的值
 		};
+		alert(ICEURL);
+		
         return;
 		alert(JSON.stringify(data));
 		
