@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/login/main.css">
+    <link rel="stylesheet" href="../css/login/login.css">
     <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/Checkboxes/css/build.css">
@@ -38,7 +38,7 @@
                 <ul>
                     <li>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input id="checkbox1" class="styled" type="checkbox" checked>
+                            <input id="checkbox1" class="styled checkboxBtn" type="checkbox" data="0">
                             <label for="checkbox1">
                                 无登陆记录
                             </label>
@@ -46,7 +46,7 @@
                     </li>
                     <li>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input id="checkbox2" class="styled" type="checkbox" checked>
+                            <input id="checkbox2" class="styled checkboxBtn" type="checkbox" data="1">
                             <label for="checkbox2">
                                 手机收不到验证码
                             </label>
@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <div class="checkbox checkbox-info checkbox-circle">
-                            <input id="checkbox3" class="styled" type="checkbox" checked>
+                            <input id="checkbox3" class="styled checkboxBtn" type="checkbox" data="2">
                             <label for="checkbox3">
                                 其他注册或问题
                             </label>
@@ -64,13 +64,16 @@
                 <textarea name="" id="" class="errorMain" placeholder="请简要说明">
                 </textarea>
                 <input type="text" class="phone" placeholder="你的联系方式：手机号或邮箱">
-                <p>登陆</p>
+                <p class="error-submit">发送</p>
             </section>
         </section>
     </div>
 </body>
 <script src="../js/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../js/urlApi/api.js"></script>
+<script src="../js/login/error.js"></script>
+
 <script>
-    $('body').css({'height':$(window).height()})
+
 </script>
 </html>

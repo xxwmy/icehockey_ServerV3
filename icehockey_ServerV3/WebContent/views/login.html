@@ -1,88 +1,90 @@
 <!DOCTYPE html>
 <html class="ui-page-login">
 
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-<title></title>
-<link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" href="../css/login/main.css">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<!--
+        <link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css">
+        -->
+    	<link rel="stylesheet" href="../css/login/login.css">
 
-</head>
+	</head>
 
-<body>
-	<script>
-		(function(doc, win) {
-			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
-					: 'resize', recalc = function() {
-				var clientWidth = docEl.clientWidth;
-				if (!clientWidth)
-					return;
-				docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
-			};
+	<body>
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
+					};
 
-			if (!doc.addEventListener)
-				return;
-			win.addEventListener(resizeEvt, recalc, false);
-			doc.addEventListener('DOMContentLoaded', recalc, false);
-		})(document, window);
-	</script>
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
 
-	<div id="app">
-		<section class="box">
-			<header class="login-header">
-				<a href="../logining.html"></a> <span>账号登录</span>
-			</header>
-			<section class="login-input">
-				<div class="input-group">
-					<div class="input-group-addon">
-						<i class="fa fa-phone"></i>
+		<div id="app">
+			<section class="box">
+				<header class="login-header">
+					<a href="../logining.html"></a>
+					<span>账号登录</span>
+				</header>
+				<section class="login-input">
+					<div class="input-group">
+						<div class="input-group-addon">
+							
+						</div>
+						<input type="text" class="form-control" placeholder="输入注册时的手机号" id="phoneNumber">
+						<div class="input-right">
+							<span>+86 </span>
+							<i class=""></i>
+						</div>
 					</div>
-					<input type="text" class="form-control" placeholder="输入注册时的手机号"
-						id="phoneNumber">
-					<div class="input-right">
-						<span>+86 </span> <i class=""></i>
+					<div class="input-group margin-13">
+						<div class="input-group-addon">
+					
+						</div>
+						<input type="text" class="form-control verificationCode" placeholder="输入验证码" id="verificationCode">
+						<span class="codeBtn">获取验证码</span>
 					</div>
-				</div>
-				<div class="input-group margin-13">
-					<div class="input-group-addon">
-						<i class="fa fa-phone"></i>
+					<div class="input-group submitBtn">
+						<p>登录</p>
 					</div>
-					<input type="text" class="form-control verificationCode"
-						placeholder="输入验证码" id="verificationCode"> <span
-						class="codeBtn">获取验证码</span>
-				</div>
-				<div class="input-group submitBtn">
-					<p>登录</p>
-				</div>
-				<div class="input-group errorBtn">
-					<p>
-						<a href="error.html">登录遇到问题</a>
-					</p>
-				</div>
-				<div class="input-group loginOther">
-					<span>推荐登录</span>
-				</div>
-				<div class="input-group loginList">
+					<div class="input-group errorBtn">
+						<p>
+							<a href="error.html">登录遇到问题</a>
+						</p>
+					</div>
+					<div class="input-group loginOther">
+						<span>推荐登录</span>
+					</div>
+					<div class="input-group loginList">
 
-					<a class="weixin"></a> <a class="weibo"></a> <a class="qq"></a>
+						<a class="weixin"></a>
+						<a class="weibo"></a>
+						<a class="qq"></a>
 
-				</div>
+					</div>
+				</section>
+				<!--<footer>-->
+				<!--<div class="footer">-->
+				<!--<a href="" class="fa fa-chevron-left"></a>-->
+				<!--<a href="" class="fa fa-circle-o"></a>-->
+				<!--<a href="" class="fa fa-square-o"></a>-->
+				<!--</div>-->
+
+				<!--</footer>-->
 			</section>
-			<!--<footer>-->
-			<!--<div class="footer">-->
-			<!--<a href="" class="fa fa-chevron-left"></a>-->
-			<!--<a href="" class="fa fa-circle-o"></a>-->
-			<!--<a href="" class="fa fa-square-o"></a>-->
-			<!--</div>-->
 
-			<!--</footer>-->
-		</section>
-
-	</div>
-	<script src="../js/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../js/login/login.js"></script>
-</body>
+		</div>
+		<script src="../js/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../js/login/login.js"></script>
+	</body>
 
 </html>
