@@ -19,9 +19,10 @@ $(function() {
 		 */
 		var url = '../jsp/test.jsp';
 		var data = {
-			play : "ice",
-			//verificationCode : verificationCode
+			play : play,//第一个是传入的属性名，第二个是前端获取的值
 		};
+
+		
 		$.post(url, data, function(result) {
 
 			// alert(result);
