@@ -20,10 +20,10 @@ $(function(){
 	
 	//请求后台服务
 	function submit(play) {
+		var ICEURL="/icehockey_ServerV3/jsp/hobbyChoose.jsp"
 		var data = {
 			play:play
 		};
-        return;
 		alert(JSON.stringify(data));
 		
 		//TODO 请求后台保存数据

@@ -37,7 +37,8 @@
 		User user = null;
 		Map<String, Object> map = null;
 
-		//拿到$("#editform").serialize();
+		
+		System.out.println(request);
 		String jsonString = baseSevice.getStringFromReq(request);
 		System.out.println("jsonString..." + jsonString);
 

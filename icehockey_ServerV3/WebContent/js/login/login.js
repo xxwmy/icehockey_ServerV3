@@ -25,6 +25,7 @@ $(function(){
     		phoneNumber : phoneNumber,
     		verificationCode : verificationCode
     	};
+    	alert(JSON.stringify(data));
     		$.post(url, data, function(result) {
 
 			
