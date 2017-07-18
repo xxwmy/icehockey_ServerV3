@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<title>性别选择页面</title>
+		<link rel="stylesheet" href="../../css/bxy/main.css">
+		<link rel="stylesheet" href="../../css/bxy/gender.css">
+	
+		<link rel="stylesheet" href="../../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
+		<script src="../../js/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+		
+		<script src="../../js/bxy/gender.js"></script>
+	</head>
+		
+	<body >	
+		<div data-role="page" class="main">
+			<div data-role="content">
+				<div  class="text">
+					<p>
+		     		我们会根据您的身体资料<br/> 
+		        	优化您的运动算法
+					</p>
+				</div>
+				
+				<!--性别单选按钮作为表单提交，action暂时为空。-->
+				<form id="gender" action="#" method="post" align="center">   
+		        	<fieldset data-role="controlgroup">  
+		        		<div  class="man">
+		            	 <label for="man" class="ui-hidden-accessible">男</label>
+		            	<input type="image" name="man" id="male" value="male"  checked="checked" 
+		            		src="../../images/bxy/man.png" onclick="male()"/>  
+		  				</div>
+		  				
+		  				<div class="lady">
+		                 <label for="lady" class="ui-hidden-accessible">女</label>
+		            	<input type="image" name="lady" id="female" value="female" 
+		            		src="../../images/bxy/lady.png" onclick="female()"/>  
+		                </div>        	
+		        	</fieldset>  
+		       </form>      
+				<!-- 
+				<div  class="man" align="center">
+					<a href="manWeight.html" data-rel="external" data-transition="pop">  
+						<img src="../../images/bxy/man.png"/>
+					</a>
+				</div>
+				<div  class="lady" align="center"> 
+					<a href="ladyWeight.html" data-rel="external" data-transition="slide">
+						<img src="../../images/bxy/lady.png"/>
+					</a>
+				</div>
+				 -->
+			</div>
+		</div>
+		<!--单击头像选择性别，同时触发事件跳转页面-->
+		<script>
+			function male(){
+				window.location.href ="Weight.html";
+			}
+			
+			function female(){
+				window.location.href ="Weight.html";
+			}
+		</script>
+	</body>
+</html>

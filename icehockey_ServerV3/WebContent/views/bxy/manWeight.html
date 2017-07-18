@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<title>男生体重页面</title>
+		<link rel="stylesheet" href="../../css/bxy/weight.css">
+		<link rel="stylesheet" href="../../css/bxy/main.css">
+		<link rel="stylesheet" href="../../css/bxy/style.css">
+		
+		<link rel="stylesheet" href="../../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
+		<script src="../../js/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+		<script src="../../js/bxy/rule"></script>
+	</head>
+	<body>
+		<div data-role="page" class="main">
+			<div data-role="content">	
+				<div  class="text">
+					<p>
+		     		我们会根据您的身体资料<br/> 
+		        	优化您的运动算法
+					</p>
+				</div>
+				<div class="weight_image" align="center" >
+					<img src="../../images/bxy/man.png" />
+				</div>
+				
+		<form method="post" action="demoform.asp">
+ 	     	<div data-role="fieldcontain">
+    	    	<label for="points">体重KG:</label>
+        		<input type="range" name="points" id="points" value="60" min="30" max="100">
+      		</div>
+      		<!--<input type="submit" data-inline="true" value="提交">-->
+    	</form>
+	  			<!--<div class="row">
+	  				<div class="ruler ruler-weight">
+		  				<div class="main" value="0">
+		  					<ul data-initial='true'>
+		                        <li><span class="num">30</span></li>
+		                        <li><span class="num">35</span></li>
+		                        <li><span class="num">40</span></li>
+		                        <li><span class="num">45</span></li>
+		                        <li><span class="num">50</span></li>
+		                        <li><span class="num">55</span></li>
+		                        <li><span class="num">60</span></li>
+		                        <li><span class="num">65</span></li>
+		                        <li><span class="num">70</span></li>
+		                        <li><span class="num">75</span></li>
+		                        <li><span class="num">80</span></li>
+		                        <li><span class="num">85</span></li>
+		                        <li><span class="num">90</span></li>
+		                        <li><span class="num">95</span></li>
+		                        <li><span class="num">100</span></li>
+	                    	</ul>
+		  				</div>
+		  			</div>
+	  			</div>
+	  			<label for="" class="label">体重<span class="number height-num" initial-value="8" value="50">50</span><span class=" letter">KG</span></label>
+			-->
+
+				<div data-role="controlgroup" data-type="horizontal" class="btn">
+					<a href="gender.html" data-role="button" data-corners="true" data-transition="slide">
+					上一步
+					</a>
+	  				<a href="manHeight.html" data-role="button" data-corners="true" data-transition="slide">
+	  				下一步
+	  				</a>
+	  			</div>	
+
+			</div>
+		</div>
+	</body>
+</html>
