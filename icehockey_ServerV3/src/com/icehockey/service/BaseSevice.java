@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import net.sf.json.JSONObject;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,11 +35,11 @@ public class BaseSevice {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		String[] qStrings = queryString.split("&");
-		System.out.println("qStrings" + qStrings[0]);
+		//System.out.println("qStrings" + qStrings[0]);
 
 		for (String string : qStrings) {
 			String[] qStrings2 = string.split("=");
-			System.out.println("qStrings2:  " + qStrings2[0] + ":" + qStrings2[1]);
+			//System.out.println("qStrings2:  " + qStrings2[0] + ":" + qStrings2[1]);
 			map.put(qStrings2[0], qStrings2[1]);
 		}
 
@@ -50,30 +47,4 @@ public class BaseSevice {
 
 	}
 
-	public JSONObject receivePost(HttpServletRequest request) {
-
-		// 读取请求内容
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-			String line = null;
-			StringBuilder sb = new StringBuilder();
-			while ((line = br.readLine()) != null) {
-				sb.append(line);
-				System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-			}
-			System.out.println("sb: "+sb);
-			// 将json字符串转换为json对象
-			JSONObject json = JSONObject.fromObject(sb.toString());
-			System.out.println("json: "+json);
-			return json;
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

@@ -109,7 +109,7 @@
 		String resultJson = objectMapper.writeValueAsString(map);
 
 		//此处直接返回JSON object对象，JSP可直接使用data.key
-		System.out.println("resultJson ..." + resultJson);
+		//System.out.println("resultJson ..." + resultJson);
 
 		resultJson = resultJson.replace("\"", "\\\"");
 		resultJson = "\"" + resultJson + "\"";
