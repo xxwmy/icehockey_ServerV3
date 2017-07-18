@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<title>男生身高页面</title>
+		<link rel="stylesheet" href="../../css/bxy/height.css">
+		<link rel="stylesheet" href="../../css/bxy/main.css">
+		
+		<link rel="stylesheet" href="../../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
+		<script src="../../js/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+			
+	</head>
+	<body>
+		<div data-role="page" class="main">
+			<div data-role="content">	
+				<div  class="text">
+					<p>
+		     		我们会根据您的身体资料<br/> 
+		        	优化您的运动算法
+					</p>
+				</div>
+				
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<div class="weight_image" align="center">
+							<img src="../../images/bxy/man.png" />
+						</div>
+					</div>
+					
+					<div class="ui-block-b">
+						<form method="post" action="height.asp">
+ 	     					<div data-role="fieldcontain">
+    	    					<label for="points">身高cm:</label>
+        						<input type="range" name="points" id="points" value="165" min="120" max="200"/>
+      						</div>
+      						<!--<input type="submit" data-inline="true" value="提交"/>-->
+    					</form>
+					</div>
+					
+				</div>
+				<div data-role="controlgroup" data-type="horizontal" class="btn">
+					<a href="manWeight.html" data-role="button" data-corners="true" data-transition="slide">
+					上一步
+					</a>
+	  				<a href="all.html" data-role="button" data-corners="true" data-transition="slide">
+	  				下一步
+	  				</a>
+	  			</div>	
+			</div>
+		</div>
+	</body>
+</html>
