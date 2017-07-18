@@ -40,11 +40,12 @@ $(function(){
 			}else{
 				alert("提交成功");
 			}
+
 			return;
 			//TODO 请求后台保存数据
 			$.getJSON(ICEURL,data,function(result){
 				//TODO 处理后台返回的结果
-				if(result.result!==null){
+				//if(result.result!="0"){
 					//提交成功之后进行的操作
 					if(comm.getUrlParameter("ALL")==='true'){
 						window.location.href = "hobbySelectSnow.html?hobbyType=SNOW";
@@ -52,7 +53,7 @@ $(function(){
 						window.location.href = "../roleChoose/role.html";
 					}
 
-				}
+				//}
 			});
 		}
 		else

@@ -30,7 +30,7 @@
 		 
 		 * */
 		System.out
-				.println("--------------------------------------------------------------");
+				.println("----------------------test----------------------------------------");
 		PrintWriter writer = response.getWriter();
 		BaseSevice baseSevice = new BaseSevice();
 		UserService userService = new UserService();

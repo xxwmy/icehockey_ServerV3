@@ -71,7 +71,7 @@
 			System.out.println("user.getUserId():  " + user.getUserId());
 			//保存用户到session
 			session = request.getSession();
-			session.setAttribute("sessionUser", user);
+			session.setAttribute("sessionUser", user); 
 			//获取session的Id
 			String sessionId = session.getId();
 			//判断session是不是新创建的
@@ -85,13 +85,15 @@
 			System.out.println("session User:" + user);
 			System.out.println("session.getId():" + session.getId());
 
-			user = (User) session.getAttribute("sessionUser");
-			System.out.println("session User:" + user);
-
-			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=1
+			User user1 = (User) session.getAttribute("sessionUser");
+			System.out.println("session User1:" + user1);
+			
+			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=isFirst
 			if (user.getPlay() == null || user.getIce_player() == null
 					|| user.getSnow_play() == null) {
-				map.put("result", "isFirst");
+
+				map.put("result", "isFirst");  
+				map.put("userid",user.getUserId());
 			}else{
 				map.put("result", "0");
 			}
@@ -113,27 +115,11 @@
 		resultJson = "\"" + resultJson + "\"";
 		//此处返回JSON 字符串 string对象;JSP需要解析才能使用data.key
 		System.out.println("resultJson ..." + resultJson);
-
 		writer.print(resultJson);
+		
 		writer.flush();
 		writer.close();
-
-		// 		map.put("userName", user.getUserName());
-		// 		map.put("weChatId", user.getWeChatId());
-		// 		map.put("telephone", user.getTelephone());
-		// 		map.put("sex", user.getSex());
-		// 		map.put("password", user.getPassword());
-		// 		map.put("birthday", user.getBirthday());
-		// 		map.put("country", user.getCountry());
-		// 		map.put("city", user.getCity());
-		// 		map.put("height", user.getHeight());
-		// 		map.put("weight", user.getWeight());
-		// 		map.put("play", user.getPlay());
-		// 		map.put("ice_play", user.getIce_player());
-		// 		map.put("snow_play", user.getSnow_play());
-		// 		map.put("roleId", user.getRoleId());
-		// 		map.put("handlingId", user.getHandlingId());
-		// 		map.put("image", user.getImage());
+		 
 	%>
 </body>
 </html>
