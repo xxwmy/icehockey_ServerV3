@@ -39,28 +39,24 @@
 		Map<String, Object> map = null;
 		String name = "";
 		
-		user = (User) session.getAttribute("sessionUser");
+		HttpSession hs=request.getSession(true); 
+		user = (User) hs.getAttribute("sessionUser");
 		System.out.println("sessionUser:  " + user);
 		//获取session的Id
-		String sessionId = session.getId();
+		String hsId = hs.getId();
 		//判断session是不是新创建的\
 		int userId;
-		if (session.isNew()) {
+		if (hs.isNew()) {
 			userId = -1;
-			System.out.println("session创建成功，session的id是：" + sessionId);
+			System.out.println("session创建成功，session的id是：" + hsId);
 		} else {
 			System.out.println("user:  " + user);
 			userId = user.getUserId();
-			System.out.println("服务器已经存在该session了，session的id是：" + sessionId);
+			System.out.println("服务器已经存在该session了，session的id是：" + hsId);
 		}
 		
 		name=request.getParameter("userid").toString();
 		System.out.println("name...."+name);
-	
-		//获得当前会话中的用户
-		//session = request.getSession(); 
-		 
-		
 
 		String play = request.getParameter("play");//前端获取传入的data
 		String userid = request.getParameter("userid");

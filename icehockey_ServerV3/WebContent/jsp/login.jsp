@@ -67,25 +67,25 @@
 
 		if (user != null) {//登录成功
 			System.out.println(user);
-
 			System.out.println("user.getUserId():  " + user.getUserId());
+			
 			//保存用户到session
-			session = request.getSession();
-			session.setAttribute("sessionUser", user); 
+			HttpSession hs = request.getSession();
+			hs.setAttribute("sessionUser", user); 
 			//获取session的Id
-			String sessionId = session.getId();
+			String hsId = hs.getId();
 			//判断session是不是新创建的
-			if (session.isNew()) {
-				System.out.println("session创建成功，session的id是：" + sessionId);
+			if (hs.isNew()) {
+				System.out.println("session创建成功，session的id是：" + hsId);
 			} else {
 				System.out.println("服务器已经存在该session了，session的id是："
-						+ sessionId);
+						+ hsId);
 			}
 
 			System.out.println("session User:" + user);
-			System.out.println("session.getId():" + session.getId());
+			System.out.println("session.getId():" + hs.getId());
 
-			User user1 = (User) session.getAttribute("sessionUser");
+			User user1 = (User) hs.getAttribute("sessionUser");
 			System.out.println("session User1:" + user1);
 			
 			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=isFirst
