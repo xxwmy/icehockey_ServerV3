@@ -49,7 +49,7 @@ $(function(){
 
             alert(JSON.stringify(data));
             //TODO 请求后台保存数据
-            $.getJSON(SNOWURL,data,function(result){
+            $.getJSON(ROLEURL,data,function(result){
             	var jsonReturn = JSON.parse(result);
                 //TODO 处理后台返回的结果
                 if(jsonReturn.result!=0){
