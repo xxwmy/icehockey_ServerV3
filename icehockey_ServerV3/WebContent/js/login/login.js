@@ -36,7 +36,7 @@ $(function() {
 							// window.open('./test.html');
 						}
 					} else {
-						window.location.href = "./main.html";
+						window.location.href = "./main.html?userid="+ jsonReturn.userid;
 						}
 					} else {
 						alert("手机号码为：" + phoneNumber+ "的用户不存在");

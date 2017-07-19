@@ -31,7 +31,7 @@
 		 
 		 * */
 		System.out.println();
-		System.out.println("------------------------chiganfangshi.html--------------------------------------");
+		System.out.println("------------------------hobbyChoose.html--------------------------------------");
 		PrintWriter writer = response.getWriter();
 		BaseSevice baseSevice = new BaseSevice();
 		UserService userService = new UserService();
@@ -54,16 +54,16 @@
 			userId = user.getUserId();
 			System.out.println("服务器已经存在该session了，session的id是：" + hsId);
 		}
-		
-		String handlingId = request.getParameter("handlingId");//前端获取传入的data
+
+		String play = request.getParameter("play");//前端获取传入的data
 		String userid = request.getParameter("userid");
 		userId=Integer.parseInt(userid);
-		System.out.println("handlingId:" + handlingId);
+		System.out.println("play:" + play);
 		System.out.println("userid:" + userid);
 		System.out.println("userId:" + userId);
 		//String jsonString = baseSevice.getStringFromReq(request);
 		//System.out.println("jsonString..." + jsonString);
-		String jsonString = "handlingId=" + handlingId;
+		String jsonString = "play=" + play;
 		
 		if (jsonString.length() != 0) {
 			System.out.println("jsonString..." + jsonString.length());
@@ -79,13 +79,13 @@
 
 				//将play放入session中
 				session = request.getSession();
-				session.setAttribute("handlingId", handlingId);
+				session.setAttribute("play", play);
 
 				//处理成功返回result=0	
 				map.put("result", "0");
 				map.put("userId", userId);
 				map.put("userid",userId);
-				map.put("handlingId", handlingId);
+				map.put("play", play);
 				System.out.println("map找到啦..." + map);
 			} else {
 				System.out.println("map未找到...");

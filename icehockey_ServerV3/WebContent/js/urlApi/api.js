@@ -9,4 +9,6 @@ const ERROR_URL='';//错误信息url
 const HobbyURL=IPCONFIG+'/icehockey_ServerV3/jsp/hobbyChoose.jsp'; //我是选择玩雪还是玩冰或者两者都玩
 const ICEURL=IPCONFIG+'/icehockey_ServerV3/jsp/hobbySelectIce.jsp';//我是玩冰的
 const SNOWURL=IPCONFIG+'/icehockey_ServerV3/jsp/hobbySelectSnow.jsp';//我是玩雪的
-const ROOLURL=IPCONFIG+'/icehockey_ServerV3/jsp/role.jsp';//角色url
+const HANDLINGURL=IPCONFIG+'/icehockey_ServerV3/jsp/chiganfangshi.jsp';//角色url
+const ROLEURL=IPCONFIG+'/icehockey_ServerV3/jsp/role.jsp';//角色url
+const GENDERURL=IPCONFIG+'/icehockey_ServerV3/jsp/gender.jsp';//性别选择url

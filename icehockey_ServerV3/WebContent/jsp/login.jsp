@@ -93,11 +93,12 @@
 					|| user.getSnow_play() == null) {
 
 				map.put("result", "isFirst");  
-				map.put("userid",user.getUserId());
+				
 			}else{
 				map.put("result", "0");
 			}
-			
+			map.put("userid",user.getUserId());
+			map.put("userId",user.getUserId());
 			map.put("user", user);
 			System.out.println("map找到啦..." + map);
 		} else {

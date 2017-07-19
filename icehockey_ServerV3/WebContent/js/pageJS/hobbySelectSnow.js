@@ -40,9 +40,7 @@ $(function(){
                 //TODO 处理后台返回的结果
             	var jsonReturn = JSON.parse(result);
 				if (jsonReturn.result == "0") {
-					alert(result);
-                    //提交成功之后进行的操作
-                    //window.location.href = "../roleChoose/role.html";
+					window.location.href = "../roleChoose/role.html?userid=" + jsonReturn.userid;
                 }else{
                 	alert("后台数据处理有误");
                 }

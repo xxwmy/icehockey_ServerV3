@@ -7,30 +7,30 @@ $(function(){
 
     $("#qiuyuan").click(function(){
         //每个按钮执行的操作
-        sportEvent = "QY";
+        sportEvent = "QY";//球员
         submit(sportEvent)
     });
 
     $("#jiaolian").click(function(){
-        sportEvent = "JL";
+        sportEvent = "JL";//教练
         submit(sportEvent)
     });
 
     $("#shoumen").click(function(){
-        sportEvent = "SM";
+        sportEvent = "SM";//守门
         submit(sportEvent)
     });
     $("#caipan").click(function(){
-        sportEvent = "CP";
+        sportEvent = "CP";//裁判
         submit(sportEvent)
     });
     $("#school").click(function(){
-    	window.location.href = "school.html";
+    	window.location.href = "school.html";//校队
        // sportEvent = "DS";
        // submit(sportEvent)
     });
     $("#xiehui").click(function(){
-       // sportEvent = "DS";
+       // sportEvent = "DS";//协会
        // submit(sportEvent)
        window.location.href = "team.html";
     });
@@ -49,10 +49,10 @@ $(function(){
 
             alert(JSON.stringify(data));
             //TODO 请求后台保存数据
-            $.getJSON(SNOWURL,data,function(result){
+            $.getJSON(ROLEURL,data,function(result){
             	var jsonReturn = JSON.parse(result);
                 //TODO 处理后台返回的结果
-                if(jsonReturn.result!=0){
+                if(jsonReturn.result == "0"){
                     //提交成功之后进行的操作
                     window.location.href = 'chiganfangshi.html?userid='+jsonReturn.userid;
                 }

@@ -45,7 +45,7 @@ $(function() {
 								+ hobbyType + "&userid=" + jsonReturn.userid
 								+ "&ice_play=" + sportEvent;
 					} else {
-						window.location.href = "../roleChoose/role.html";
+						window.location.href = "../roleChoose/role.html?userid=" + jsonReturn.userid;
 					}
 				} else {
 					alert("内部处理错误");
