@@ -1,5 +1,4 @@
 $(function() {
-
 	$('body').css({
 		'min-height' : $(window).height()
 	});
@@ -20,37 +19,30 @@ $(function() {
 		submit('ICESNOW');
 		// window.location.href = "hobbySelectIce.html?hobbyType=ICE&All=true";
 	});
-	function GetQueryString(name) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null)
-			return unescape(r[2]);
-		return null;
-	}
 
 	// 请求后台服务
+	var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
 	function submit(play) {
-		var ICEURL = "http://127.0.0.1:8080/icehockey_ServerV3/jsp/hobbyChoose.jsp";
 		var data = {
-			play : play,			
-			userid : GetQueryString('userid')
+			userid : urlUserId,
+			play : play		
 		};
 		alert(JSON.stringify(data));
-		//  请求后台保存数据
-		$.getJSON(ICEURL, data, function(result) {
-			//  处理后台返回的结果
-			var jsonReturn = JSON.parse(result);
+		// 请求后台保存数据
+		$.getJSON(HobbyURL, data, function(result) {
+			// 处理后台返回的结果
+			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
-				if (play == "ICE") {
-					window.location.href = "hobbySelectIce.html?play="
-							+ play+"&userid="+jsonReturn.userid;
-				} else if (play == "SNOW"){
-					window.location.href = "hobbySelectSnow.html?play="
-							+ play+"&userid="+jsonReturn.userid;
-				}else if (play == "ICESNOW"){
-					window.location.href = "hobbySelectIce.html?play="
-						+ play+"&All=true"+"&userid="+jsonReturn.userid;
-			}
+				if (play == "ICE") {// 如果选择玩冰，跳转玩冰页面
+					window.location.href = "hobbySelectIce.html?play=" + play
+							+ "&userid=" + jsonReturn.userid;
+				} else if (play == "SNOW") {// 如果选择玩雪，跳转玩雪页面
+					window.location.href = "hobbySelectSnow.html?play=" + play
+							+ "&userid=" + jsonReturn.userid;
+				} else if (play == "ICESNOW") {// 如果选择两者都玩，先跳转至玩冰页面，再跳转玩雪页面
+					window.location.href = "hobbySelectIce.html?play=" + play
+							+ "&userid=" + jsonReturn.userid;
+				}
 				// window.open
 			} else if (jsonReturn.result == "-1") {
 				window.location.href = "./page/hobbyChoose.html";

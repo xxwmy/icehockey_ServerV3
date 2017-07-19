@@ -22,16 +22,8 @@ $(function(){
         submit(sportEvent);
     });
     
- // 此函数是为了获取url上携带的参数
-	function GetQueryString(name) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null)
-			return unescape(r[2]);
-		return null;
-	}
-	
     //提交用户选择的信息
+	var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
     function submit(sportEvent){
         var r=confirm("确认要提交吗？");
         if (r==true)
@@ -39,7 +31,7 @@ $(function(){
             var data = {
             	play : hobbyType,
                 snow_play : sportEvent,
-                userid : GetQueryString('userid')
+                userid : urlUserId,
             };
 
             alert(JSON.stringify(data));
@@ -56,13 +48,9 @@ $(function(){
                 }
             });
         }
-        else
-        {
+        else{
 
         }
-
-
-
     }
 
 });
