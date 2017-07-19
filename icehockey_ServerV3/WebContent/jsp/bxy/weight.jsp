@@ -30,7 +30,7 @@
 		 
 		 * */
 		System.out
-				.println("----------------------test----------------------------------------");
+				.println("--------------------------------------------------------------");
 		PrintWriter writer = response.getWriter();
 		BaseSevice baseSevice = new BaseSevice();
 		UserService userService = new UserService();
@@ -45,28 +45,52 @@
 		map = baseSevice.getMapFromQueryString(jsonString);
 		System.out.println("map:" + map);
 
-		//遍历map得到前端传入的值
+		//遍历map得到前端传入的值	
+		String weight = null;
 		Iterator<Entry<String, Object>> iter = map.entrySet().iterator();
 		while (iter.hasNext()) {
 			Entry<String, Object> entry = iter.next();
 			String key = entry.getKey();
 			Object value = entry.getValue();
+			if (key.equals("weight")) {
+				weight = (String) value;
+			}
 			System.out.println(key + " " + value);
 		}
 
-		session=request.getSession();
-		user = (User)session.getAttribute("sessionUser");
+		//获得当前会话中的用户
+		session = request.getSession();
+		user = (User) session.getAttribute("sessionUser");
 		//获取session的Id
-        String sessionId = session.getId();
+		String sessionId = session.getId();
 		//判断session是不是新创建的
-        if (session.isNew()) {
-        	System.out.println("session创建成功，session的id是："+sessionId);
-        }else {
-        	System.out.println("服务器已经存在该session了，session的id是："+sessionId);
-        }
-		
+		if (session.isNew()) {
+			System.out.println("session创建成功，session的id是：" + sessionId);
+		} else {
+			System.out.println("服务器已经存在该session了，session的id是：" + sessionId);
+		}
 		System.out.println("user:  " + user);
+		int userId = user.getUserId();
 
+		//按照userId检索数据库找到user
+		user = userService.queryUserByUserId(userId);
+		if (user != null) {//插入成功
+			System.out.println("更新数据库后：" + user);
+
+			//将play放入session中
+			session = request.getSession();
+			session.setAttribute("weight", weight);
+
+			//处理成功返回result=0	
+			map.put("result", "0");
+			map.put("userId", userId);
+			map.put("weight", weight);
+			System.out.println("map找到啦..." + map);
+		} else {
+			System.out.println("map未找到...");
+			//第一次登陆返回result=1
+			map.put("result", "-1");
+		}
 		System.out.println("插入后的map：" + map);
 		//将转换得到的map转换为json并返回
 		ObjectMapper objectMapper = new ObjectMapper();
