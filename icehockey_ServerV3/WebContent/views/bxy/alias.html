@@ -23,32 +23,27 @@
 		     		有头有脸，有名有姓<br/> 
 		        	更受欢迎
 					</p>
-				</div>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-			
-			<!--这里是上传用户头像，未完成-->
-			<div   class="ui-content">
+	
+			<!--这里是上传用户头像，未完成。
+				我用按钮代替了头像。点击按钮选择图片文件，上传头像。
+			action为空-->
+			<div  class="ui-content">
         		<div class="file-box">
-            		<form action="../servlet/phonegapUp" method="post" enctype="multipart/form-data"  data-ajax="false">
-               			<input type="file"   accept="image/png" name="fileField" id="fileField"  />
-                		<input type="submit" name="submit" class="btn" value="头像上传" />
+            		<form action=".jsp" method="post" enctype="multipart/form-data"  data-ajax="false">
+               			<!--上传用户头像-->
+               			<div>
+               				<input type="file" accept="image/png" name="fileField" id="fileField"  />
+						</div>
+						
+						<!-- 上传用户昵称 -->
+						<div data-role="fieldcontain">
+        					<input type="text" name="name" id="name" placeholder="您的昵称">
+      					</div>
+      					<input type="submit" value="完成"/>
             		</form>
         		</div>
     		</div>
     		
-    		<!-- 上传用户昵称 -->
-    			<form method="post" action="#.asp">
-      				<div data-role="fieldcontain">
-        				<input type="text" name="name" id="name" placeholder="您的昵称">
-      				</div>
-      				<input type="submit" value="完成"/>
-    			</form>
 			</div>
 		</div>
 	</body>

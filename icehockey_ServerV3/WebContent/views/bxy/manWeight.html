@@ -13,8 +13,17 @@
 		<link rel="stylesheet" href="../../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
 		<script src="../../js/jQuery/jquery-2.2.3.min.js"></script>
 		<script src="../../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+		
+		<!--
+        	rule.js脚本是我打算用于实现有刻度的身高滑块的脚本。
+        	此脚本暂时未完成。
+        	暂时使用jQuery mobile框架里自带的滑块
+        	
+        	还有， 此页面我没有人物的全身照片。暂时用头像代替。
+        -->
 		<script src="../../js/bxy/rule"></script>
 	</head>
+	
 	<body>
 		<div data-role="page" class="main">
 			<div data-role="content">	
@@ -28,14 +37,16 @@
 					<img src="../../images/bxy/man.png" />
 				</div>
 				
-		<form method="post" action=".asp">
+		<form method="post" action=".jsp">
  	     	<div data-role="fieldcontain">
     	    	<label for="points">体重KG:</label>
         		<input type="range" name="points" id="points" value="60" min="30" max="100">
       		</div>
-      		<!--<input type="submit" data-inline="true" value="提交">-->
+      		<input type="submit" data-inline="true" value="提交">
     	</form>
-	  			<!--<div class="row">
+	  			<!--
+	  			这部分是用于实现滑块的刻度效果，未完成，先注释掉。
+	  				<div class="row">
 	  				<div class="ruler ruler-weight">
 		  				<div class="main" value="0">
 		  					<ul data-initial='true'>

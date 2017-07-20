@@ -23,8 +23,11 @@
 		        	优化您的运动算法
 					</p>
 				</div>
-				
+				<!--
+                	这里是格子布局，头像和身高选择分别在左右两边。
+                -->
 				<div class="ui-grid-a">
+					
 					<div class="ui-block-a">
 						<div class="weight_image" align="center">
 							<img src="../../images/bxy/man.png" />
@@ -32,21 +35,21 @@
 					</div>
 					
 					<div class="ui-block-b">
-						<form method="post" action="height.asp">
+						<form method="post" action=".jsp">
  	     					<div data-role="fieldcontain">
     	    					<label for="points">身高cm:</label>
         						<input type="range" name="points" id="points" value="165" min="120" max="200"/>
       						</div>
-      						<!--<input type="submit" data-inline="true" value="提交"/>-->
+      						<input type="submit" data-inline="true" value="提交"/>
     					</form>
 					</div>
-					
 				</div>
+				
 				<div data-role="controlgroup" data-type="horizontal" class="btn">
 					<a href="manWeight.html" data-role="button" data-corners="true" data-transition="slide">
 					上一步
 					</a>
-	  				<a href="all.html" data-role="button" data-corners="true" data-transition="slide">
+	  				<a href="manAll.html" data-role="button" data-corners="true" data-transition="slide">
 	  				下一步
 	  				</a>
 	  			</div>	
