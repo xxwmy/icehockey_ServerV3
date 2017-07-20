@@ -29,11 +29,13 @@
 				</div>
 				<br/>
 			
-				<form method="post" action="demoform.asp">
+			<!-- 这里是“体重”选择的滑块，体重数据传送至 *.asp 处理。 action暂时为空 -->
+				<form method="post" action="#.asp">
 		 	     	<div data-role="fieldcontain">
 		    	    	<label for="points">体重KG:</label>
 		        		<input type="range" name="points" id="points" value="60" min="30" max="100">
 		      		</div>
+		      		<!--这里需要按提交后才会将数据提交至.asp。但是PPT上没有提交按钮。所以这里需要修改  -->
 		      		<!--<input type="submit" data-inline="true" value="提交">-->
 		    	</form>		
 				<div data-role="controlgroup" data-type="horizontal" class="btn">
@@ -67,7 +69,9 @@
       		</div>
       		<!--<input type="submit" data-inline="true" value="提交">-->
     	</form>
-	  			<!--<div class="row">
+	  			<!--
+	  			这一块注释掉的代码是自己写的 用脚本实现有刻度的滑块。
+	  			<div class="row">
 	  				<div class="ruler ruler-weight">
 		  				<div class="main" value="0">
 		  					<ul data-initial='true'>

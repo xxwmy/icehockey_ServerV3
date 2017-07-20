@@ -31,18 +31,21 @@
 				<br/>
 				<br/>
 				<br/>
-			<!--<div   class="ui-content">
+			
+			<!--这里是上传用户头像，未完成-->
+			<div   class="ui-content">
         		<div class="file-box">
             		<form action="../servlet/phonegapUp" method="post" enctype="multipart/form-data"  data-ajax="false">
                			<input type="file"   accept="image/png" name="fileField" id="fileField"  />
-                		<input type="submit" name="submit" class="btn" value="上22传" />
+                		<input type="submit" name="submit" class="btn" value="头像上传" />
             		</form>
         		</div>
-    		</div>-->
+    		</div>
     		
+    		<!-- 上传用户昵称 -->
     			<form method="post" action="#.asp">
       				<div data-role="fieldcontain">
-        				<input type="email" name="email" id="email" placeholder="您的昵称">
+        				<input type="text" name="name" id="name" placeholder="您的昵称">
       				</div>
       				<input type="submit" value="完成"/>
     			</form>
