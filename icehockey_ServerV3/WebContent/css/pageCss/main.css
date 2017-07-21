@@ -3,16 +3,15 @@
 }
 .main_html body{
 	margin: 0 !important;
-	display: flex;
+	display: flex;/*整个页面的布局*/
 	height: 100%;
 	-webkit-flex-direction: column;
 }
 .main_top_pages{
-	flex: 1;
+	flex: 1;/*让所有弹性盒模型对象的子元素都有相同的长度*/
 	display: -webkit-flex;
 	width: 100%;
 	height: 100%;
-	
 }
 
 /*上部分样式*/
@@ -29,6 +28,8 @@
 }
 
 
+
+
 /*轮播图*/
 .carousel{
 	height: 10rem;
@@ -36,6 +37,13 @@
 .carousel img{
 	height: 10rem;
 }
+/*精彩推荐*/
+.recommend_div{
+	background: rgb(29,76,82);
+	color: white;
+	padding: 0.6rem; /*字体不大但是框比较宽用padding*/
+}
+
 
 /*选项卡*/
 .choose_card_div{
@@ -52,9 +60,9 @@
 	padding: 0.6rem 0;
 }
 
-.choose_card_div div:nth-of-type(1){
+.choose_card_div div:nth-of-type(1){/*规定属于其父元素的第n个div 元素的每个 div：*/
 	background: rgb(220,119,67);
-	border-right: 1px solid rgb(69,80,57);
+	border-right: 1px solid rgb(69,80,57);/*设定元素的边框为1像素宽，实线*/
 	border-top: 1px solid rgb(69,80,57);
 }
 .choose_card_div div:nth-of-type(2){
@@ -83,12 +91,7 @@
 	border-top: 1px solid rgb(69,80,57);
 }
 
-/*精彩推荐*/
-.recommend_div{
-	background: rgb(29,76,82);
-	color: white;
-	padding: 0.6rem;
-}
+
 
 /*内容界面*/
 .content_out_div{

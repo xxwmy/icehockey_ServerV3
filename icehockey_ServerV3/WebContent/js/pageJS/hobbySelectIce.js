@@ -36,7 +36,7 @@ $(function() {
 			};
 
 			// 请求后台保存数据
-			$.getJSON(ICEURL, data, function(result) {
+			$.post(ICEURL, data, function(result) {
 				// TODO 处理后台返回的结果
 				var jsonReturn = JSON.parse(result);
 				if (jsonReturn.result == "0") {
@@ -50,7 +50,7 @@ $(function() {
 				} else {
 					alert("内部处理错误");
 				}
-			});
+			},"json");
 		} else {
 
 		}

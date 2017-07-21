@@ -36,7 +36,7 @@ $(function(){
 
             alert(JSON.stringify(data));
             //TODO 请求后台保存数据
-            $.getJSON(SNOWURL,data,function(result){
+            $.post(SNOWURL,data,function(result){
                 //TODO 处理后台返回的结果
             	var jsonReturn = JSON.parse(result);
 				if (jsonReturn.result == "0") {
@@ -44,7 +44,7 @@ $(function(){
                 }else{
                 	alert("后台数据处理有误");
                 }
-            });
+            },"json");
         }
         else{
 
