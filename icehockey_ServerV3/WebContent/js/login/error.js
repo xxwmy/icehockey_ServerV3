@@ -1,3 +1,11 @@
+/*
+ .error-submit
+ 
+ .checkboxBtn
+ .errorMain
+ * */
+
+
 $(function(){
     $('body').css({'min-height':$(window).height()})
     $('.error-submit').on('click',function(){

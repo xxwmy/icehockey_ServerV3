@@ -49,14 +49,14 @@ $(function(){
 
             alert(JSON.stringify(data));
             //TODO 请求后台保存数据
-            $.getJSON(ROLEURL,data,function(result){
+            $.post(ROLEURL,data,function(result){
             	var jsonReturn = JSON.parse(result);
                 //TODO 处理后台返回的结果
                 if(jsonReturn.result!=0){
                     //提交成功之后进行的操作
                     window.location.href = 'chiganfangshi.html?userid='+jsonReturn.userid;
                 }
-            });
+            },"json");
         }
         else
         {

@@ -25,14 +25,14 @@ $(function(){
             alert(JSON.stringify(data));
             
             //TODO 请求后台保存数据
-            $.getJSON(HANDLINGURL,data,function(result){
+            $.post(HANDLINGURL,data,function(result){
             	var jsonReturn = JSON.parse(result);
                 //TODO 处理后台返回的结果
                 if(jsonReturn.result!=0){
                     //提交成功之后进行的操作
                     window.location.href = "../bxy/gender.html?userid=" + jsonReturn.userid;//接下来是性别选择
                 }
-            });
+            },"json");
         }
         else
         {}
