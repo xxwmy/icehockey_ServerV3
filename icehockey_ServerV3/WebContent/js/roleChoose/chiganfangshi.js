@@ -22,7 +22,7 @@ $(function(){
                 userid:urlUserId
             };
 
-            alert(JSON.stringify(data));
+          //  alert(JSON.stringify(data));
             
             //TODO 请求后台保存数据
             $.post(HANDLINGURL,data,function(result){
@@ -30,7 +30,7 @@ $(function(){
                 //TODO 处理后台返回的结果
                 if(jsonReturn.result == "0"){
                     //提交成功之后进行的操作
-                    window.location.href = "../bxy/gender.html?userid=" + jsonReturn.userid;//接下来是性别选择
+                    window.location.href = "../main.html?userid=" + jsonReturn.userid;//接下来是性别选择
                 }
             },"json");
         }

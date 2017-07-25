@@ -26,7 +26,7 @@ $(function() {
 			userid : urlUserId,
 			play : play		
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		// 请求后台保存数据
 		$.post(HobbyURL, data, function(result) {
 			// 处理后台返回的结果

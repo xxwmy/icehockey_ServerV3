@@ -25,7 +25,7 @@ $(function() {
 			};
 			// alert(JSON.stringify(data));
 			$.post(LOGIN_API,data,function(result) {
-				alert(typeof result + " ,返回的内容为  "+ result);
+				//alert(typeof result + " ,返回的内容为  "+ result);
 				if (result != null) {
 					var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 					// 判断 result 的返回值 ,isFirst

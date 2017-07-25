@@ -34,7 +34,7 @@ $(function(){
                 userid : urlUserId,
             };
 
-            alert(JSON.stringify(data));
+           // alert(JSON.stringify(data));
             //TODO 请求后台保存数据
             $.post(SNOWURL,data,function(result){
                 //TODO 处理后台返回的结果
