@@ -196,7 +196,7 @@ body{
 	right:0px;
 	bottom:0px;
 }
-.button_main{
+/*.button_main{
 	border: none;
 	position:fixed;
 	top:82%;
@@ -243,4 +243,80 @@ body{
 	left:300px;
 	width:50px;
 	height:50px;
+}*/
+.div_game{
+	display: none;
+}
+.div_game.active{
+	background: green;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+/*工具箱样式*/
+.div_tool{
+	display: none;
+}
+.div_tool.active{
+	background: green;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+/*社区样式*/
+.div_club{
+	display: none;
+}
+.div_club.active{
+	background: gold;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+/*消息样式*/
+.div_info{
+	display: none;
+}
+.div_info.active{
+	background: greenyellow;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+/*我的样式*/
+.div_mine{
+	display: none;
+}
+.div_mine.active{
+	background: red;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+
+
+/*底部样式*/
+.main-bottom{
+	position: fixed;
+	top:90%;
+	left:0px;
+	bottom:0;
+	display: -webkit-flex;
+	font-size: 1rem;
+	height: 4.3rem;
+	background: rgb(216,215,213);
+	width: 100%;
+}
+.main-bottom div{
+	text-align: center;
+	padding: 0.3rem 0;
+}
+.main-bottom img{
+	width: 50%;
+	text-align: center;
+}
+.main-bottom span{
+	display: block;
 }

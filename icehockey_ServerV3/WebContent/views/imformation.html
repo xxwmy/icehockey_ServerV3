@@ -72,10 +72,10 @@ $(document).ready(function(){
 	<input type="button" class="button_Fans" value="粉丝">
 	</div>
 	<ul class="list2">
-	<li id="userName">李雷</li>
-	<li id="userbody">186CM/75KG</li>
-	<li id="usercountry">中国</li>
-	<li class="grad">个性技能</li>
+	<li id="userName"></li>
+	<li id="userbody"></li>
+	<li id="usercountry"></li>
+	<li class="grad"></li>
 	</ul>
 	<input type="button" class="button_next1" value="">
 	<input type="button" class="button_next2" value="">
@@ -93,17 +93,37 @@ $(document).ready(function(){
 	<li>装备情况</li>
 	<li>球员经历</li>
 	</ul>
-	<div class="div2cs">
-		<input type="button" class="button_main" value="主页面">
-	<input type="button" class="button_Schedule" value="赛程">
-	<input type="button" class="button_Tools" value="工具箱">
-	<input type="button" class="button_Community" value="社区">
-	<input type="button" class="button_Massages" value="消息">
-	<input type="button" class="button_Myself" value="我的">
-	</div>
+	<div class="main-bottom">
+
+			<div onclick="mainClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>主页面</span>
+			</div>
+			<div onclick="saichenClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>赛程</span>
+			</div>
+			<div onclick="gongjuClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>工具箱</span>
+			</div>
+			<div onclick="clubClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>社区</span>
+			</div>
+			<div onclick="infoClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>消息</span>
+			</div>
+			<div onclick="mineClick()">
+				<img src="../images/login/user-photo.png" />
+				<span>我的</span>
+			</div>
+			</div>
 	</body>
 	<script src="../js/urlApi/api.js"></script>
 	<script src="../js/common/common.js" type="text/javascript"></script>
 	<script src="../js/pageJS/imformation.js" type="text/javascript"></script>
+	
 	</html>
 	
