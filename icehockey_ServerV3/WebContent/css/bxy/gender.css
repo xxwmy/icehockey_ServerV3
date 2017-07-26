@@ -1,13 +1,14 @@
 @charset "utf-8";
 
-.male{
+.man{
 	position:absolutoin;
-	align:center;
+	align : center;
 	display: block;
 	padding-top:15%;
 }
 
-.female{
+.lady{
 	position:absolutoin;
+	display: block;
 	padding-top:25%;
 }
