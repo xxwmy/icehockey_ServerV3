@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.male{
+	position:absolutoin;
+	align:center;
+	display: block;
+	padding-top:15%;
+}
+
+.female{
+	position:absolutoin;
+	padding-top:25%;
+}
