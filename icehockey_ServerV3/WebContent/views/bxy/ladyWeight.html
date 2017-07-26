@@ -27,16 +27,16 @@
 				<div class="weight_image" align="center">
 					<img src="../../images/bxy/lady.png" />
 				</div>
-				<br/>
+		
 			
-			<!-- 这里是“体重”选择的滑块，体重数据传送至 *.jsp 处理。 action暂时为空 -->
+			<!-- 这里是“体重”选择的滑块，体重数据传送至 *.jsp 处理。 action暂时为空 
 				<form method="post" action="#.jsp">
 		 	     	<div data-role="fieldcontain">
 		    	    	<label for="points">体重KG:</label>
 		        		<input type="range" name="points" id="points" value="60" min="30" max="100">
 		      		</div>
-		      		<!--这里需要按提交后才会将数据提交至.jsp。但是PPT上没有提交按钮。所以这里需要修改  -->
-		      		<input type="submit" data-inline="true" value="提交">
+		      		<!--这里需要按提交后才会将数据提交至.jsp。但是PPT上没有提交按钮。所以这里需要修改  
+		      		<input type="submit" data-inline="true" value="提交" class="submitBtn">
 		    	</form>		
 				<div data-role="controlgroup" data-type="horizontal" class="btn">
 					<a href="gender.html" data-role="button" data-corners="true" data-transition="slide">
@@ -46,7 +46,26 @@
 	  				下一步
 	  				</a>
 	  			</div>	
+	  			-->
+	  			<div data-role="fieldcontain">   	    	
+        			<input type="range" name="points" id="points" value="60" min="30" max="100" class="weight" >
+      			</div>
+      			
+      			<div class="weight">
+      				<span>KG</span>
+      			</div>
+				<div data-role="controlgroup" data-type="horizontal" class="btn" >
+					<a href="#" onClick="javascript :history.back(-1);"  data-ajax="false" data-role="button" data-corners="true" data-transition="slide" class="back">
+						<span>上一步</span>
+					</a>
+	  				<a href="ladyHeight.html"  data-ajax="false" data-role="button" data-corners="true" data-transition="slide" class="next">
+	  					<span>下一步</span>
+	  				</a>
+	  			</div>	
 			</div>
 		</div>
 	</body>
+		<script src="../../js/urlApi/api.js"></script>
+	<script src="../../js/common/common.js" type="text/javascript"></script>
+	<script src="../../js/bxy/Weight.js" type="text/javascript"></script>
 </html>

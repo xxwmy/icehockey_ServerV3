@@ -28,22 +28,22 @@
 					性别单选按钮作为表单提交，action暂时为空
 					这里可以不用js提交数据，直接使用action调用jsp。
 				-->
-				
-				<form id="gender" action="#" method="post" align="center">   
+<!--				注释掉的部分是原来写的代码
+				<form id="gender" action=".jsp" method="post" align="center">   
 		        	<fieldset data-role="controlgroup"> 
-		        		<!--
+		        		
                         	“男生”按钮，有onclick事件进行页面跳转。
                         	male()函数跳转页面。
-                        -->
+                        
 		        		<div  class="man">
 		            	 <label for="man" class="ui-hidden-accessible">男</label>
 		            	<input type="image" name="man" id="male" value="male"  checked="checked" 
 		            		src="../../images/bxy/man.png" onclick="male()"/>  
 		  				</div>
 		  				
-		  				<!--
+		  			
                         	“女生”按钮
-                        -->
+                      
 		  				<div class="lady">
 		                 <label for="lady" class="ui-hidden-accessible">女</label>
 		            	<input type="image" name="lady" id="female" value="female" 
@@ -51,17 +51,22 @@
 		                </div>        	
 		        	</fieldset>  
 		       </form>      
+-->
+		       
+		       <div class="gender">
+					<div class="gender_div">
+						<img src="../../images/bxy/man.png" id="man"/>
+					</div>	
+					
+					<div class="gender_div">
+						<img src="../../images/bxy/lady.png" id="lady"/> 
+					</div>	
+				</div>
 			</div>
 		</div>
-<!--单击头像选择性别，同时触发事件跳转页面-->
-		<script>
-			function male(){
-				window.location.href ="manWeight.html";
-			}
-			
-			function female(){
-				window.location.href ="ladyWeight.html";
-			}
-		</script>
 	</body>
+	
+	<script src="../../js/urlApi/api.js"></script>
+	<script src="../../js/common/common.js" type="text/javascript"></script>
+	<script src="../../js/bxy/gender.js" type="text/javascript"></script>
 </html>

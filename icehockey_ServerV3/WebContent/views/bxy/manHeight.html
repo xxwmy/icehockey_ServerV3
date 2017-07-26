@@ -22,10 +22,13 @@
 		     		我们会根据您的身体资料<br/> 
 		        	优化您的运动算法
 					</p>
+					
+				</div>
+				<div class="weight_image" align="center" >
+					<img src="../../images/bxy/man.png" />
 				</div>
 				<!--
                 	这里是格子布局，头像和身高选择分别在左右两边。
-                -->
 				<div class="ui-grid-a">
 					
 					<div class="ui-block-a">
@@ -40,20 +43,30 @@
     	    					<label for="points">身高cm:</label>
         						<input type="range" name="points" id="points" value="165" min="120" max="200"/>
       						</div>
-      						<input type="submit" data-inline="true" value="提交"/>
+      						<input type="submit" data-inline="true" value="提交"  class="submitBtn"/>
     					</form>
 					</div>
 				</div>
-				
+				-->
+				<div data-role="fieldcontain">   	    	
+        			<input type="range" name="points" id="points" value="170" min="120" max="200" >
+	      		</div>
+	      		
+	      		<div class="height">
+	      			<span>CM</span>
+	      		</div>
 				<div data-role="controlgroup" data-type="horizontal" class="btn">
-					<a href="manWeight.html" data-role="button" data-corners="true" data-transition="slide">
-					上一步
+					<a href="#" onClick="javascript :history.back(-1);"  data-ajax="false" data-role="button" data-corners="true" data-transition="slide" class="back">
+						<span>上一步</span>
 					</a>
-	  				<a href="manAll.html" data-role="button" data-corners="true" data-transition="slide">
-	  				下一步
+	  				<a href="manBody.html"  data-ajax="false" data-role="button" data-corners="true" data-transition="slide" class="next">
+	  					<span>下一步</span>
 	  				</a>
 	  			</div>	
 			</div>
 		</div>
 	</body>
+	<script src="../../js/urlApi/api.js"></script>
+	<script src="../../js/common/common.js" type="text/javascript"></script>
+	<script src="../../js/bxy/Height.js" type="text/javascript"></script>
 </html>

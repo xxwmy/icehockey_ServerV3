@@ -1,3 +1,4 @@
+
 setTimeout(function(){
 
     var n =0;
@@ -10,24 +11,24 @@ setTimeout(function(){
 
     var w2=52;
 
-    var heightVal =$("div[data-page='profile1']").find(".row").eq(1).find(".number").attr("initial-value"); //150-140
+    var heightVal =$("div[data-role="content"]").find(".row").eq(1).find(".number").attr("initial-value"); //150-140
 
-    var widthVal =$("div[data-page='profile1']").find(".row").eq(2).find(".number").attr("initial-value"); //550-300 /2.5 /10 保留最后一们小数
+    var widthVal =$("div[data-role="content"]").find(".row").eq(2).find(".number").attr("initial-value"); //550-300 /2.5 /10 保留最后一们小数
 
-    var ageVal = $("div[data-page='profile1']").find(".row").eq(0).find(".number").attr("initial-value"); //30-18
-    var  mouVal=$("div[data-page='profil']")
+    var ageVal = $("div[data-role="content"]").find(".row").eq(0).find(".number").attr("initial-value"); //30-18
+    
 
 
 
-    $('.ruler .main').eq(0).css({
+    $('.ruler .main1').eq(0).css({
         '-webkit-transform':'translateX(-'+Math.ceil(parseInt(ageVal*w0))+'px)'
     }).attr('value',Math.ceil(ageVal*w0));
 
-    $('.ruler .main').eq(1).css({
+    $('.ruler .main1').eq(1).css({
         '-webkit-transform':'translateX(-'+parseInt(heightVal*w1)+'px)'
     }).attr('value',heightVal*w1);
 
-    $('.ruler .main').eq(2).css({
+    $('.ruler .main1').eq(2).css({
         '-webkit-transform':'translateX(-'+parseInt(widthVal*w2)+'px)'
     }).attr('value',widthVal*w2);
 
@@ -54,7 +55,7 @@ setTimeout(function(){
     $('.ruler ul').on("touchstart",function(e){
         var  initial = $(this).attr('data-initial');
         e.stopPropagation();
-        v = parseInt($(this).parent(".main").attr('value'));
+        v = parseInt($(this).parent(".main1").attr('value'));
 
         if($(this).closest('.ruler').hasClass("ruler-weight")){
             start = 0;
