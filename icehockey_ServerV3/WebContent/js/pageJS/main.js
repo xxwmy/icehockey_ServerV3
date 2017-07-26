@@ -90,4 +90,5 @@ function mineClick(){
 	$(".main_top_pages>div").removeClass("active");
 	/*给我的界面设置活动*/
 	$(".div_mine").addClass("active");
+	window.location.href="imformation.html";
 }
