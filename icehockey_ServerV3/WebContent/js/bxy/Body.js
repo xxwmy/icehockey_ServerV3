@@ -39,6 +39,7 @@ $(function() {
 			alert("请输入您的脚型!");
 			return false;
 		}
+		var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
 		// 请求后台服务
 		var data ={
 			time : time,
@@ -47,13 +48,16 @@ $(function() {
 			tuichang : tuichang,
 			xiaojiaochang :xiaojiaochang ,
 			jiaochang : jiaochang ,
-			jiaoxing : jiaoxing
+			jiaoxing : jiaoxing,
+			userid : urlUserId
 			};
 		alert(JSON.stringify(data));
-			$.post(  bodyurl ,data,function(result) {
-				alert(typeof result + " ,返回的内容为  "+ result);
-				if (result != null) {
-					var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
+		$.post(  bodyurl ,data,function(result) {
+			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
+			if (jsonReturn.result == "0") {
+				window.location.href = "?userid="+jsonReturn.userid;
+				}else if (jsonReturn.result == "-1") {
+					alert("后台处理出错！");
 				}
 			}, "json");
 		});

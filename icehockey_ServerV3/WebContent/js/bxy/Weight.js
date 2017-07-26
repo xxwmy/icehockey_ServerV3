@@ -21,37 +21,12 @@ $(function(){
 		// 请求后台保存数据
 		$.getJSON(MANWEIGHTURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
-				if (jsonReturn.result == "0") {
-					window.location.href = "manHeight.html?userid="+jsonReturn.userid;
-				}
+			if (jsonReturn.result == "0") {
+				window.location.href = "manHeight.html?userid="+jsonReturn.userid;
+			} else if(jsonReturn.result == "-1"){
+				alert("当前没有登录用户");
+			}
 		},"json");
 	}
 });
 
-
-
-
-
-
-
-//$(function(){
-//	$('body').css({
-//		'min-height':$(window).height()
-//	});
-//	
-//	//点击‘提交’
-//	$(".submitBtn").click(function(){
-//		var weight = $("#points").val();
-//		
-//		// 请求后台服务
-//		var data = {
-//			weight  : weight 
-//			};
-//		alert(JSON.stringify(data));	
-//		
-//		$.post("MANWEIGHTURL",data,function(result) {
-//			alert(typeof result + " ,返回的内容为  "+ result);
-//		}, "json");
-//		//不需要写跳转代码，此页面中有上一步下一步按钮执行跳转。只需要提交数据
-//	});
-//})
