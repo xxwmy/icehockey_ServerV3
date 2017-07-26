@@ -5,7 +5,7 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------hobbySelectIce.html--------------------------------------");
+	System.out.println("------------------------chiganfangshi.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;

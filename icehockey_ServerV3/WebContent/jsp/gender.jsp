@@ -5,7 +5,7 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------hobbySelectIce.html--------------------------------------");
+	System.out.println("------------------------gender.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
@@ -21,8 +21,8 @@
 		map.put("userid", "null");
 	}
 	String sex = "";
-	if (request.getParameter("sex") != null) {
-		sex = request.getParameter("sex");
+	if (request.getParameter("gender") != null) {
+		sex = request.getParameter("gender");
 	} else {
 		map.put("sex", "null");
 	}

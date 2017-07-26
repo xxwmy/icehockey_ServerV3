@@ -5,13 +5,13 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------hobbySelectIce.html--------------------------------------");
+	System.out.println("------------------------height.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
 	Map<String, Object> map = new HashMap<String, Object>();
 	int userId = -1;
-	double height=-1;
+	double height = -1;
 	//前端获取传入的data
 	String userid = "";
 	if (request.getParameter("userid") != null) {
@@ -28,7 +28,7 @@
 	} else {
 		map.put("height", "null");
 	}
-	
+
 	//按照userId检索数据库找到user
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
