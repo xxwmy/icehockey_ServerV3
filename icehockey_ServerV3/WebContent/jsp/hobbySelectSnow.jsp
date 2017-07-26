@@ -24,25 +24,24 @@
 
 	String play = "";
 	if (request.getParameter("play") != null) {
-		userid = request.getParameter("play");
+		play = request.getParameter("play");
 	} else {
 		map.put("play", "null");
 	}
 
 	String ice_play = "";
 	if (request.getParameter("ice_play") != null) {
-		userid = request.getParameter("ice_play");
+		ice_play = request.getParameter("ice_play");
 	} else {
 		map.put("ice_play", "null");
 	}
 	String snow_play = "";
 	if (request.getParameter("snow_play") != null) {
-		userid = request.getParameter("snow_play");
+		snow_play = request.getParameter("snow_play");
 	} else {
 		map.put("snow_play", "null");
 	}
-	//转化Id
-	userId = Integer.parseInt(userid);
+	
 	//按照userId检索数据库找到user
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
