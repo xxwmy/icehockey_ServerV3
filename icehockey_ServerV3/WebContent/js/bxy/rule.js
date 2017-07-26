@@ -1,4 +1,6 @@
-
+/*
+ * 这个js脚本文件可以忽略，与后端无关。
+ */
 setTimeout(function(){
 
     var n =0;

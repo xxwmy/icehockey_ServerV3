@@ -19,16 +19,21 @@ $(function() {
 			alert("请输入您的昵称!");
 			return false;
 		}
+		var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
 		// 请求后台服务
 		var data = {
 			touxiang : touxiang,
-			name : name
+			name : name,
+			userid : urlUserId
 			};
 		alert(JSON.stringify(data));
 		$.post(ALIASURL,data,function(result) {
-			alert(typeof result + " ,返回的内容为  "+ result);
-			if (result != null) {
-				var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
-			}}, "json");
+			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
+			if (jsonReturn.result == "0") {
+				window.location.href = "?userid="+jsonReturn.userid;
+				}else if (jsonReturn.result == "-1") {
+					alert("当前没有登录用户");
+				}
+			}, "json");
 		});
 });

@@ -5,17 +5,18 @@ $(function() {
 	// 
 	$("#man").click(function() {
 		submit('man');
-		window.location.href = "manWeight.html?gender=man";
+		window.location.href = "manWeight.html";
 	});
 
 	// 性别"lady"击事件
 	$("#lady").click(function() {
 		submit('lady');
-		window.location.href = "ladyWeight.html?gender=lady";
+		window.location.href = "ladyWeight.html";
 	});
 
 	// 请求后台服务
 	var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
+	
 	function submit(gender) {
 		var data = {
 			userid : urlUserId,
@@ -30,11 +31,10 @@ $(function() {
 				if (gender == "man") {// 如果选择'man'，跳转man体重面
 					window.location.href = "manWeight.html?gender" + gender
 							+ "&userid=" + jsonReturn.userid;
-				} else if (play == "SNOW") {// 如果选择‘lady''，跳转lady体重页面
+				} else if (gender == "lady") {// 如果选择‘lady''，跳转lady体重页面
 					window.location.href = "ladyWeight.html?gender" + gender
 							+ "&userid=" + jsonReturn.userid;
 				}
-				// window.open
 			} else if (jsonReturn.result == "-1") {
 				window.location.href = "./bxy/gender.html";
 			}
