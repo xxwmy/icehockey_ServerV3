@@ -193,18 +193,18 @@ $(document).ready(function(){
     $.post(dataurl,data,function(data,status){
       alert("数据：" + data + "\n状态：" + status);
     });
-    document.getElementById("userName1").innerHTML=data.userName;
-    document.getElementById("userbody1").innerHTML=data.height+"/"+data.weight;
-    document.getElementById("usercountry1").innerHTML=data.country;
-        document.getElementById("usersex1").innerHTML=data.sex;
-            document.getElementById("birthday1").innerHTML=data.birthday;
-                document.getElementById("usercountry1").innerHTML=data.country;
-                    document.getElementById("usercity1").innerHTML=data.city;
-                        document.getElementById("userplay1").innerHTML=data.play;
-                            document.getElementById("userice_play1").innerHTML=data.ice_play;
-                                document.getElementById("usersnow_play1").innerHTML=data.snow_play;
-                                    document.getElementById("userroleId1").innerHTML=data.roleId;
-                                        document.getElementById("userhandlingId1").innerHTML=data.handlingId;
+    document.getElementById("userName1").innerHTML="姓名："+data.userName;
+    document.getElementById("userbody1").innerHTML="身高体重："+data.height+"/"+data.weight;
+    
+        document.getElementById("usersex1").innerHTML="性别："+data.sex;
+            document.getElementById("birthday1").innerHTML="出生年月："+data.birthday;
+                document.getElementById("usercountry1").innerHTML="国家："+data.country;
+                    document.getElementById("usercity1").innerHTML="籍贯："+data.city;
+                        document.getElementById("userplay1").innerHTML="paly:"+data.play;
+                            document.getElementById("userice_play1").innerHTML="ice_play:"+data.ice_play;
+                                document.getElementById("usersnow_play1").innerHTML="snow:"+data.snow_play;
+                                    document.getElementById("userroleId1").innerHTML="roleId:"+data.roleId;
+                                        document.getElementById("userhandlingId1").innerHTML="handlingId:"+data.handlingId;
 
 
 
