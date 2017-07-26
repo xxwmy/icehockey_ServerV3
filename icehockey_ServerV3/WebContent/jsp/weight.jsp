@@ -9,19 +9,33 @@
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
-	Map<String, Object> map = null;
+	Map<String, Object> map = new HashMap<String, Object>();
 	int userId = -1;
+	double weight = -1;
 	//前端获取传入的data
-	String userid = request.getParameter("userid");
-	String weightValue = request.getParameter("weight");//ice_play
-	double weight=Double.parseDouble(weightValue);
-	//转化Id
-	userId = Integer.parseInt(userid);
+	String userid = "";
+	if (request.getParameter("userid") != null) {
+		userid = request.getParameter("userid");
+		//转化Id
+		userId = Integer.parseInt(userid);
+	} else {
+		map.put("userid", "null");
+	}
+
+	//前端获取传入的data
+	String weightValue = "";
+	if (request.getParameter("weight") != null) {
+		userid = request.getParameter("weight");
+		//转化weight
+		weight = Double.parseDouble(weightValue);
+	} else {
+		map.put("weight", "null");
+	}
+
 	//按照userId检索数据库找到user
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
-		map = new HashMap<String, Object>();
 		//处理成功返回result=0	
 		map.put("result", "0");
 		map.put("userId", userId);

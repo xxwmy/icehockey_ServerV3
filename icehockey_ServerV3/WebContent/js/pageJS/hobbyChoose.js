@@ -44,7 +44,7 @@ $(function() {
 				}
 				// window.open
 			} else if (jsonReturn.result == "-1") {
-				window.location.href = "./page/hobbyChoose.html";
+				alert("当前没有登录用户");
 			}
 		},"json");
 	}

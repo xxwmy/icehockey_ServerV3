@@ -9,17 +9,25 @@
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
-	Map<String, Object> map = null;
+	Map<String, Object> map = new HashMap<String, Object>();
 	//遍历map得到前端传入的值
-	String telephone = null;
-	String password = null;
-	telephone = request.getParameter("phoneNumber");
-	password = request.getParameter("verificationCode");
+	String telephone = "";
+	String password = "";
+	if (request.getParameter("phoneNumber") != null) {
+		telephone = request.getParameter("phoneNumber");
+	} else {
+		map.put("telephone", "null");
+	}
+	if (request.getParameter("verificationCode") != null) {
+		password = request.getParameter("verificationCode");
+	} else {
+		map.put("verificationCode", "null");
+	}
 	//登录函数
 	user = userService.loginByTelepone(telephone, password);
 	if (user != null) {//登录成功
 		System.out.println("找到当前用户" + user);
-		map = new HashMap<String, Object>();
+
 		//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=isFirst
 		if (user.getPlay() == null) {
 			map.put("result", "isFirst");

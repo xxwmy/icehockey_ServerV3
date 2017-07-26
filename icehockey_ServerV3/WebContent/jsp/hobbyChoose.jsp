@@ -1,44 +1,35 @@
-<%@page import="com.icehockey.entity.User"%>
-<%@page import="com.icehockey.service.UserService"%>
-<%@page import="java.util.Map.Entry"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.Map"%>
-<%@page import="com.icehockey.service.BaseSevice"%>
-<%@page import="java.io.PrintWriter"%>
-<%@page import="org.codehaus.jackson.map.ObjectMapper"%>
-<%@page import="java.io.BufferedReader"%>
-<%@page import="java.io.IOException"%>
-<%@page import="java.util.HashMap"%>
+<%@page
+	import="org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>Insert title here</title>
-</head>
-<body>
-	<input id="userId" type="hidden" value="${user.userId}" />
 	<%
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
 		System.out.println("------------------------hobbyChoose.html--------------------------------------");
 		PrintWriter writer = response.getWriter();
-		BaseSevice baseSevice = new BaseSevice();
 		UserService userService = new UserService();
 		User user = null;
-		Map<String, Object> map = null;
+		Map<String, Object> map  = new HashMap<String, Object>();
 		int userId = -1;
-
-		String play = request.getParameter("play");//前端获取传入的data
-		String userid = request.getParameter("userid");
-		userId = Integer.parseInt(userid);
+		//前端获取传入的data
+		String userid = null;
+		if (request.getParameter("userid") != null) {
+			userid = request.getParameter("userid");
+			userId = Integer.parseInt(userid);
+		} else {
+			map.put("userid", "null");
+		}
+		
+		String play =null;
+		if (request.getParameter("play") != null) {
+			play = request.getParameter("play");
+		} else {
+			map.put("play", "null");
+		}
 
 		user = userService.queryUserByUserId(userId);
 		if (user != null) {//插入成功
 			System.out.println("找到当前用户" + user);
-			map = new HashMap<String, Object>();
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);
@@ -62,5 +53,15 @@
 		writer.flush();
 		writer.close();
 	%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Insert title here</title>
+</head>
+<body>
+	
+
 </body>
 </html>

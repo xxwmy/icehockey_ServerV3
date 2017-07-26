@@ -9,20 +9,32 @@
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
-	Map<String, Object> map = null;
+	Map<String, Object> map = new HashMap<String, Object>();
 	int userId = -1;
 	//前端获取传入的data
-	String userid = request.getParameter("userid");
-	String role = request.getParameter("role");//ice_play
-	//转化Id
-	userId = Integer.parseInt(userid);
+	String userid = null;
+	if (request.getParameter("userid") != null) {
+		userid = request.getParameter("userid");
+		//转化Id
+		System.out.println("找到当前用户userid" + userid);
+		userId = Integer.parseInt(userid);
+	} else {
+		map.put("userid", "null");
+	}
+
+	String role = null;//role
+	if (request.getParameter("role") != null) {
+		role = request.getParameter("role");
+	} else {
+		map.put("role", "null");
+	}
+	
 	//按照userId检索数据库找到user
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
 		user = userService.updateUserRole(userId, role);
 		if (user != null) {
-			map = new HashMap<String, Object>();
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);

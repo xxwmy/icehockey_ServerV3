@@ -34,21 +34,23 @@ $(function() {
 				ice_play : sportEvent,
 				userid : urlUserId,
 			};
-
+			//alert(JSON.stringify(data));
 			// 请求后台保存数据
 			$.post(ICEURL, data, function(result) {
 				// TODO 处理后台返回的结果
 				var jsonReturn = JSON.parse(result);
+				//alert(jsonReturn);
 				if (jsonReturn.result == "0") {
 					if (hobbyType == "ICESNOW") {
 						window.location.href = "hobbySelectSnow.html?play="
 								+ hobbyType + "&userid=" + jsonReturn.userid
 								+ "&ice_play=" + sportEvent;
 					} else {
+						//alert(jsonReturn.userid);
 						window.location.href = "../roleChoose/role.html?userid=" + jsonReturn.userid;
 					}
-				} else {
-					alert("内部处理错误");
+				}  else if (jsonReturn.result == "-1") {
+					alert("当前没有登录用户");
 				}
 			},"json");
 		} else {

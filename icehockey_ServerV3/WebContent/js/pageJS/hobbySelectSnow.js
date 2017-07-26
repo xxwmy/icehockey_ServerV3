@@ -41,9 +41,9 @@ $(function(){
             	var jsonReturn = JSON.parse(result);
 				if (jsonReturn.result == "0") {
 					window.location.href = "../roleChoose/role.html?userid=" + jsonReturn.userid;
-                }else{
-                	alert("后台数据处理有误");
-                }
+                } else if (jsonReturn.result == "-1") {
+    				alert("当前没有登录用户");
+    			}
             },"json");
         }
         else{
