@@ -12,12 +12,22 @@
 	
 $(document).ready(function(){
   $(".button_invite").click(function(){
-    window.location.href="invitefriend.html";
+    window.location.href="../views/imformation/invitefriend.html";
+  });
+});
+$(document).ready(function(){
+  $(".button_Follow").click(function(){
+    window.location.href="../views/imformation/follow.html";
+  });
+});
+$(document).ready(function(){
+  $(".button_Fans").click(function(){
+    window.location.href="../views/imformation/fans.html";
   });
 });
 $(document).ready(function(){
 	  $(".button_setting").click(function(){
-	    window.location.href="Systemsetting.html";
+	    window.location.href="../views/imformation/Systemsetting.html";
 	  });
 	});
 //$(document).ready(function(){
@@ -27,32 +37,32 @@ $(document).ready(function(){
 //	});
 $(document).ready(function(){
 	  $(".button_next2").click(function(){
-	    window.location.href="learnfrom.html";
+	    window.location.href="../views/imformation/learnfrom.html";
 	  });
 	});
 $(document).ready(function(){
 	  $(".button_next3").click(function(){
-	    window.location.href="gethonor1.html";
+	    window.location.href="../views/imformation/gethonor.html";
 	  });
 	});
 $(document).ready(function(){
 	  $(".button_next4").click(function(){
-	    window.location.href="groupnow.html";
+	    window.location.href="../views/imformation/groupnow.html";
 	  });
 	});
 $(document).ready(function(){
 	  $(".button_next5").click(function(){
-	    window.location.href="enjoyed.html";
+	    window.location.href="../views/imformation/enjoyed.html";
 	  });
 	});
 $(document).ready(function(){
 	  $(".button_next6").click(function(){
-	    window.location.href="equipmentinfo.html";
+	    window.location.href="../views/imformation/equipmentinfo.html";
 	  });
 	});
 $(document).ready(function(){
 	  $(".button_next7").click(function(){
-	    window.location.href="experience.html";
+	    window.location.href="../views/imformation/experience.html";
 	  });
 	});
 </script>
@@ -77,21 +87,60 @@ $(document).ready(function(){
 	<li id="usercountry"></li>
 	<li class="grad"></li>
 	</ul>
-	<input type="button" class="button_next1" value="">
+	<!--<input type="button" class="button_next1" value="">
 	<input type="button" class="button_next2" value="">
 	<input type="button" class="button_next3" value="">
 	<input type="button" class="button_next4" value="">
 	<input type="button" class="button_next5" value="">
 	<input type="button" class="button_next6" value="">
-	<input type="button" class="button_next7" value="">
+	<input type="button" class="button_next7" value="">-->
 	<ul class="list">
-	<li>我的基本信息</li>
-	<li>师从教练</li>
-	<li>获得殊荣</li>
-	<li>当前组别</li>
-	<li>参加赛事 官方的、邀请的</li>
-	<li>装备情况</li>
-	<li>球员经历</li>
+	<li>
+	<div id="Myinfo">
+	我的基本信息	
+	<input type="button" class="button_next1" value="">
+	</div>
+	
+	</li>
+	<li>
+	<div id="Learn">师从教练
+	<input type="button" class="button_next2" value="">
+	</div>
+	
+	</li>
+	<li>
+	<div id="Honor">获得殊荣
+	<input type="button" class="button_next3" value=""></div>
+
+	</li>
+	<li>
+	<div id-"Group">当前组别
+	<input type="button" class="button_next4" value=""></div>
+		
+
+	</li>
+	<li>
+		
+		<div id="Enjoyed">
+			参加赛事 官方的、邀请的
+	<input type="button" class="button_next5" value="">
+		</div>
+
+	</li>
+	<li>
+		<div id="Equipment">
+			装备情况
+	<input type="button" class="button_next6" value="">
+		</div>
+
+	</li>
+	<li>
+		<div id="Experience">
+			球员经历
+	<input type="button" class="button_next7" value="">
+		</div>
+
+	</li>
 	</ul>
 	<div class="main-bottom">
 
@@ -124,6 +173,7 @@ $(document).ready(function(){
 	<script src="../js/urlApi/api.js"></script>
 	<script src="../js/common/common.js" type="text/javascript"></script>
 	<script src="../js/pageJS/imformation.js" type="text/javascript"></script>
-	
+	<script src="../js/pageJS/main.js" type="text/javascript"></script>
+
 	</html>
 	
