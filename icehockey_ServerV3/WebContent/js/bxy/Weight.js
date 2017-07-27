@@ -7,27 +7,25 @@ $(function() {
 		// submit('weight'); ---> 这样写 是将'weight'字符串传入到 submit中
 		submit(weight);
 		// alert(JSON.stringify(data)); ---> data 不存在 会报错
-		alert(weight);
 	});
 
 	var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
-	var urlGender = comm.getUrlParameter("gender");
 	function submit(weight) {
 		var data = {
 			weight : weight,
 			userid : urlUserId,
-			gender : urlGender
 		};
 		alert(JSON.stringify(data));
 
 		// 请求后台保存数据
-		$.getJSON(MANWEIGHTURL, data, function(result) {
+		$.getJSON(WeightURL, data, function(result) {
+			alert(JSON.stringify(data));
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
-				if (gender == "man") {// 如果选择'man'，跳转man体重面
+				if (jsonReturn.gender == "man") {// 如果选择'man'，跳转man体重面
 					window.location.href = "manHeight.html?userid="
 							+ jsonReturn.userid;
-				} else if (gender == "lady") {// 如果选择‘lady''，跳转lady体重页面
+				} else if (jsonReturn.gender == "lady") {// 如果选择‘lady''，跳转lady体重页面
 					window.location.href = "ladyHeight.html?userid="
 							+ jsonReturn.userid;
 				}

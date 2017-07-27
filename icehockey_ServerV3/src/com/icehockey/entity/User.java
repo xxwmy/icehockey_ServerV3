@@ -8,8 +8,8 @@ public class User {
 	private String weChatId;// ` varchar(200) DEFAULT NULL COMMENT '微信账号',
 	private String telephone;// ` varchar(11) DEFAULT NULL COMMENT '手机号码',
 	private String userName;// ` varchar(11) DEFAULT NULL COMMENT '用户姓名',
-	private int sex;// ` int(1) NOT NULL DEFAULT '1' COMMENT
-					// '1代表男生0表示女生,默认为1男生',
+	private String sex;// ` int(1) NOT NULL DEFAULT '1' COMMENT
+					// '1代表男生0表示女生,默认为1男生',man是男生，lady是女生
 	private String password;// ` varchar(200) DEFAULT NULL COMMENT '密码',
 	private Date birthday;// ` date DEFAULT NULL COMMENT '出生日期',
 	private String country;// ` varchar(11) DEFAULT NULL COMMENT '国籍',
@@ -22,7 +22,6 @@ public class User {
 	private int roleId;// ` int(11) DEFAULT NULL COMMENT '角色编号',
 	private int handlingId;// ` int(11) DEFAULT NULL COMMENT '持杆方式',
 	private String image;// ` varchar(200) DEFAULT NULL COMMENT '头像',
-	
 	public int getUserId() {
 		return userId;
 	}
@@ -47,10 +46,10 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public String getPassword() {
@@ -95,10 +94,10 @@ public class User {
 	public void setPlay(String play) {
 		this.play = play;
 	}
-	public String getIce_player() {
+	public String getIce_play() {
 		return ice_play;
 	}
-	public void setIce_player(String ice_play) {
+	public void setIce_play(String ice_play) {
 		this.ice_play = ice_play;
 	}
 	public String getSnow_play() {
@@ -125,9 +124,9 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public User(int userId, String weChatId, String telephone, String userName, int sex, String password, Date birthday,
-			String country, String city, double height, double weight, String play, String ice_player, String snow_play,
-			int roleId, int handingId, String image) {
+	public User(int userId, String weChatId, String telephone, String userName, String sex, String password,
+			Date birthday, String country, String city, double height, double weight, String play, String ice_play,
+			String snow_play, int roleId, int handlingId, String image) {
 		super();
 		this.userId = userId;
 		this.weChatId = weChatId;
@@ -141,21 +140,24 @@ public class User {
 		this.height = height;
 		this.weight = weight;
 		this.play = play;
-		this.ice_play = ice_player;
+		this.ice_play = ice_play;
 		this.snow_play = snow_play;
 		this.roleId = roleId;
-		this.handlingId = handingId;
+		this.handlingId = handlingId;
 		this.image = image;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", weChatId=" + weChatId + ", telephone=" + telephone + ", userName="
 				+ userName + ", sex=" + sex + ", password=" + password + ", birthday=" + birthday + ", country="
 				+ country + ", city=" + city + ", height=" + height + ", weight=" + weight + ", play=" + play
-				+ ", ice_play=" + ice_play + ", snow_play=" + snow_play + ", roleId=" + roleId + ", handingId="
+				+ ", ice_play=" + ice_play + ", snow_play=" + snow_play + ", roleId=" + roleId + ", handlingId="
 				+ handlingId + ", image=" + image + "]";
 	}
+	
 
-	
-	
 }

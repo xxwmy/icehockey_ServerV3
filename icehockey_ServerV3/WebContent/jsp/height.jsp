@@ -33,13 +33,17 @@
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
-
-		//处理成功返回result=0	
-		map.put("result", "0");
-		map.put("userId", userId);
-		map.put("userid", userid);
-		map.put("height", height);
-		System.out.println("map找到啦..." + map);
+		user = userService.updateUserHeight(userId, height);
+		if (user != null) {
+			//处理成功返回result=0	
+			map.put("result", "0");
+			map.put("userId", userId);
+			map.put("userid", userid);
+			map.put("height", height);
+			System.out.println("map找到啦..." + map);
+		} else {
+			System.out.println("更新失败........");
+		}
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");

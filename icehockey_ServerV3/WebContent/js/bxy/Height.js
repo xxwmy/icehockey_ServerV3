@@ -11,7 +11,6 @@ $(function() {
 	});
 
 	var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
-
 	function submit(height) {
 		var data = {
 			height : height,
@@ -20,7 +19,7 @@ $(function() {
 		alert(JSON.stringify(data));
 
 		// 请求后台保存数据
-		$.getJSON(MANHEIGHTURL, data, function(result) {
+		$.getJSON(HeightURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				window.location.href = "manBody.html?userid="

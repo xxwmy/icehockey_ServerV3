@@ -30,7 +30,7 @@ $(function() {
 		$.post(ALIASURL,data,function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
-				window.location.href = "?userid="+jsonReturn.userid;
+				window.location.href = "../main.html?userid="+jsonReturn.userid;
 				}else if (jsonReturn.result == "-1") {
 					alert("当前没有登录用户");
 				}
