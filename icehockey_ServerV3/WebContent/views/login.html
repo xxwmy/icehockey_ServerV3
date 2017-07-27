@@ -1,88 +1,81 @@
 <!DOCTYPE html>
-<html class="ui-page-login">
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登陆页面</title>
+		<link rel="stylesheet" href="../css/login/login.css" />
+		<link rel="stylesheet" href="../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
+		<script src="../js/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
+	</head>
 
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-<title></title>
-<link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" href="../css/login/main.css">
+	<body>
+		<!--	屏幕适配
+        -->
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						if(!clientWidth) return;
+						docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
+					};
 
-</head>
-
-<body>
-	<script>
-		(function(doc, win) {
-			var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange'
-					: 'resize', recalc = function() {
-				var clientWidth = docEl.clientWidth;
-				if (!clientWidth)
-					return;
-				docEl.style.fontSize = 16 * (clientWidth / 720) + 'px';
-			};
-
-			if (!doc.addEventListener)
-				return;
-			win.addEventListener(resizeEvt, recalc, false);
-			doc.addEventListener('DOMContentLoaded', recalc, false);
-		})(document, window);
-	</script>
-
-	<div id="app">
-		<section class="box">
-			<header class="login-header">
-				<a href="../logining.html"></a> <span>账号登录</span>
-			</header>
-			<section class="login-input">
-				<div class="input-group">
-					<div class="input-group-addon">
-						<i class="fa fa-phone"></i>
-					</div>
-					<input type="text" class="form-control" placeholder="输入注册时的手机号"
-						id="phoneNumber">
-					<div class="input-right">
-						<span>+86 </span> <i class=""></i>
-					</div>
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+		</script>
+		<!--
+ * .submitBtn
+ * #phoneNumber
+ * #verificationCode
+        -->
+		  
+		<div data-role="page" class="main">
+		    <div data-role="content">		
+				<div class="top">
+					<a href="#" onClick="javascript :history.back(-1);" data-ajax="false"></a>
+					<span >账号登录</span>
 				</div>
-				<div class="input-group margin-13">
-					<div class="input-group-addon">
-						<i class="fa fa-phone"></i>
-					</div>
-					<input type="text" class="form-control verificationCode"
-						placeholder="输入验证码" id="verificationCode"> <span
-						class="codeBtn">获取验证码</span>
+
+				<div >
+					<input type="text" data-role='none' class="phoneNumber" placeholder="输入注册时的手机号" id="phoneNumber"/>	
 				</div>
-				<div class="input-group submitBtn">
-					<p>登录</p>
+				
+				
+				<div class="yanBtn">
+					<input type="text" data-role='none' class="verificationCode" placeholder="输入验证码" id="verificationCode"/>
+					<a href="#" data-role="button"  class="getCode"><span >获取验证码</span></a>
 				</div>
-				<div class="input-group errorBtn">
-					<p>
-						<a href="error.html">登录遇到问题</a>
-					</p>
+				
+				<div >
+					<input type="submit" data-role='none' value="登陆"   class="submitBtn"></input>
 				</div>
-				<div class="input-group loginOther">
+            	     
+			    <div class="errorBtn">
+            	    <a href="error.html"  data-ajax="false" style="text-decoration: none;"> 登录遇到问题</a>
+                </div>
+					
+					
+					
+				<div class="loginOther">
 					<span>推荐登录</span>
 				</div>
-				<div class="input-group loginList">
-
-					<a class="weixin"></a> <a class="weibo"></a> <a class="qq"></a>
-
-				</div>
-			</section>
-			<!--<footer>-->
-			<!--<div class="footer">-->
-			<!--<a href="" class="fa fa-chevron-left"></a>-->
-			<!--<a href="" class="fa fa-circle-o"></a>-->
-			<!--<a href="" class="fa fa-square-o"></a>-->
-			<!--</div>-->
-
-			<!--</footer>-->
-		</section>
-
-	</div>
-	<script src="../js/jQuery/jquery-2.2.3.min.js"></script>
-	<script src="../js/login/login.js"></script>
-</body>
+				
+				<div class="loginList">
+					<a href="" class="weixin" data-ajax="false"><img src="../images/login/qq.png"/></a>
+					<a href="" class="weibo" data-ajax="false"><img src="../images/login/weibo.png"/></a>
+					<a href="" class="qq" data-ajax="false"><img src="../images/login/weixin.png"/></a>
+				</div>	
+				
+		    </div>
+        </div>
+		<script src="../js/common/common.js"></script>
+		<script src="../js/urlApi/api.js"></script>
+		<script src="../js/login/login.js"></script>
+	</body>
 
 </html>
