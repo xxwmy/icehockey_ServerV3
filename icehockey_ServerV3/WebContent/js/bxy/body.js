@@ -74,7 +74,7 @@ $(function() {
 			if (jsonReturn.result == "0") {
 				window.location.href = "alias.html?userid=" + jsonReturn.userid;
 			} else if (jsonReturn.result == "-1") {
-				alert("后台处理出错！");
+				alert("当前没有用户登录！");
 			}
 		}, "json");
 	});
