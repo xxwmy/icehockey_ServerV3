@@ -20,6 +20,10 @@ public class User {
 	private String ice_play;// ` varchar(200) DEFAULT NULL COMMENT '游戏项目',
 	private String snow_play;// ` varchar(200) DEFAULT NULL COMMENT '单板，双板，都玩',
 	private String role;// ` int(11) DEFAULT NULL COMMENT '角色编号',
+	private String handling;// ` int(11) DEFAULT NULL COMMENT '持杆方式',
+	private String image;// ` varchar(200) DEFAULT NULL COMMENT '头像',
+	
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -150,8 +154,7 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	private String handling;// ` int(11) DEFAULT NULL COMMENT '持杆方式',
-	private String image;// ` varchar(200) DEFAULT NULL COMMENT '头像',
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", weChatId=" + weChatId

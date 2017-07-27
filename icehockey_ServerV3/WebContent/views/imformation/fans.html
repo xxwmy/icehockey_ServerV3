@@ -11,9 +11,10 @@
 <script type="text/javascript" src="../../js/jQuery/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  $(".button_back").click(function(){
-    window.location.href="../../views/imformation.html";
-  });
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_back").click(function(){
+	    window.location.href="../views/imformation.html?userid="+urlUserId;
+	  });
 });
 </script>
 </head>

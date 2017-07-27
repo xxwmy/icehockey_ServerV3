@@ -161,11 +161,14 @@ $(document).ready(function(){
   	userid : urlUserId,
 		
   	};
-  	window.location.href="../views/essentiainfo.html";
-    $.post(dataurl,data,function(result){
+  //	alert(JSON.stringify(data));
+  	//window.location.href="../views/essentiainfo.html";
+    $.post(MYESSENTIALINFOURL,data,function(result){
+    	
       var jsonReturn = JSON.parse(result);//处理后台返回的结果
+      
 		if(jsonReturn.result="0"){
-			window.location.href="../views/essentiainfo.html"+"&userid=" + jsonReturn.userid;
+			window.location.href="../views/essentiainfo.html?userid=" + jsonReturn.userid;
 			document.getElementById("userName1").innerHTML="姓名："+jsonReturn.userName;
     		document.getElementById("userbody1").innerHTML="身高体重："+jsonReturn.height+"/"+jsonReturn.weight;
     
@@ -181,7 +184,7 @@ $(document).ready(function(){
 
 		}
 		else if(jsonReturn=="-1"){//接收数据失败的处理
-			
+			alert("当前没有登录用户");
 		}
 	},"json");
     });

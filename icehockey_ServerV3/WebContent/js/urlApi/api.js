@@ -17,3 +17,4 @@ const WeightURL=IPCONFIG+'/icehockey_ServerV3/jsp/weight.jsp';//体重选择url
 const BodyURL=IPCONFIG+'/icehockey_ServerV3/jsp/body.jsp';//其他信息选择url
 const ALIASURL=IPCONFIG+'/icehockey_ServerV3/jsp/alias.jsp';//头像选择url
 const MYINFOURL=IPCONFIG+'/icehockey_ServerV3/jsp/myInfo.jsp';//我的个人信息url
+const MYESSENTIALINFOURL=IPCONFIG+'/icehockey_ServerV3/jsp/myEssentialInfo.jsp';//我的基本信息url

@@ -9,28 +9,34 @@ function loadCarousel() {
 
 /* 主页面上方六个功能 */
 $(".saishizixun").click(function() {
-	window.location.href = "mainUpPage/saishizixun.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/saishizixun.html?userid="+urlUserId;
 
 });
 
 $(".jiaobingbibai").click(function() {
-	window.location.href = "mainUpPage/jiaobingbibai.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/jiaobingbibai.html?userid="+urlUserId;
 });
 
 $(".hujvzhuangbei").click(function() {
-	window.location.href = "mainUpPage/hujvzhuangbei.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/hujvzhuangbei.html?userid="+urlUserId;
 });
 
 $(".jishutongji").click(function() {
-	window.location.href = "mainUpPage/jishutongji.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/jishutongji.html?userid="+urlUserId;
 });
 
 $(".jiaoxueziliao").click(function() {
-	window.location.href = "mainUpPage/jiaoxueziliao.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/jiaoxueziliao.html?userid="+urlUserId;
 });
 
 $(".my2016").click(function() {
-	window.location.href = "mainUpPage/my2016.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "mainUpPage/my2016.html?userid="+urlUserId;
 });
 
 // 页面中间内容展示页面,待开发
@@ -49,7 +55,8 @@ function mainClick() {
 	$(".main_top_pages>div").removeClass("active");
 	/* 给赛程界面设置活动 */
 	$(".div_schedule").addClass("active");
-	window.location.href = "../views/main.html";
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "../views/main.html?userid="+urlUserId;
 }
 
 /* 赛程点击效果 */
@@ -72,7 +79,8 @@ function clubClick() {
 	$(".main_top_pages>div").removeClass("active");
 	/* 给社区界面设置活动 */
 	$(".div_club").addClass("active");
-	window.location.href = "../views/imformation/mycommunity.html"
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "../views/imformation/mycommunity.html?userid="+urlUserId;
 }
 /* 消息点击效果 */
 function infoClick() {
@@ -80,7 +88,8 @@ function infoClick() {
 	$(".main_top_pages>div").removeClass("active");
 	/* 给消息界面设置活动 */
 	$(".div_info").addClass("active");
-	window.location.href = "../views/imformation/oscenter.html"
+	var urlUserId = comm.getUrlParameter("userid");
+	window.location.href = "../views/imformation/oscenter.html?userid="+urlUserId;
 
 }
 /* 我的点击效果 */
@@ -89,7 +98,7 @@ function mineClick() {
 	$(".main_top_pages>div").removeClass("active");
 	/* 给我的界面设置活动 */
 	$(".div_mine").addClass("active");
-	//window.location.href = "../views/imformation.html";
+	//window.location.href = "../views/imformation.html?userid="+urlUserId;
 	var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
 	var data = {
 		userid : urlUserId,
@@ -102,7 +111,7 @@ function mineClick() {
 					function(result) {
 						var jsonReturn = JSON.parse(result);// 处理后台返回的结果
 						if (jsonReturn.result = "0") {
-							alert(jsonReturn.roleName);
+							//alert(jsonReturn.roleName);
 							if (jsonReturn.roleName == "教练")// 判断角色类别跳转相应页面教练员的跳转
 							{
 								window.location.href = "../views/imformation/coachinfo.html?userid=" + jsonReturn.userid;
@@ -123,7 +132,7 @@ function mineClick() {
 								;// 其他成员
 
 						} else if (jsonReturn == "-1") {// 未接收到返回数据的处理
-
+							alert("当前没有登录用户");
 						}
 					}, "json");
 
