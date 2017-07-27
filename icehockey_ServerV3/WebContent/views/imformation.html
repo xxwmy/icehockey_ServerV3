@@ -11,23 +11,28 @@
 	<script type="text/javascript">
 	
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
   $(".button_invite").click(function(){
-    window.location.href="../views/imformation/invitefriend.html";
+	
+    window.location.href="../views/imformation/invitefriend.html?userid="+urlUserId;
   });
 });
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
   $(".button_Follow").click(function(){
-    window.location.href="../views/imformation/follow.html";
+    window.location.href="../views/imformation/follow.html?userid="+urlUserId;
   });
 });
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
   $(".button_Fans").click(function(){
-    window.location.href="../views/imformation/fans.html";
+    window.location.href="../views/imformation/fans.html?userid="+urlUserId;
   });
 });
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_setting").click(function(){
-	    window.location.href="../views/imformation/Systemsetting.html";
+	    window.location.href="../views/imformation/Systemsetting.html?userid="+urlUserId;
 	  });
 	});
 //$(document).ready(function(){
@@ -36,33 +41,39 @@ $(document).ready(function(){
 //	  });
 //	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next2").click(function(){
-	    window.location.href="../views/imformation/learnfrom.html";
+	    window.location.href="../views/imformation/learnfrom.html?userid="+urlUserId;
 	  });
 	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next3").click(function(){
-	    window.location.href="../views/imformation/gethonor.html";
+	    window.location.href="../views/imformation/gethonor.html?userid="+urlUserId;
 	  });
 	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next4").click(function(){
-	    window.location.href="../views/imformation/groupnow.html";
+	    window.location.href="../views/imformation/groupnow.html?userid="+urlUserId;
 	  });
 	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next5").click(function(){
-	    window.location.href="../views/imformation/enjoyed.html";
+	    window.location.href="../views/imformation/enjoyed.html?userid="+urlUserId;
 	  });
 	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next6").click(function(){
-	    window.location.href="../views/imformation/equipmentinfo.html";
+	    window.location.href="../views/imformation/equipmentinfo.html?userid="+urlUserId;
 	  });
 	});
 $(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
 	  $(".button_next7").click(function(){
-	    window.location.href="../views/imformation/experience.html";
+	    window.location.href="../views/imformation/experience.html?userid="+urlUserId;
 	  });
 	});
 </script>

@@ -1,3 +1,7 @@
+.ui-loader-default{ display:none}
+.ui-mobile-viewport{ border:none;}
+.ui-page {padding: 0; margin: 0; outline: 0} 
+
 .main{
 	background-image: url(../../images/hobbyChoose/lock-screen-background.png);
 	background-size: 100% 100%;
@@ -7,7 +11,6 @@
 	flex-direction: column;
 	-webkit-flex-direction: column;
 	font-family: '宋体';
-	text-shadow:none !important;
 	color: rgb(178,196,202);
 	background-repeat:no-repeat;
 	background-attachment:fixed;
@@ -46,6 +49,7 @@ padding: 2rem 0;
   margin-left: 5rem;
   font-size:2.2rem;
   text-shadow:none !important;
+  color: rgb(178,196,202);
 }
 
 
@@ -54,6 +58,8 @@ padding: 2rem 0;
 	margin-top: 5%;
 	padding-left: 8%;	
 	font-size:2.2rem;
+	color: rgb(178,196,202);
+	text-shadow:none !important;
 }
 
 .problem>div{
@@ -65,10 +71,12 @@ padding: 2rem 0;
 .errorMain{
 	margin-top:5%;
 	width:90%;
+	height-min: 4rem;
 	padding: 1rem 0;
 	margin:1.3rem;
 	border-radius: 2rem !important;
 	font-size: 2rem;
+	
 }
 
 /**/
@@ -92,12 +100,12 @@ padding: 2rem 0;
 .error-submit{
 	background: transparent! important;
     border-radius: 2rem !important;
-    width: 100%;
+    width: 90%;
     /* margin-left: 1rem; */
     margin-top: 3rem;
     height: 3rem;
     min-height: 3.4em;
+    margin-left: 1rem;
 }
- .ui-loader-default{ display:none}
-      .ui-mobile-viewport{ border:none;}
-      .ui-page {padding: 0; margin: 0; outline: 0} 
+
+

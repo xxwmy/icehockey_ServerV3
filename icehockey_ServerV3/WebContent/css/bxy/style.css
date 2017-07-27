@@ -1,11 +1,82 @@
 
+*{
+    margin:0;
+    padding:0;
+}
+html,body,body > form{
+    height: 100%;
+}
+body{
+    font:22px/1.5 STHeiTi,\9ED1\4F53,helvetica Regular,Heiti SC;
+    color:#666;
+}
+a{
+    text-decoration: none;
+}
+a,input,li,span,div{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+input:focus{
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+input{
+    -webkit-appearance: none;
+}
+.hover {
+    /*  background-color: #ccc !important;
+      -webkit-transition: all 0.1s !important;  */
+}
 img.auto{
     max-width: 100%;
 }
 ul li{
     list-style: none;
 }
+.bold{
+    font-weight: bold;
+}
+.green-bg{
+    background-color: #62cfc6;
+}
+.gray-bg{
+    background-color: #f1f5f7;
+}
+.btn-gray,.btn-red{
+    border:2px solid #ffb0b5;
+    border-radius: 6px;
+    background-color: #e85e66;
+    color:#fff;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    padding:4px;
+    background-clip: padding-box;
+}
 
+
+
+
+.page{
+    padding:0 5%;
+    height: auto !important;
+    min-height: 100%;
+
+    position: relative;
+}
+.page .page-main1{
+    padding:20px 0 80px;
+}
+.page .page-bot{
+    position: absolute;
+    width:100%;
+    left:0;
+    bottom:20px;
+}
+.page-bot .btn-red,.page-bot .btn-gray{
+    margin:0 5%;
+    display: block;
+}
 .row {
     margin-bottom:30px;
 }
@@ -18,9 +89,12 @@ ul li{
     color:#666;
     padding-bottom:8px;
 }
-
+.row .label .tips{
+    font-size:12px;
+    color:#999;
+    display: block;
+}
 .ruler{
-    border:2px solid #ffa657;
     height: 70px;
     overflow: hidden;
     position: relative;
@@ -33,33 +107,34 @@ ul li{
     height: 60px;
     width:22%;
     z-index: 3;
-    background: -webkit-linear-gradient(left,  rgb(255, 255, 255), rgba(255, 255, 255,0.5));
     pointer-events:none;
 }
 
 .ruler:after{
     right:0;
-    background: -webkit-linear-gradient(left,  rgba(255, 255, 255,0.5), rgb(255, 255, 255));
-}
-.ruler .main{
+ }
+.ruler .main1{
     width:3000px;
     position: relative;
     left:0;
 }
-.ruler .main ul{
+.ruler .main1 ul{
     overflow: hidden;
     -webkit-transform:translateX(51px);
 }
-.ruler-weight .main ul{
+.ruler-weight .main1 ul{
     overflow: hidden;
     -webkit-transform:translateX(45px);
 }
-
+.ruler-age .main1 ul{
+    overflow: hidden;
+    -webkit-transform:translateX(117px);
+}
 .ruler li{
     float: left;
     width:104px;
     height: 60px;
-       background: url( ../images/ruler_height.png) left top no-repeat;
+    background: url( ../images/ruler_height.png) left top no-repeat;
     background-size: 94px;
     padding-top:30px;
     text-align: right;
@@ -81,6 +156,9 @@ ul li{
     top:0;
     margin-left:-8px;
 }
+.ruler-age{
+    border-color:#6fc481;
+}
 .ruler-age .arrow{
     border-top-color:#6fc481;
 }
@@ -91,11 +169,18 @@ ul li{
     border-top-color:#57c0ff;
 }
 .ruler-weight li{
-        background: url(../images/ruler_weight.png) left top no-repeat;
+        background: url(../../images/bxy/ruler_weight.png) left top no-repeat;
     background-size: 100px auto;
     color:#b5d0e1;
 }
-
+.ruler-age li{
+    background:none;
+    color:#9bd5a7;
+    width: 50px;
+    position: relative;
+    margin-right: 0;
+    text-align: center;
+}
 .ruler-age li:before{
     content: "";
     position: absolute;
@@ -108,7 +193,7 @@ ul li{
 .ruler-weight li:last-child{
     background-size: 103px auto;
 }
-.ruler-weight .main ul{
+.ruler-weight .main1 ul{
     position: relative;
 }
 .row .radio li,.icon-radio{
@@ -150,17 +235,17 @@ ul li{
     margin-right: 0;
 }
 @media screen and (max-width:330px){
-    .result-main .cost-list .dd-head .num-box{
+    .result-main1 .cost-list .dd-head .num-box{
         font-size: 22px;
     }
     .row .tag span{
         font-size: 15px;
         min-width: 90px;
     }
-    .result-main .process li.item .li-main .row label{
+    .result-main1 .process li.item .li-main1 .row label{
         font-size: 16px !important;
     }
-    .result-main .process li.item{
+    .result-main1 .process li.item{
         padding:12px 10px !important;
     }
 }
