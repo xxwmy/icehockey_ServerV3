@@ -40,6 +40,7 @@
 			map.put("userId", userId);
 			map.put("userid", userid);
 			map.put("height", height);
+			map.put("gender", user.getSex());
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("更新失败........");

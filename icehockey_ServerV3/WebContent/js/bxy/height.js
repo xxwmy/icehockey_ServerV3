@@ -22,8 +22,14 @@ $(function() {
 		$.getJSON(HeightURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
-				window.location.href = "manBody.html?userid="
+				if (jsonReturn.gender == "man") {// 如果选择'man'，跳转man体重面
+					window.location.href = "manBody.html?userid="
 						+ jsonReturn.userid;
+				} else if (jsonReturn.gender == "lady") {// 如果选择‘lady''，跳转lady体重页面
+					window.location.href = "ladyBody.html?userid="
+						+ jsonReturn.userid;
+				}
+				
 			} else if (jsonReturn.result == "-1") {
 				alert("当前没有登录用户");
 			}

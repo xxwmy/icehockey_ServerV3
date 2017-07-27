@@ -61,4 +61,21 @@ $(function() {
 			}
 		}, "json");
 	});
+	$(".tiaoguo").click(function() {
+		
+		var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
+		// 请求后台服务
+		var data = {
+			userid : urlUserId
+		};
+		alert(JSON.stringify(data));
+		$.post(BodyURL, data, function(result) {
+			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
+			if (jsonReturn.result == "0") {
+				window.location.href = "alias.html?userid=" + jsonReturn.userid;
+			} else if (jsonReturn.result == "-1") {
+				alert("后台处理出错！");
+			}
+		}, "json");
+	});
 });
