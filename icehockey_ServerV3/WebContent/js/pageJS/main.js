@@ -54,6 +54,7 @@ function mainClick(){
 	$(".main_top_pages>div").removeClass("active");
 	/*给赛程界面设置活动*/
 	$(".div_schedule").addClass("active");
+	window.location.href="../views/main.html";
 }
 
 /*赛程点击效果*/
@@ -76,6 +77,7 @@ function clubClick(){
 	$(".main_top_pages>div").removeClass("active");
 	/*给社区界面设置活动*/
 	$(".div_club").addClass("active");
+	window.location.href="../views/imformation/mycommunity.html"
 }
 /*消息点击效果*/
 function infoClick(){
@@ -83,6 +85,9 @@ function infoClick(){
 	$(".main_top_pages>div").removeClass("active");
 	/*给消息界面设置活动*/
 	$(".div_info").addClass("active");
+		window.location.href="../views/imformation/oscenter.html"
+
+	
 }
 /*我的点击效果*/
 function mineClick(){
@@ -90,44 +95,33 @@ function mineClick(){
 	$(".main_top_pages>div").removeClass("active");
 	/*给我的界面设置活动*/
 	$(".div_mine").addClass("active");
-	window.location.href="imformation.html";
+	window.location.href="../views/imformation.html";
 	var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
-	var weChatId=comm.getUrlParameter("wechatid");
-	var telephone=comm.getUrlParameter("telephone");
-	var userName=comm.getUrlParameter("username");
-		var birthday=comm.getUrlParameter("birthday");
-	var sex=comm.getUrlParameter("sex");
-	var country=comm.getUrlParameter("country");
-	var city=comm.getUrlParameter("city");
-	var height=comm.getUrlParameter("height");
-	var weight=comm.getUrlParameter("weight");
-	var play=comm.getUrlParameter("play");
-	var ice_play=comm.getUrlParameter("ice_play");
-	var snow_play=comm.getUrlParameter("snow_play");
-	var roleId=comm.getUrlParameter("roleId");
-	var handlingId=comm.getUrlParameter("handlingId");
 	var dataurl="";
-  	var data={
-  	userid : urlUserId,
-		weChatId : weChatId,
-		telephone : telephone,
-		userName : "张杰",
-		sex : sex,
-		birthday : "123456",
-		country : "中国",
-		city : "香港",
-		height : "175CM",
-		weight : "75KG",
-		play : play,
-		ice_play : ice_play,
-		snow_play : snow_play,
-		roleId : roleId,
-		handlingId : handlingId
-  	};
-    $.post(dataurl,data,function(data,status){
-      alert("数据：" + data + "\n状态：" + status);
-    });
-    document.getElementById("userName").innerHTML=data.userName;
-    document.getElementById("userbody").innerHTML=data.height+"/"+data.weight;
-    document.getElementById("usercountry").innerHTML=data.country;
+	var data={
+		userid:urlUserId,
+		
+	}
+	$.post(dataurl,data,function(reasult){
+		var jsonReturn = JSON.parse(result);//处理后台返回的结果
+		if(jsonReturn.result="0"){
+			if(jsonReturn.roleName=="教练员")//判断角色类别跳转相应页面教练员的跳转
+			window.location.href="../views/imformation/coachinfo.html"+"&userid=" + jsonReturn.userid;
+			if(jsonReturn.roleName=="守门员"){//守门员的跳转
+			window.location.href="../views/imformation.html"+"&userid=" + jsonReturn.userid;
+			document.getElementById("userName").innerHTML=jsonReturn.userName;
+    		document.getElementById("userbody").innerHTML=jsonReturn.height+"/"+jsonReturn.weight;
+   	 		document.getElementById("usercountry").innerHTML=jsonReturn.country;
+			}
+			if(jsonReturn.roleName=="球员")//球员的跳转
+			window.location.href="../views/imformation/qiuyuan.html"+"&userid=" + jsonReturn.userid;
+			if(jsonReturn.roleName="");//其他成员
+			
+			
+		}
+		else if(jsonReturn=="-1"){//未接收到返回数据的处理
+			
+		}
+	},"json");
+
 }

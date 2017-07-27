@@ -129,64 +129,70 @@ body{
 	list-style:none;
 	position:fixed;
 	left:30px;
-	line-height:2rem;
+	line-height: 2rem;
 	top:40%;
 }
 .button_next1{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:280px;
-	right:50px;
+	position: absolute;
+	top:0.5rem;
+	right:-50px;
 }
 .button_next2{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:315px;
-	right:50px;
+	position: absolute;
+	top:2.5rem;
+	right:-50px;
+	
+	
 }
 .button_next3{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:345px;
-	right:50px;
+	position: absolute;
+	top:4.5rem;
+	right:-50px;
 }
 .button_next4{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:375px;
-	right:50px;
+	position: absolute;
+	top:6.5rem;
+	right:-50px;
+	
 }
 .button_next5{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:410px;
-	right:50px;
+	position: absolute;
+	top:8.5rem;
+	right:-50px;
+	
 }
 .button_next6{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:445px;
-	right:50px;
+	position: absolute;
+	top:10.5rem;
+	right:-50px;
+	
 }
 .button_next7{
 	border:none;
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:475px;
-	right:50px;
+	position: absolute;
+	top:12.5rem;
+	right:-50px;
+	
 }
 .div2cs{
 	background:white;
@@ -196,6 +202,7 @@ body{
 	right:0px;
 	bottom:0px;
 }
+
 /*.button_main{
 	border: none;
 	position:fixed;
