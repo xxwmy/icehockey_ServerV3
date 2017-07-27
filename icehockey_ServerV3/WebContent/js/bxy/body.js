@@ -51,7 +51,7 @@ $(function() {
 			jiaoxing : jiaoxing,
 			userid : urlUserId
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		$.post(BodyURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
@@ -68,7 +68,7 @@ $(function() {
 		var data = {
 			userid : urlUserId
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		$.post(BodyURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {

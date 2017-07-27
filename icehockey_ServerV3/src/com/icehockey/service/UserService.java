@@ -73,7 +73,8 @@ public class UserService {
 				return user;
 			} else {
 				System.out.println("密码错误");
-				user = null;
+				user = new User();
+				user.setUserId(-1);
 			}
 		} else {
 			System.out.println("该用户不存在");

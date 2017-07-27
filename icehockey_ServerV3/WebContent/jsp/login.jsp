@@ -5,7 +5,8 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("-----------------login.html----------------------");
+	System.out
+			.println("-----------------login.html----------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
@@ -26,19 +27,23 @@
 	//登录函数
 	user = userService.loginByTelepone(telephone, password);
 	if (user != null) {//登录成功
-		System.out.println("找到当前用户" + user);
+		if (user.getUserId() != -1) {
+			System.out.println("找到当前用户" + user);
 
-		//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=isFirst
-		if (user.getPlay() == null) {
-			map.put("result", "isFirst");
+			//登录成功返回result=0；登陆失败返回result=-1，第一次登陆返回result=isFirst
+			if (user.getPlay() == null) {
+				map.put("result", "isFirst");
+			} else {
+				map.put("result", "0");
+			}
+			map.put("userid", user.getUserId());
+			map.put("userId", user.getUserId());
+			map.put("telephone", telephone);
+			map.put("password", password);
+			System.out.println("map找到啦..." + map);
 		} else {
-			map.put("result", "0");
+			map.put("result", "-2");//密码错误
 		}
-		map.put("userid", user.getUserId());
-		map.put("userId", user.getUserId());
-		map.put("telephone", telephone);
-		map.put("password", password);
-		System.out.println("map找到啦..." + map);
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");
