@@ -34,7 +34,12 @@ public class UserDao {
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -92,7 +97,12 @@ public class UserDao {
 				// String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -147,7 +157,12 @@ public class UserDao {
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -205,7 +220,12 @@ public class UserDao {
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -733,6 +753,137 @@ public class UserDao {
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setInt(1, roleId);
 			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserSex(int userId, String gender) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+		int sex = 1;
+		if ("man".equals(gender)) {
+			sex = 1;
+		} else if ("lady".equals(gender)) {
+			sex = 0;
+		} else {
+			System.out.println("性别输入不合法");
+		}
+		String sql = "UPDATE user SET user.sex=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, sex);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserByUserIdHM(int userId, double height, double weight) {
+		user = getUserByUserId(userId);
+		System.out.println(user);
+
+		String sql = "UPDATE user SET  height=?,weight=? WHERE userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+
+			preparedStatement.setDouble(1, height);
+			preparedStatement.setDouble(2, weight);
+
+			preparedStatement.setInt(3, userId);
+
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserNameAndImageByUserId(int userId, String userName, String imageUrl) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.userName=? , user.image=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, imageUrl);
+			preparedStatement.setInt(3, userId);
 			System.out.println("sql:" + sql);
 			int i = preparedStatement.executeUpdate();
 			if (i == 1) {

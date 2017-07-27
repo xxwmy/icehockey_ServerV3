@@ -5,14 +5,14 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------chiganfangshi.html--------------------------------------");
+	System.out.println("------------------------alias.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
 	Map<String, Object> map = new HashMap<String, Object>();
 	int userId = -1;
-	//前端获取传入的data
 	String userid = "";
+	//前端获取传入的data
 	if (request.getParameter("userid") != null) {
 		userid = request.getParameter("userid");
 		//转化Id
@@ -20,30 +20,38 @@
 	} else {
 		map.put("userid", "null");
 	}
-	
-	String handling = "";
-	if (request.getParameter("handlingId") != null) {
-		handling = request.getParameter("handlingId");//ice_play
+
+	String userName = "";
+	if (request.getParameter("name") != null) {
+		userName = request.getParameter("name");
+
 	} else {
-		map.put("handlingId", "null");
+		map.put("name", userName);
+	}
+
+	String imageUrl = "";
+	if (request.getParameter("touxiang") != null) {
+		imageUrl = request.getParameter("touxiang");
+
+	} else {
+		map.put("touxiang", imageUrl);
 	}
 
 	//按照userId检索数据库找到user
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
-		user = userService.updateUserHandling(userId, handling);
+		user = userService.updateUserNameAndImage(userId, userName, imageUrl);
 		if (user != null) {
-
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);
 			map.put("userid", userid);
-			map.put("handlingId", handling);
 			System.out.println("map找到啦..." + map);
 		} else {
 			System.out.println("更新失败........");
 		}
+
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");

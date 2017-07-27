@@ -12,8 +12,8 @@ $(function() {
 		var bichang = $(".bichang").val();
 		var tuichang = $(".tuichang").val();
 		var xiaojiaochang = $(".xiaojiaochang").val();
-		var jiaochang= $(".jiaochang").val();
-		var jiaoxing= $(".jiaoxing").val();
+		var jiaochang = $(".jiaochang").val();
+		var jiaoxing = $(".jiaoxing").val();
 
 		if (touwei == "") {
 			alert("请输入您的头围!");
@@ -39,26 +39,43 @@ $(function() {
 			alert("请输入您的脚型!");
 			return false;
 		}
-		var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
+		var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
 		// 请求后台服务
-		var data ={
+		var data = {
 			time : time,
-		 	touwei : touwei,
-			bichang : bichang ,
+			touwei : touwei,
+			bichang : bichang,
 			tuichang : tuichang,
-			xiaojiaochang :xiaojiaochang ,
-			jiaochang : jiaochang ,
+			xiaojiaochang : xiaojiaochang,
+			jiaochang : jiaochang,
 			jiaoxing : jiaoxing,
 			userid : urlUserId
-			};
+		};
 		alert(JSON.stringify(data));
-		$.post(  bodyurl ,data,function(result) {
+		$.post(BodyURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
-				window.location.href = "?userid="+jsonReturn.userid;
-				}else if (jsonReturn.result == "-1") {
-					alert("后台处理出错！");
-				}
-			}, "json");
-		});
+				window.location.href = "alias.html?userid=" + jsonReturn.userid;
+			} else if (jsonReturn.result == "-1") {
+				alert("后台处理出错！");
+			}
+		}, "json");
+	});
+	$(".tiaoguo").click(function() {
+		
+		var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
+		// 请求后台服务
+		var data = {
+			userid : urlUserId
+		};
+		alert(JSON.stringify(data));
+		$.post(BodyURL, data, function(result) {
+			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
+			if (jsonReturn.result == "0") {
+				window.location.href = "alias.html?userid=" + jsonReturn.userid;
+			} else if (jsonReturn.result == "-1") {
+				alert("后台处理出错！");
+			}
+		}, "json");
+	});
 });

@@ -5,7 +5,7 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------hobbySelectIce.html--------------------------------------");
+	System.out.println("------------------------gender.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
@@ -20,11 +20,11 @@
 	} else {
 		map.put("userid", "null");
 	}
-	String sex = "";
-	if (request.getParameter("sex") != null) {
-		sex = request.getParameter("sex");
+	String gender = "";
+	if (request.getParameter("gender") != null) {
+		gender = request.getParameter("gender");
 	} else {
-		map.put("sex", "null");
+		map.put("gender", "null");
 	}
 
 	
@@ -32,12 +32,18 @@
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
-		//处理成功返回result=0	
-		map.put("result", "0");
-		map.put("userId", userId);
-		map.put("userid", userid);
-		map.put("sex", sex);
-		System.out.println("map找到啦..." + map);
+		user=userService.updateUserSex(userId, gender);
+		if(user!=null){
+			//处理成功返回result=0	
+			map.put("result", "0");
+			map.put("userId", userId);
+			map.put("userid", userid);
+			map.put("sex", user.getSex());
+			System.out.println("map找到啦..." + map);
+		}else{
+			System.out.println("更新失败........");
+		}
+		
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");

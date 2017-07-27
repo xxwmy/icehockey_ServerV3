@@ -5,7 +5,7 @@
 <%
 	response.setHeader("Access-Control-Allow-Origin", "*");
 	response.setContentType("application/json");
-	System.out.println("------------------------hobbySelectIce.html--------------------------------------");
+	System.out.println("------------------------weight.html--------------------------------------");
 	PrintWriter writer = response.getWriter();
 	UserService userService = new UserService();
 	User user = null;
@@ -25,7 +25,7 @@
 	//前端获取传入的data
 	String weightValue = "";
 	if (request.getParameter("weight") != null) {
-		userid = request.getParameter("weight");
+		weightValue = request.getParameter("weight");
 		//转化weight
 		weight = Double.parseDouble(weightValue);
 	} else {
@@ -36,12 +36,18 @@
 	user = userService.queryUserByUserId(userId);
 	if (user != null) {//插入成功
 		System.out.println("找到当前用户" + user);
-		//处理成功返回result=0	
-		map.put("result", "0");
-		map.put("userId", userId);
-		map.put("userid", userid);
-		map.put("weight", weight);
-		System.out.println("map找到啦..." + map);
+		user=userService.updateUserWeight(userId, weight);
+		if (user != null) {
+			//处理成功返回result=0	
+			map.put("result", "0");
+			map.put("userId", userId);
+			map.put("userid", userid);
+			map.put("weight", weight);
+			map.put("gender", user.getSex());
+			System.out.println("map找到啦..." + map);
+		} else {
+			System.out.println("更新失败........");
+		}
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");

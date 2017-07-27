@@ -87,6 +87,48 @@ public class UserService {
 		return user;
 	}
 
+	public User updateUserNameAndImage(int userId, String userName, String imageUrl) {
+		user = queryUserByUserId(userId);
+		if (user != null) {
+			user = dao.updateUserNameAndImageByUserId(userId, userName, imageUrl);
+			if (user != null) {
+				System.out.println("第一次登录页面更新成功.....userName:" + userName + "  imageUrl: " + imageUrl);
+			}
+		}
+		return user;
+	}
+
+	public User updateUserHeight(int userId, double height) {
+		user = queryUserByUserId(userId);
+		if (user != null) {
+			user = dao.updateUserByUserIdHM(userId, height, user.getWeight());
+			if (user != null) {
+				System.out.println("第一次登录页面更新成功height....." + height);
+			}
+		}
+		return user;
+	}
+
+	public User updateUserWeight(int userId, double weight) {
+		user = queryUserByUserId(userId);
+		if (user != null) {
+			user = dao.updateUserByUserIdHM(userId, user.getHeight(), weight);
+			if (user != null) {
+				System.out.println("第一次登录页面更新成功weight....." + weight);
+			}
+		}
+		return user;
+	}
+
+	public User updateUserSex(int userId, String gender) {
+		user = dao.updateUserSex(userId, gender);
+		if (user != null) {
+			System.out.println("第一次登录页面更新成功gender....." + gender);
+		}
+		return user;
+
+	}
+
 	public User updateUserByUserId(int userId, String playValue, String ice_playValue, String snow_playValue,
 			String roleValue, String handlingValue) {
 		role = roleDao.getRoleByRoleValue(roleValue);
@@ -111,13 +153,14 @@ public class UserService {
 		}
 		return user;
 	}
+
 	public User updateUserHandling(int userId, String handlingValue) {
 		handling = handlingDao.getHandlingByHandlingValue(handlingValue);
 		System.out.println(handling);
 		if (handling != null) {
 			System.out.println(handling.toString());
-				user = dao.insertHandlingUser(userId,handling.getHandlingId());
-				System.out.println("持杆方式更新成功....");
+			user = dao.insertHandlingUser(userId, handling.getHandlingId());
+			System.out.println("持杆方式更新成功....");
 
 		} else {
 			System.out.println(handling + "该持杆方式不存在....");
@@ -125,13 +168,14 @@ public class UserService {
 		}
 		return user;
 	}
+
 	public User updateUserRole(int userId, String roleValue) {
 		role = roleDao.getRoleByRoleValue(roleValue);
 		System.out.println(role);
 		if (role != null) {
 			System.out.println(role.toString());
-				user = dao.updateUserRole(userId,role.getRoleId());
-				System.out.println("第一次登录页面更新成功");
+			user = dao.updateUserRole(userId, role.getRoleId());
+			System.out.println("第一次登录页面更新成功");
 
 		} else {
 			System.out.println(roleValue + "该角色不存在");
@@ -139,23 +183,24 @@ public class UserService {
 		}
 		return user;
 	}
+
 	public User InsertPlayAndIceByUserId(int userId, String playValue, String ice_playValue) {
 
 		user = dao.updateUserIce(userId, playValue, ice_playValue);
-		if(user!=null){
+		if (user != null) {
 			System.out.println("第一次登录页面更新成功ice_playValue....." + playValue);
 		}
 		return user;
 	}
+
 	public User InsertPlayAndSnowByUserId(int userId, String playValue, String snow_playValue) {
 
 		user = dao.updateUserSnow(userId, playValue, snow_playValue);
-		if(user!=null){
+		if (user != null) {
 			System.out.println("第一次登录页面更新成功snow_playValue....." + playValue);
 		}
 		return user;
 	}
-	
 
 	public User insertUser(int userId, int sex, double height, double weight, String country, String city,
 			String xianxiaolijvlebu, String xianshuqiudui) {
