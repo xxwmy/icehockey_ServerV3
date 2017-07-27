@@ -3,15 +3,17 @@
 }
 .main_html body{
 	margin: 0 !important;
-	display: flex;/*整个页面的布局*/
+	display: flex;
 	height: 100%;
 	-webkit-flex-direction: column;
 }
+
 .main_top_pages{
-	flex: 1;/*让所有弹性盒模型对象的子元素都有相同的长度*/
-	display: -webkit-flex;
+	flex: 1;/*让所有弹性盒模型对象的子元素都有相同的长度，*/
+	display: -webkit-flex;/*一个元素被定义display:-webkit-flex;则此元素即为伸缩盒模型中的伸缩容器*/
 	width: 100%;
 	height: 100%;
+	
 }
 
 /*上部分样式*/
@@ -19,16 +21,12 @@
 .div_schedule{
 	display: none;
 }
-
 /*选中时候的样式*/
 .div_schedule.active{
 	display: -webkit-flex;
 	flex-direction: column;
 	flex: 1;
 }
-
-
-
 
 /*轮播图*/
 .carousel{
@@ -37,13 +35,6 @@
 .carousel img{
 	height: 10rem;
 }
-/*精彩推荐*/
-.recommend_div{
-	background: rgb(29,76,82);
-	color: white;
-	padding: 0.6rem; /*字体不大但是框比较宽用padding*/
-}
-
 
 /*选项卡*/
 .choose_card_div{
@@ -60,9 +51,9 @@
 	padding: 0.6rem 0;
 }
 
-.choose_card_div div:nth-of-type(1){/*规定属于其父元素的第n个div 元素的每个 div：*/
+.choose_card_div div:nth-of-type(1){
 	background: rgb(220,119,67);
-	border-right: 1px solid rgb(69,80,57);/*设定元素的边框为1像素宽，实线*/
+	border-right: 1px solid rgb(69,80,57);
 	border-top: 1px solid rgb(69,80,57);
 }
 .choose_card_div div:nth-of-type(2){
@@ -91,7 +82,12 @@
 	border-top: 1px solid rgb(69,80,57);
 }
 
-
+/*精彩推荐*/
+.recommend_div{
+	background: rgb(29,76,82);
+	color: white;
+	padding: 0.6rem;
+}
 
 /*内容界面*/
 .content_out_div{
@@ -100,6 +96,7 @@
 	background: #F2F2F2;
 	width: 100%;
 	overflow: scroll;
+	/*scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。*/
 }
 .content_out_div>div{
 	flex: 1;
@@ -174,7 +171,7 @@
 	display: none;
 }
 .div_game.active{
-	background: green;
+	background: red;
 	display: -webkit-flex;
 	flex-direction: column;
 	flex: 1;
@@ -225,6 +222,10 @@
 
 /*底部样式*/
 .main-bottom{
+	position: fixed;
+	top:90%;
+	left:0px;
+	bottom:0;
 	display: -webkit-flex;
 	font-size: 1rem;
 	height: 4.3rem;

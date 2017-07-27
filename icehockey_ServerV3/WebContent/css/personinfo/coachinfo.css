@@ -1,0 +1,171 @@
+@charset "utf-8";
+body{
+	
+	background:url(../../images/lock-screen-background.png) center center no-repeat;
+	
+	
+	background-size:10000px 10000px;
+	
+}
+.div1cs{
+	color:white;
+	position:fixed;
+	left:150px;
+	top:100px;
+}
+.list{
+	list-style:none;
+	color:white;
+	position:fixed;
+	top:280px;
+	line-height:2.2rem;
+}
+input{
+	border:none;
+}
+
+.button_gear{
+	background:url(../../images/gear.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	left:20px;
+	top:10px;
+	width:30px;
+	height:30px;
+}
+.button_bell{
+	background:url(../../images/bell27.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:10px;
+	right:20px;
+	width:30px;
+	height:30px;
+}
+.button_coach{
+	background:url(../../images/man.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:40px;
+	left:155px;
+	width:80px;
+	height:80px;
+	
+}
+.button_invite{
+	color:white;
+	background:url(../../images/lock-screen-background.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	left:50px;
+	top:240px;
+}
+.button_follow{
+	color:white;
+	background:url(../../images/lock-screen-background.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	left:170px;
+	top:240px;
+}
+.button_fans{
+	color:white;
+	background:url(../../images/lock-screen-background.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	left:290px;
+	top:240px;
+}
+.button_next1{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:305px;
+	right:30px;
+	
+}
+.button_next2{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:340px;
+	right:30px;
+}
+.button_next3{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:375px;
+	right:30px;
+	
+}
+.button_next4{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:410px;
+	right:30px;
+	
+}
+.button_next5{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:445px;
+	right:30px;
+	
+}.button_next6{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:480px;
+	right:30px;
+	
+}.button_next7{
+	background:url(../../images/next1.png) center center no-repeat;
+	background-size:cover;
+	position:fixed;
+	top:515px;
+	right:30px;
+	
+}
+.div2cs{
+	background:white;
+	background-size:cover;
+	position:fixed;
+	left:0;
+	top:90%;
+	right:0;
+	bottom:0;
+	
+}
+.button_schedule
+{
+	position:fixed;
+	left:30px;
+	top:600px;
+}
+.button_tools
+{
+	position:fixed;
+	left:90px;
+	top:600px;
+}
+.button_community
+{
+	position:fixed;
+	left:160px;
+	top:600px;
+}
+.button_massage
+{
+	position:fixed;
+	left:220px;
+	top:600px;
+}
+.button_myself
+{
+	position:fixed;
+	left:280px;
+	top:600px;
+}

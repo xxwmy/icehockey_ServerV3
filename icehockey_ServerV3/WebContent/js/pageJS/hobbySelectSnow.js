@@ -34,18 +34,16 @@ $(function(){
                 userid : urlUserId,
             };
 
-            alert(JSON.stringify(data));
+           // alert(JSON.stringify(data));
             //TODO 请求后台保存数据
             $.post(SNOWURL,data,function(result){
                 //TODO 处理后台返回的结果
             	var jsonReturn = JSON.parse(result);
 				if (jsonReturn.result == "0") {
-					alert(result);
-                    //提交成功之后进行的操作
-                    //window.location.href = "../roleChoose/role.html";
-                }else{
-                	alert("后台数据处理有误");
-                }
+					window.location.href = "../roleChoose/role.html?userid=" + jsonReturn.userid;
+                } else if (jsonReturn.result == "-1") {
+    				alert("当前没有登录用户");
+    			}
             },"json");
         }
         else{

@@ -13,7 +13,6 @@ import com.icehockey.entity.User;
 import com.icehockey.util.DBUtil;
 
 public class UserDao {
-	
 
 	DBUtil util = new DBUtil();
 	private ResultSet rs = null;
@@ -25,7 +24,7 @@ public class UserDao {
 	public List<User> getUsers() {
 		List<User> users = new ArrayList<User>();
 
-		String sql = "SELECT * FROM user";
+		String sql = "SELECT * FROM USER, role, handling WHERE USER .roleId = role.roleId AND USER .handlingId = handling.handlingId";
 		try {
 			conn = util.openConnection();
 			rs = statement.executeQuery(sql);
@@ -35,7 +34,12 @@ public class UserDao {
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -45,12 +49,12 @@ public class UserDao {
 				String play = rs.getString("play");// '爱好：玩雪，玩冰，都玩',
 				String ice_User = rs.getString("ice_play");// '游戏项目',
 				String snow_play = rs.getString("snow_play");// '单板，双板，都玩',
-				int roleId = rs.getInt("roleId");// '角色编号',
-				int handingId = rs.getInt("handingId");// '持杆方式',
+				String role = rs.getString("roleName");// '角色编号',
+				String handing = rs.getString("handingName");// '持杆方式',
 				String image = rs.getString("image");// '头像',
 
-				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city,
-						height, weight, play, ice_User, snow_play, roleId, handingId, image);
+				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city, height,
+						weight, play, ice_User, snow_play, role, handing, image);
 
 				users.add(user);
 			}
@@ -77,79 +81,29 @@ public class UserDao {
 		return users;
 	}
 
-	
-	public User getUsersByWechatId(String weChatId) {
-		// List<user> users=new ArrayList<user>();
-
-		String sql = "SELECT * FROM user WHERE user.weChatId='"+weChatId+"';";
-		try {
-			conn = util.openConnection();
-			preparedStatement = conn.prepareStatement(sql);
-			preparedStatement.setString(1, weChatId);
-			rs = preparedStatement.executeQuery();
-			System.out.println(sql);
-			if (rs.next()) {
-				
-				int userId = rs.getInt("userId");// '登录编号',
-				//String weChatId = rs.getString("weChatId");// '微信账号',
-				String telephone = rs.getString("telephone");// '手机号码',
-				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
-				String password = rs.getString("password");// '密码',
-				Date birthday = rs.getDate("birthday");// '出生日期',
-				String country = rs.getString("country");// '国籍',
-				String city = rs.getString("city");// '城市',
-				double height = rs.getDouble("height");// '身高',
-				double weight = rs.getDouble("weight");// '体重',
-				String play = rs.getString("play");// '爱好：玩雪，玩冰，都玩',
-				String ice_user = rs.getString("ice_play");// '游戏项目',
-				String snow_play = rs.getString("snow_play");// '单板，双板，都玩',
-				int roleId = rs.getInt("roleId");// '角色编号',
-				int handingId = rs.getInt("handingId");// '持杆方式',
-				String image = rs.getString("image");// '头像',
-
-				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city,
-						height, weight, play, ice_user, snow_play, roleId, handingId, image);
-
-				return user;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-		return user;
-	}
 
 	public User getUsersByTelephone(String telephoneNumber) {
 		// List<user> users=new ArrayList<user>();
 
-		String sql = "SELECT * FROM user WHERE user.telephone='" + telephoneNumber + "'";
+		String sql = "SELECT * FROM USER, role, handling WHERE USER .roleId = role.roleId AND USER .handlingId = handling.handlingId AND USER .telephone = ?";
 		try {
 			conn = util.openConnection();
-			Statement statement = conn.createStatement();
-			rs = statement.executeQuery(sql);
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, telephoneNumber);
 			System.out.println(sql);
+			rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-				
+
 				int userId = rs.getInt("userId");// '登录编号',
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -157,14 +111,14 @@ public class UserDao {
 				double height = rs.getDouble("height");// '身高',
 				double weight = rs.getDouble("weight");// '体重',
 				String play = rs.getString("play");// '爱好：玩雪，玩冰，都玩',
-				String ice_user = rs.getString("ice_play");// '游戏项目',
+				String ice_User = rs.getString("ice_play");// '游戏项目',
 				String snow_play = rs.getString("snow_play");// '单板，双板，都玩',
-				int roleId = rs.getInt("roleId");// '角色编号',
-				int handingId = rs.getInt("handlingId");// '持杆方式',
+				String role = rs.getString("roleName");// '角色编号',
+				String handling = rs.getString("handlingName");// '持杆方式',
 				String image = rs.getString("image");// '头像',
 
-				user = new User( userId, weChatId, telephone, userName, sex, password, birthday, country, city,
-						height, weight, play, ice_user, snow_play, roleId, handingId, image);
+				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city, height,
+						weight, play, ice_User, snow_play, role, handling, image);
 
 				return user;
 			} else {
@@ -194,7 +148,7 @@ public class UserDao {
 
 	public User getUserByUserId(int userId) {
 
-		String sql = "SELECT * FROM user WHERE user.userId=?";
+		String sql = "SELECT * FROM USER, role, handling WHERE USER .roleId = role.roleId AND USER .handlingId = handling.handlingId and user.userId=?";
 		try {
 			conn = util.openConnection();
 			preparedStatement = conn.prepareStatement(sql);
@@ -203,11 +157,16 @@ public class UserDao {
 			rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 
-				//int userId = rs.getInt("userId");// '登录编号',
+				// int userId = rs.getInt("userId");// '登录编号',
 				String weChatId = rs.getString("weChatId");// '微信账号',
 				String telephone = rs.getString("telephone");// '手机号码',
 				String userName = rs.getString("userName");// '用户姓名',
-				int sex = rs.getInt("sex");// '1代表男生0表示女生,默认为1男生',
+				String sex = "man";
+				if (rs.getInt("sex") == 1) {
+					sex = "man";// '1代表男生0表示女生,默认为1男生',
+				} else {
+					sex = "lady";
+				}
 				String password = rs.getString("password");// '密码',
 				Date birthday = rs.getDate("birthday");// '出生日期',
 				String country = rs.getString("country");// '国籍',
@@ -215,14 +174,14 @@ public class UserDao {
 				double height = rs.getDouble("height");// '身高',
 				double weight = rs.getDouble("weight");// '体重',
 				String play = rs.getString("play");// '爱好：玩雪，玩冰，都玩',
-				String ice_user = rs.getString("ice_play");// '游戏项目',
+				String ice_User = rs.getString("ice_play");// '游戏项目',
 				String snow_play = rs.getString("snow_play");// '单板，双板，都玩',
-				int roleId = rs.getInt("roleId");// '角色编号',
-				int handingId = rs.getInt("handlingId");// '持杆方式',
+				String role = rs.getString("roleName");// '角色编号',
+				String handling = rs.getString("handlingName");// '持杆方式',
 				String image = rs.getString("image");// '头像',
 
-				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city,
-						height, weight, play, ice_user, snow_play, roleId, handingId, image);
+				user = new User(userId, weChatId, telephone, userName, sex, password, birthday, country, city, height,
+						weight, play, ice_User, snow_play, role, handling, image);
 
 				return user;
 			}
@@ -246,9 +205,9 @@ public class UserDao {
 		}
 		return user;
 	}
-	
-	public User updateUser(int userId, String playRadioValue, String ice_playRadioValue,
-			String snow_playRadioValue, int roleId, int HandlingId) {
+
+	public User updateUser(int userId, String playRadioValue, String ice_playRadioValue, String snow_playRadioValue,
+			int roleId, int HandlingId) {
 
 		user = getUserByUserId(userId);
 
@@ -337,8 +296,8 @@ public class UserDao {
 		return null;
 	}
 
-	public User updateUserByUserId(int userId, int sex, double height, double weight, String country,
-			String city, String xianxiaolijvlebu, String xianxiaoliqiudui) {
+	public User updateUserByUserId(int userId, int sex, double height, double weight, String country, String city,
+			String xianxiaolijvlebu, String xianxiaoliqiudui) {
 
 		user = getUserByUserId(userId);
 		System.out.println(user);
@@ -436,7 +395,6 @@ public class UserDao {
 		return user;
 	}
 
-
 	public User updateUserByUserId(int userId, int sex, double height, double weight, String country, String city) {
 		user = getUserByUserId(userId);
 		System.out.println(user);
@@ -483,8 +441,6 @@ public class UserDao {
 		return user;
 	}
 
-
-
 	public User insertPlayUser(int userId, String playValue) {
 		user = getUserByUserId(userId);
 
@@ -493,7 +449,7 @@ public class UserDao {
 		String sql = "UPDATE user SET user.play=? WHERE user.userId=?";
 		try {
 			conn = util.openConnection();
-			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, playValue);
 			preparedStatement.setInt(2, userId);
 			System.out.println("sql:" + sql);
@@ -524,7 +480,7 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
 	public User insertSelectIceUser(int userId, String ice_play) {
 		user = getUserByUserId(userId);
 
@@ -533,7 +489,7 @@ public class UserDao {
 		String sql = "UPDATE user SET user.ice_play=? WHERE user.userId=?";
 		try {
 			conn = util.openConnection();
-			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, ice_play);
 			preparedStatement.setInt(2, userId);
 			System.out.println("sql:" + sql);
@@ -565,7 +521,6 @@ public class UserDao {
 		return user;
 	}
 
-
 	public User insertSelectSnowUser(int userId, String snow_play) {
 		user = getUserByUserId(userId);
 
@@ -574,7 +529,7 @@ public class UserDao {
 		String sql = "UPDATE user SET user.snow_play=? WHERE user.userId=?";
 		try {
 			conn = util.openConnection();
-			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, snow_play);
 			preparedStatement.setInt(2, userId);
 			System.out.println("sql:" + sql);
@@ -606,7 +561,6 @@ public class UserDao {
 		return user;
 	}
 
-
 	public User insertHandlingUser(int userId, int handlingId) {
 		user = getUserByUserId(userId);
 
@@ -615,7 +569,7 @@ public class UserDao {
 		String sql = "UPDATE user SET user.handlingId=? WHERE user.userId=?";
 		try {
 			conn = util.openConnection();
-			preparedStatement = conn.prepareStatement(sql);	
+			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setInt(1, handlingId);
 			preparedStatement.setInt(2, userId);
 			System.out.println("sql:" + sql);
@@ -646,6 +600,258 @@ public class UserDao {
 		}
 		return user;
 	}
-	
+
+	public User updateUserIce(int userId, String playValue, String ice_playValue) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.play=? , user.ice_play=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, playValue);
+			preparedStatement.setString(2, ice_playValue);
+			preparedStatement.setInt(3, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserSnow(int userId, String playValue, String snow_playValue) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.play=? , user.snow_play=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, playValue);
+			preparedStatement.setString(2, snow_playValue);
+			preparedStatement.setInt(3, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserRole(int userId, int roleId) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.roleId=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, roleId);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserSex(int userId, String gender) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+		int sex = 1;
+		if ("man".equals(gender)) {
+			sex = 1;
+		} else if ("lady".equals(gender)) {
+			sex = 0;
+		} else {
+			System.out.println("性别输入不合法");
+		}
+		String sql = "UPDATE user SET user.sex=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, sex);
+			preparedStatement.setInt(2, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserByUserIdHM(int userId, double height, double weight) {
+		user = getUserByUserId(userId);
+		System.out.println(user);
+
+		String sql = "UPDATE user SET  height=?,weight=? WHERE userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+
+			preparedStatement.setDouble(1, height);
+			preparedStatement.setDouble(2, weight);
+
+			preparedStatement.setInt(3, userId);
+
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
+
+	public User updateUserNameAndImageByUserId(int userId, String userName, String imageUrl) {
+		user = getUserByUserId(userId);
+
+		System.out.println(user);
+
+		String sql = "UPDATE user SET user.userName=? , user.image=? WHERE user.userId=?";
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, userName);
+			preparedStatement.setString(2, imageUrl);
+			preparedStatement.setInt(3, userId);
+			System.out.println("sql:" + sql);
+			int i = preparedStatement.executeUpdate();
+			if (i == 1) {
+				user = getUserByUserId(userId);
+				System.out.println(user);
+				return user;
+			} else
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return user;
+	}
 
 }
