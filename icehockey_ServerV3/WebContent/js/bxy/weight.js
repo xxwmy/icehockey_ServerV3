@@ -15,11 +15,11 @@ $(function() {
 			weight : weight,
 			userid : urlUserId,
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 
 		// 请求后台保存数据
 		$.getJSON(WeightURL, data, function(result) {
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				if (jsonReturn.gender == "man") {// 如果选择'man'，跳转man体重面

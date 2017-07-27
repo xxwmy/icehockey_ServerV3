@@ -26,7 +26,7 @@ $(function() {
 			name : name,
 			userid : urlUserId
 			};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		$.post(ALIASURL,data,function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {

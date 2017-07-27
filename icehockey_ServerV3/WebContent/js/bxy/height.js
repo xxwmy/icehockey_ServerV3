@@ -7,7 +7,7 @@ $(function() {
 		// submit('height'); ---> 这样写 是将'height'字符串传入到 submit中
 		submit(height);
 		// alert(JSON.stringify(data)); ---> data 不存在 会报错
-		alert(height);
+		//alert(height);
 	});
 
 	var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
@@ -16,7 +16,7 @@ $(function() {
 			height : height,
 			userid : urlUserId
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 
 		// 请求后台保存数据
 		$.getJSON(HeightURL, data, function(result) {
