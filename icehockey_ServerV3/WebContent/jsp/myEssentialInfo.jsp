@@ -45,6 +45,7 @@
 			map.put("handling", user.getHandling());
 			//map.put("image", user.getImage());
 			System.out.println("map找到啦..." + map);
+			request.setAttribute("user", user);
 	} else {
 		System.out.println("map未找到...");
 		map.put("result", "-1");
