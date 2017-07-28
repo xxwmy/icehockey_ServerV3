@@ -6,6 +6,7 @@ $(function() {
 		'min-height' : $(window).height()
 	});
 	// 点击"下一步"按钮
+	
 	$(".next").click(function() {
 		var time = $(".time").val();
 		var touwei = $(".touwei").val();
@@ -51,7 +52,7 @@ $(function() {
 			jiaoxing : jiaoxing,
 			userid : urlUserId
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		$.post(BodyURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
@@ -61,6 +62,9 @@ $(function() {
 			}
 		}, "json");
 	});
+	
+	
+	
 	$(".tiaoguo").click(function() {
 		
 		var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
@@ -68,14 +72,17 @@ $(function() {
 		var data = {
 			userid : urlUserId
 		};
-		alert(JSON.stringify(data));
+		//alert(JSON.stringify(data));
 		$.post(BodyURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				window.location.href = "alias.html?userid=" + jsonReturn.userid;
 			} else if (jsonReturn.result == "-1") {
-				alert("后台处理出错！");
+				alert("当前没有用户登录！");
 			}
 		}, "json");
 	});
+	
+	
+
 });

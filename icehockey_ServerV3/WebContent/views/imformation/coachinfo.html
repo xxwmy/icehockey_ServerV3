@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>我的中心</title>
+<link rel="stylesheet" href="css/personinfo/coachinfo.css">
+<script type="text/javascript" src="js/jQuery/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_gear").click(function(){
+	    window.location.href="Systemsetting.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+  $(".button_invite").click(function(){
+    window.location.href="invitefriend1.html?userid="+urlUserId;
+  });
+});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next1").click(function(){
+	    window.location.href="mylevel.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next2").click(function(){
+	    window.location.href="gethonor.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next3").click(function(){
+	    window.location.href="myteam.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next4").click(function(){
+	    window.location.href="oftensite.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next5").click(function(){
+	    window.location.href="myequipment.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next6").click(function(){
+	    window.location.href="myactivity.html?userid="+urlUserId;
+	  });
+	});
+$(document).ready(function(){
+	var urlUserId=comm.getUrlParameter("userid");
+	  $(".button_next7").click(function(){
+	    window.location.href="myphoto.html?userid="+urlUserId;
+	  });
+	});
+</script>
+</head>
+<body>
+<input type="button" class="button_gear" value="">
+<input type="button" class="button_bell" value="">
+<input type="button" class="button_coach" value="">
+<input type="button" class="button_invite" value="邀请好友">
+<input type="button" class="button_follow" value="关注">
+<input type="button" class="button_fans" value="粉丝">
+<div class="div1cs">
+<p>
+教练员、裁判员</p>
+</div>
+<input type="button" class="button_next1" value="">
+<input type="button" class="button_next2" value="">
+<input type="button" class="button_next3" value="">
+<input type="button" class="button_next4" value="">
+<input type="button" class="button_next5" value="">
+<input type="button" class="button_next6" value="">
+<input type="button" class="button_next7" value="">
+<ul class="list">
+	<li>我的级别---教练或裁判国家级别</li>
+	<li>获得殊荣</li>
+	<li>我的球队 ----俱乐部、校队</li>
+	<li>常去的场地</li>
+	<li>我的装备</li>
+	<li>我的活动</li>
+	<li>我的照片</li>
+	</ul>
+<div class="div2cs">
+<input type="button" class="button_schedule" value="赛事">
+<input type="button" class="button_tools" value="工具箱">
+<input type="button" class="button_community" value="社区">
+<input type="button" class="button_massage" value="消息">
+<input type="button" class="button_myself" value="我的">
+</div>
+
+
+</body>
+</html>

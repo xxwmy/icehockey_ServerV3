@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+body{
+	
+	background:url(../../images/lock-screen-background.png) center center no-repeat;
+	
+	
+	background-size:10000px 10000px;
+	
+}
+.button_upload{
+	color:white;
+	background-color: transparent;
+	position:fixed;
+	border:none;
+	left:50px;
+	top:100px;
+}
+.button_exchange{
+	color:white;
+	background-color: transparent;
+	position:fixed;
+	border:none;
+	left:150px;
+	top:100px;
+}
+.button_collection{
+	color:white;
+	background-color: transparent;
+	position:fixed;
+	border:none;
+	left:250px;
+	top:100px;
+}
+

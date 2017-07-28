@@ -50,21 +50,7 @@ public class UserService {
 		return user;
 	}
 
-	public User loginByWechatId(String wechatId, String password) {
-		user = dao.getUsersByWechatId(wechatId);
-		System.out.println(user.toString());
-		if (user != null) {
-			if (password.equals(user.getPassword())) {
-				System.out.println("登陆成功");
-			} else {
-				System.out.println("密码错误");
-			}
-		} else {
-			System.out.println("该用户不存在");
-		}
-		return user;
-	}
-
+	
 	public User loginByTelepone(String telephone, String password) {
 		user = dao.getUsersByTelephone(telephone);
 		if (user != null) {
@@ -73,7 +59,8 @@ public class UserService {
 				return user;
 			} else {
 				System.out.println("密码错误");
-				user = null;
+				user = new User();
+				user.setUserId(-1);
 			}
 		} else {
 			System.out.println("该用户不存在");
@@ -198,57 +185,6 @@ public class UserService {
 		user = dao.updateUserSnow(userId, playValue, snow_playValue);
 		if (user != null) {
 			System.out.println("第一次登录页面更新成功snow_playValue....." + playValue);
-		}
-		return user;
-	}
-
-	public User insertUser(int userId, int sex, double height, double weight, String country, String city,
-			String xianxiaolijvlebu, String xianshuqiudui) {
-		user = dao.getUserByUserId(userId);
-		if (user != null) {
-			System.out.println("更新前" + user.toString());
-
-			int roleId = user.getRoleId();
-			role = roleDao.getRoleByRoleId(roleId);
-			String roleName = roleDao.getRoleByRoleId(roleId).getRoleName();
-
-			user = updateUser(userId, sex, height, weight, country, city);
-			System.out.println(user.toString());
-
-			if ("教练".equals(roleName)) {// 教练
-				coach = coachService.updateCoach(userId, xianxiaolijvlebu, xianshuqiudui);
-				if (coach != null) {
-					System.out.println(coach);
-				} else {
-					System.out.println("教练信息更新失败");
-				}
-			} else if ("裁判员".equals(roleName)) {// 裁判员
-				judge = judgeService.insertJudge(userId);
-				System.out.println(judge);
-			} else {// 球员，守门员
-				player = playerService.updatePlayer(userId, xianxiaolijvlebu, xianshuqiudui);
-				if (player != null) {
-					System.out.println(player);
-				} else {
-					System.out.println("球员信息更新失败");
-				}
-			}
-
-			return user;
-		} else {
-			System.out.println(userId + "用户不存在");
-			return null;
-		}
-
-	}
-
-	private User updateUser(int userId, int sex, double height, double weight, String country, String city) {
-		user = dao.getUserByUserId(userId);
-		if (user != null) {
-			user = dao.updateUserByUserId(userId, sex, height, weight, country, city);
-		} else {
-			System.out.println("该用户不存在user表");
-			user = null;
 		}
 		return user;
 	}

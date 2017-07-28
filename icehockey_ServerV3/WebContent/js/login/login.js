@@ -49,6 +49,8 @@ $(function() {
 													alert("手机号码为："
 															+ phoneNumber
 															+ "的用户不存在");
+												} else if (jsonReturn.result == '-2') {
+													alert("密码错误");
 												}
 											} else {
 												alert("数据库有误");
