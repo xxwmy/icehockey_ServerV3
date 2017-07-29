@@ -28,12 +28,12 @@ public class CoachPlayerDao {
 	public List<CoachPlayer> getCoachPlayerRecordByCoachId(String roleName,int userId) {
 		String sql=null;
 		if("coach".equals(roleName)){
-			sql = "SELECT * FROM USER, coachplayer WHERE USER .userId = coachplayer.coachUserId AND user.userId=?";
+			sql = "SELECT coachplayer.CPRecord,puser.userId playerUserId, puser.userName playerName, cuser.userId coachUserId, cuser.userName coachName, coachplayer.bestScore FROM USER AS puser, USER AS cuser, coachplayer WHERE puser.userId = coachplayer.playerUserId AND cuser.userId = coachplayer.coachUserId AND cuser.userId = ?";
 		
 		}else if("judge".equals(roleName)){
 			
 		}else{
-			sql="SELECT * FROM USER, coachplayer WHERE USER .userId = coachplayer.playerUserId AND USER .userId = ?";
+			sql="SELECT coachplayer.CPRecord,puser.userId playerUserId, puser.userName playerName, cuser.userId coachUserId, cuser.userName coachName, coachplayer.bestScore FROM USER AS puser, USER AS cuser, coachplayer WHERE puser.userId = coachplayer.playerUserId AND cuser.userId = coachplayer.coachUserId AND puser.userId = ?";
 		}
 		coachPlayers = new ArrayList<CoachPlayer>();
 		try {
@@ -43,7 +43,7 @@ public class CoachPlayerDao {
 			rs = preparedStatement.executeQuery();
 			System.out.println(sql);
 			while (rs.next()) {
-
+				System.out.println("aaaaaaaaaaaaa");
 				int CPRecord = rs.getInt("CPRecord");
 				int coachUserId = rs.getInt("coachUserId");
 				String coachName = rs.getString("userName");
