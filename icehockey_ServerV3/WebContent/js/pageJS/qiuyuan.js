@@ -28,7 +28,7 @@ $(document).ready(function(){
     $.post(MYESSENTIALINFOURL,data,function(result){   	
       var jsonReturn = JSON.parse(result);//处理后台返回的结果     
 		if(jsonReturn.result=="0"){
-			window.location.href="../views/essentiainfo.html?userid=" + jsonReturn.userid;		
+			window.location.href="../essentiainfo.html?userid=" + jsonReturn.userid;		
 		}
 		else if(jsonReturn=="-1"){//接收数据失败的处理
 			alert("当前没有登录用户");

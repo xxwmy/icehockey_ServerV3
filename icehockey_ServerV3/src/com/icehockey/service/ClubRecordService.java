@@ -9,8 +9,8 @@ public class ClubRecordService {
 	List<ClubRecord> clubRecords=null;
 	ClubRecordDao clubRecordDao=new ClubRecordDao();
 	
-	public List<ClubRecord> queryClubRecordByUserId(String roleName, int userId) {
-		clubRecords=clubRecordDao.getClubRecordByUserId(roleName,userId);
+	public List<ClubRecord> queryClubRecordByUserId( int userId) {
+		clubRecords=clubRecordDao.getClubRecordByUserId(userId);
 		if(clubRecords!=null){
 			for(ClubRecord clubRecord:clubRecords){
 				System.out.println(clubRecord);

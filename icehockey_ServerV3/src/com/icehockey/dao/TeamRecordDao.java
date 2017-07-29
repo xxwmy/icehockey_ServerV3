@@ -22,7 +22,7 @@ public class TeamRecordDao {
 
 	List<TeamRecord> teamRecords = null;
 
-	public List<TeamRecord> getTeamRecordByUserId(String roleName1, int userId) {
+	public List<TeamRecord> getTeamRecordByUserId(int userId) {
 		String sql = "SELECT * FROM USER, team, teamrecord, role WHERE USER .userId = teamrecord.userId AND team.teamId = teamrecord.teamId AND USER .roleId = role.roleId AND USER .userId =?";
 		teamRecords=new ArrayList<TeamRecord>();
 		try {

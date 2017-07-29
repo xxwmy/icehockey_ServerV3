@@ -1,16 +1,15 @@
-<%@page
-	import="com.icehockey.entity.Experience,java.util.List,com.icehockey.service.ExperienceService,org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
+<%@page import="com.icehockey.entity.DegreeRecord,java.util.List,com.icehockey.service.DegreeRecordService,org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	response.setHeader("Access-Control-Allow-Origin", "*");
+	<%
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
-		System.out.println("------------------------experience.html--------------------------------------");
+		System.out.println("------------------------hobbyChoose.html--------------------------------------");
 		PrintWriter writer = response.getWriter();
 		UserService userService = new UserService();
 		User user = null;
 		Map<String, Object> map  = new HashMap<String, Object>();
-		ExperienceService experienceService=new ExperienceService();
+		DegreeRecordService degreeRecordService=new DegreeRecordService();
 		int userId = -1;
 		//前端获取传入的data
 		String userid = null;
@@ -23,22 +22,23 @@
 		
 		user = userService.queryUserByUserId(userId);
 		if (user != null) {//插入成功
-		List<Experience> experiences=experienceService.getExperienceByUserId(userId);
-		if(experiences!=null){
-			map.put("experiences", experiences);
-		}else{
-			System.out.println("未找到");
-		}
-		System.out.println("找到当前用户" + user);
-		//处理成功返回result=0	
-		map.put("result", "0");
-		map.put("userId", userId);
-		map.put("userid", userId);
-		System.out.println("map找到啦..." + map);
+			System.out.println("找到当前用户" + user);
+			List<DegreeRecord> degreeRecords=degreeRecordService.queryPlayerByUserId(userId);
+			if(degreeRecords!=null){
+				map.put("degreeRecords", degreeRecords);
+			}else{
+				System.out.println("未找到等级记录");
+			}
+		
+			//处理成功返回result=0	
+			map.put("result", "0");
+			map.put("userId", userId);
+			map.put("userid", userId);
+			System.out.println("map找到啦..." + map);
 		} else {
-		System.out.println("map未找到...");
-		//第一次登陆返回result=1
-		map.put("result", "-1");
+			System.out.println("map未找到...");
+			//第一次登陆返回result=1
+			map.put("result", "-1");
 		}
 		//将转换得到的map转换为json并返回
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -51,7 +51,7 @@
 		writer.print(resultJson);
 		writer.flush();
 		writer.close();
-%>
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,7 +60,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 
 </body>
 </html>
