@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="../../css/jqueryMobile/jquery.mobile-1.4.5.min.css"/>
 		<script src="../../js/jQuery/jquery-2.2.3.min.js"></script>
 		<script src="../../js/jqueryMobile/jquery.mobile-1.4.5.min.js"></script>
-		
 	</head>
 	<body>
 		<div data-role="page" class="main">
@@ -25,6 +24,7 @@
 				</div>	
 					
 				<!--上传用户头像--> 
+				<form action="">
 				<span class="uploadImg"  >
        				<input type="file" data-role="none" accept="image/png"  name="touxiang" class="touxiang" id="touxiang"/>
 					<img src="../../images/user-photo.png" class="image"/>
@@ -33,7 +33,11 @@
 				<input type="text" name="name" class="name"  id="name" data-role='none'  placeholder="您的昵称" />
 				
 				<!--‘完成’按钮，点击触发事件-->
-				<input type="submit" value="完成" data-role='none' class="submitBtn"/>   
+				<input type="button" value="完成" data-role='none' class="submitBtn" name="imgupload" id="imgupload"/>  
+				</form>
+				<form id="formimgupload" action="../../jsp/imageUpload.jsp" method="post" target="hidden_frame" enctype="multipart/form-data">
+				</form> 
+				<iframe name="hidden_frame" id="hidden_frame" style="display:none;"></iframe>
 			</div>
 		</div>
 	</body>

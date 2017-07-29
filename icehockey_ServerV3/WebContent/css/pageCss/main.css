@@ -98,7 +98,7 @@
 	overflow: scroll;
 	/*scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。*/
 }
-.content_out_div>div{
+.content_out_div>div{/*左右内容一样大小*/
 	flex: 1;
 }
 
@@ -164,9 +164,9 @@
 	color: #666666;
 }
 
+/*
 
-
-/*赛程样式*/
+赛程样式
 .div_game{
 	display: none;
 }
@@ -177,7 +177,7 @@
 	flex: 1;
 }
 
-/*工具箱样式*/
+/*工具箱样式
 .div_tool{
 	display: none;
 }
@@ -187,7 +187,7 @@
 	flex-direction: column;
 	flex: 1;
 }
-/*社区样式*/
+/*社区样式
 .div_club{
 	display: none;
 }
@@ -197,7 +197,7 @@
 	flex-direction: column;
 	flex: 1;
 }
-/*消息样式*/
+/*消息样式
 .div_info{
 	display: none;
 }
@@ -207,7 +207,7 @@
 	flex-direction: column;
 	flex: 1;
 }
-/*我的样式*/
+/*我的样式
 .div_mine{
 	display: none;
 }
@@ -218,14 +218,10 @@
 	flex: 1;
 }
 
-
+*/
 
 /*底部样式*/
 .main-bottom{
-	position: fixed;
-	top:90%;
-	left:0px;
-	bottom:0;
 	display: -webkit-flex;
 	font-size: 1rem;
 	height: 4.3rem;

@@ -23,7 +23,7 @@ public class ExperienceDao {
 	Experience experience=null;
 	
 	public List<Experience> getExperienceByUserId(int userId) {
-		String sql = "SELECT * FROM USER, organization, experience WHERE USER .userId = experience.userId AND organization.organizationId = experience.organizationId AND USER .userId = ?";
+		String sql = "SELECT experience.ERecordId, experience.userId, USER .userName, experience.organizationId, organization.organizationName, organization.organizationDegree, experience.onDate FROM experience, USER, organization WHERE USER .userId = experience.userId AND organization.organizationId = experience.organizationId AND USER .userId = ?";
 		
 		experiences=new ArrayList<Experience>();
 		try {
@@ -35,7 +35,7 @@ public class ExperienceDao {
 			while (rs.next()) {
 
 				 int ERecordId=rs.getInt("ERecordId");
-				 //int userId=rs.getInt("");
+				 userId=rs.getInt("userId");
 				 String userName=rs.getString("userName");
 				 int organizationId=rs.getInt("organizationId");
 				 String organizationName=rs.getString("organizationName");
