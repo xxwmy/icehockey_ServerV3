@@ -6,6 +6,7 @@ $(function() {
 		'min-height' : $(window).height()
 	});
 	// 点击"下一步"按钮
+	
 	$(".next").click(function() {
 		var time = $(".time").val();
 		var touwei = $(".touwei").val();
@@ -61,6 +62,9 @@ $(function() {
 			}
 		}, "json");
 	});
+	
+	
+	
 	$(".tiaoguo").click(function() {
 		
 		var urlUserId = comm.getUrlParameter("userid");// 解析url中的参数获取userid的值
@@ -78,4 +82,7 @@ $(function() {
 			}
 		}, "json");
 	});
+	
+	
+
 });
