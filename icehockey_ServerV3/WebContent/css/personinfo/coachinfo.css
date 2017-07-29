@@ -18,7 +18,8 @@ body{
 	color:white;
 	position:fixed;
 	top:280px;
-	line-height:2.2rem;
+	line-height:2rem;
+	
 }
 input{
 	border:none;
@@ -79,93 +80,139 @@ input{
 .button_next1{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:305px;
-	right:30px;
+	position: absolute;
+	top:0.5rem;
+	right:-50px;
 	
 }
 .button_next2{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:340px;
-	right:30px;
+	position: absolute;
+	top:2.5rem;
+	right:-50px;
 }
 .button_next3{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:375px;
-	right:30px;
+	position: absolute;
+	top:4.5rem;
+	right:-50px;
 	
 }
 .button_next4{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:410px;
-	right:30px;
+	position: absolute;
+	top:6.5rem;
+	right:-50px;
 	
 }
 .button_next5{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:445px;
-	right:30px;
+	position: absolute;
+	top:8.5rem;
+	right:-50px;
 	
 }.button_next6{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:480px;
-	right:30px;
+	position: absolute;
+	top:10.5rem;
+	right:-50px;
 	
 }.button_next7{
 	background:url(../../images/next1.png) center center no-repeat;
 	background-size:cover;
-	position:fixed;
-	top:515px;
-	right:30px;
+	position: absolute;
+	top:12.5rem;
+	right:-50px;
 	
 }
 .div2cs{
-	background:white;
+	background:url(../../images/ontime/ontime3.jpg);
 	background-size:cover;
 	position:fixed;
-	left:0;
-	top:90%;
-	right:0;
-	bottom:0;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:60%;
 	
 }
-.button_schedule
-{
-	position:fixed;
-	left:30px;
-	top:600px;
+.div_game{
+	display: none;
 }
-.button_tools
-{
-	position:fixed;
-	left:90px;
-	top:600px;
+.div_game.active{
+	background: green;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
 }
-.button_community
-{
-	position:fixed;
-	left:160px;
-	top:600px;
+
+/*工具箱样式*/
+.div_tool{
+	display: none;
 }
-.button_massage
-{
-	position:fixed;
-	left:220px;
-	top:600px;
+.div_tool.active{
+	background: green;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
 }
-.button_myself
-{
-	position:fixed;
-	left:280px;
-	top:600px;
+/*社区样式*/
+.div_club{
+	display: none;
+}
+.div_club.active{
+	background: gold;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+/*消息样式*/
+.div_info{
+	display: none;
+}
+.div_info.active{
+	background: greenyellow;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+/*我的样式*/
+.div_mine{
+	display: none;
+}
+.div_mine.active{
+	background: red;
+	display: -webkit-flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+
+
+/*底部样式*/
+.main-bottom{
+	position: fixed;
+	top:90%;
+	left:0px;
+	bottom:0;
+	display: -webkit-flex;
+	font-size: 1rem;
+	height: 4.3rem;
+	background: rgb(216,215,213);
+	width: 100%;
+}
+.main-bottom div{
+	text-align: center;
+	padding: 0.3rem 0;
+}
+.main-bottom img{
+	width: 50%;
+	text-align: center;
+}
+.main-bottom span{
+	display: block;
 }
