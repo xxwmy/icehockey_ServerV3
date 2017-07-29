@@ -53,17 +53,15 @@ function mainClick(){
 }
 
 function saichengClick(){
-	alert("待开发页面");
 		var urlUserId = comm.getUrlParameter("userid");
-	  //window.location.href = "../views/bxy/saicheng.html?userid="+urlUserId;
+	    window.location.href = "../views/saicheng.html?userid="+urlUserId;
 	
 
 }
 
 function gongjuClick(){
-	//alert("待开发页面");
 		var urlUserId = comm.getUrlParameter("userid");
-		window.location.href = "../views/dataStatistics/dataStatistics.html?userid="+urlUserId;
+		window.location.href = "../views/gongjv.html?userid="+urlUserId;
 }
 
 
