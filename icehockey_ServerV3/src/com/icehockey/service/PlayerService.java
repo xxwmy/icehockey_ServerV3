@@ -27,59 +27,6 @@ public class PlayerService {
 	Coach coach = null;
 	Team team = null;
 
-	public Player loginByTeleponeNumber(String telephoneNumber, String playerPassword) {
-		// 通过电话和密码登录，登录成功返回Player对象，登陆失败返回null
-		player = dao.getPlayersByTeleponeNumber(telephoneNumber);
-		return player;
-
-	}
-
-	public Player queryByTeleponeNumber(String telephoneNumber) {
-		// 通过电话和密码登录，登录成功返回Player对象，登陆失败返回null
-		player = dao.getPlayersByTeleponeNumber(telephoneNumber);
-		return player;
-
-	}
-
-	public Player loginByWechatNumber(String WechatNumber, String playerPassword) {
-		// 通过电话和密码登录，登录成功返回Player对象，登陆失败返回null
-		player = dao.getPlayersByWechatNumber(WechatNumber);
-		return player;
-
-	}
-
-	public Player QueryByWechatNumber(String WechatNumber) {
-		// 通过电话和密码登录，登录成功返回Player对象，登陆失败返回null
-		player = dao.getPlayersByWechatNumber(WechatNumber);
-		return player;
-
-	}
-
-	public Player insertPlayer(String telephoneNumber, String playerName, String playerPassword) {
-
-		player = dao.insertPlayer(telephoneNumber, playerName, playerPassword);
-		return player;
-
-	}
-
-	public Player updatePlayerByPlayerId(int playerId, int sex, double height, double weight, String country,
-			String city, String xianxiaolijvlebu, String xianshuqiudui) {
-		player = dao.updatePlayerByPlayerId(playerId, sex, height, weight, country, city, xianxiaolijvlebu,
-				xianshuqiudui);
-		return player;
-	}
-
-	public Player updatePlayerByPlayerId(int playerId, String playerName, double height, double weight, String country,
-			String city) {
-		player = dao.updatePlayerByPlayerId(playerId, playerName, height, weight, country, city);
-
-		return player;
-	}
-
-	public Player queryPlayerByPlayerId(int playerId) {
-		player = dao.getPlayerById(playerId);
-		return player;
-	}
 
 	public Player insertPlayer(int userId) {
 		player = dao.insertPlayer(userId);
@@ -87,6 +34,14 @@ public class PlayerService {
 
 	}
 
+	public Player queryPlayerByUserId(int userId) {
+		player = dao.getPlayerByUserId(userId);
+		if(player!=null){
+			System.out.println("找到该球员......"+player);
+		}
+		return player;
+	}
+	
 	public Player updatePlayer(int userId, String xianxiaolijvlebu, String xianshuqiudui) {
 
 		club = clubService.getClubByClubName(xianxiaolijvlebu);
