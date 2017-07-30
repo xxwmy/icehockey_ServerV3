@@ -11,8 +11,8 @@ public class TeamRecordService {
 	TeamRecordDao teamRecordDao=new TeamRecordDao();
 	List<TeamRecord> teamRecords=null;
 	
-	public List<TeamRecord> queryTeamRecordByUserId(String roleName, int userId) {
-		teamRecords=teamRecordDao.getTeamRecordByUserId(roleName,userId);
+	public List<TeamRecord> queryTeamRecordByUserId(int userId) {
+		teamRecords=teamRecordDao.getTeamRecordByUserId(userId);
 		if(teamRecords!=null){
 			for(TeamRecord teamRecord:teamRecords){
 				System.out.println(teamRecord);

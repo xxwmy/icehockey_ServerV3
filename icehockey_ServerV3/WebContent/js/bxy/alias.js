@@ -26,7 +26,7 @@ $(function() {
 
 });
 function callback(content) {
-	alert(content);
+	//alert(content);
 	var name = $("#name").val();
 	var urlUserId=comm.getUrlParameter("userid");//解析url中的参数获取userid的值
 	// 请求后台服务
@@ -35,7 +35,7 @@ function callback(content) {
 		name : name,
 		userid : urlUserId
 		};
-	alert(JSON.stringify(data));
+	//alert(JSON.stringify(data));
 	$.post(ALIASURL,data,function(result) {
 		var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 		if (jsonReturn.result == "0") {

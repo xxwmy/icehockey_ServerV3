@@ -20,7 +20,7 @@ public class ClubRecordDao {
 	List<ClubRecord> clubRecords = null;
 	ClubRecord clubRecord = null;
 
-	public List<ClubRecord> getClubRecordByUserId(String roleName, int userId) {
+	public List<ClubRecord> getClubRecordByUserId(int userId) {
 		String sql = "SELECT * FROM USER, club, clubrecord WHERE USER .userId = clubrecord.userId AND club.clubId = clubrecord.clubId AND USER .userId =?";
 
 		clubRecords = new ArrayList<ClubRecord>();

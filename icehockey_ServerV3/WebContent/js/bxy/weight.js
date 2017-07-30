@@ -18,7 +18,7 @@ $(function() {
 		//alert(JSON.stringify(data));
 
 		// 请求后台保存数据
-		$.post(WeightURL, data, function(result) {
+		$.post(WEIGHTURL, data, function(result) {
 			//alert(JSON.stringify(data));
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {

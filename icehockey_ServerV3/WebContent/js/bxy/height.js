@@ -19,7 +19,7 @@ $(function() {
 		//alert(JSON.stringify(data));
 
 		// 请求后台保存数据
-		$.post(HeightURL, data, function(result) {
+		$.post(HEIGHTURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				if (jsonReturn.gender == "man") {// 如果选择'man'，跳转man体重面

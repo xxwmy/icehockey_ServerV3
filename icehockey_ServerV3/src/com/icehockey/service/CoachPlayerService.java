@@ -10,7 +10,7 @@ public class CoachPlayerService {
 	CoachPlayerDao coachPlayerDao = new CoachPlayerDao();
 	List<CoachPlayer> coachPlayers = null;
 
-	public List<CoachPlayer> queryCoachPlayerRecordByCoachId(String roleName,int userId) {
+	public List<CoachPlayer> queryCoachPlayerRecordByUserId(String roleName,int userId) {
 		coachPlayers = coachPlayerDao.getCoachPlayerRecordByCoachId(roleName,userId);
 		if (coachPlayers != null) {
 			for (CoachPlayer coachPlayer : coachPlayers) {
@@ -20,5 +20,5 @@ public class CoachPlayerService {
 		}
 		return null;
 	}
-
+	
 }

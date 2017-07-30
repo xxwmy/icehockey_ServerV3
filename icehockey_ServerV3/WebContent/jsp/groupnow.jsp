@@ -1,3 +1,5 @@
+<%@page import="com.icehockey.service.PlayerService"%>
+<%@page import="com.icehockey.entity.Player"%>
 <%@page
 	import="org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,10 +7,12 @@
 	<%
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
-		System.out.println("------------------------hobbyChoose.html--------------------------------------");
+		System.out.println("------------------------groupnow.html--------------------------------------");
 		PrintWriter writer = response.getWriter();
 		UserService userService = new UserService();
 		User user = null;
+		Player player=null;
+		PlayerService playerService=new PlayerService();
 		Map<String, Object> map  = new HashMap<String, Object>();
 		int userId = -1;
 		//前端获取传入的data
@@ -21,8 +25,14 @@
 		}
 		
 		user = userService.queryUserByUserId(userId);
-		if (user != null) {//插入成功
+		if (user != null) {//插入成功			
 			System.out.println("找到当前用户" + user);
+			player=playerService.queryPlayerByUserId(userId);
+			if(player!=null){
+				map.put("groupName", player.getgroupName());
+			}else{
+				System.out.println("组别查找失败");
+			}
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);

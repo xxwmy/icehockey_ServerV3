@@ -53,7 +53,7 @@ $(function() {
 			userid : urlUserId
 		};
 		//alert(JSON.stringify(data));
-		$.post(BodyURL, data, function(result) {
+		$.post(BODYURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				window.location.href = "alias.html?userid=" + jsonReturn.userid;
@@ -73,7 +73,7 @@ $(function() {
 			userid : urlUserId
 		};
 		//alert(JSON.stringify(data));
-		$.post(BodyURL, data, function(result) {
+		$.post(BODYURL, data, function(result) {
 			var jsonReturn = JSON.parse(result);// 将JSON字符串转换为对象
 			if (jsonReturn.result == "0") {
 				window.location.href = "alias.html?userid=" + jsonReturn.userid;

@@ -1,15 +1,16 @@
 <%@page
-	import="org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
+	import="com.icehockey.service.HonorService,com.icehockey.entity.Honor,java.util.List,org.codehaus.jackson.map.ObjectMapper,java.util.HashMap,java.util.Map,com.icehockey.entity.User,com.icehockey.service.UserService,java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
-		response.setHeader("Access-Control-Allow-Origin", "*");
+<%
+	response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
-		System.out.println("------------------------hobbyChoose.html--------------------------------------");
+		System.out.println("------------------------gethonor.html--------------------------------------");
 		PrintWriter writer = response.getWriter();
 		UserService userService = new UserService();
 		User user = null;
 		Map<String, Object> map  = new HashMap<String, Object>();
+		HonorService honorService=new HonorService();
 		int userId = -1;
 		//前端获取传入的data
 		String userid = null;
@@ -22,12 +23,19 @@
 		
 		user = userService.queryUserByUserId(userId);
 		if (user != null) {//插入成功
+			List<Honor> honors=honorService.queryHonorRecordByUserId(userId);
+			if(honors!=null){
+				map.put("honors", honors);
+			}else{
+				System.out.println("查找失败");
+			}	
 			System.out.println("找到当前用户" + user);
 			//处理成功返回result=0	
 			map.put("result", "0");
 			map.put("userId", userId);
 			map.put("userid", userId);
 			System.out.println("map找到啦..." + map);
+		
 		} else {
 			System.out.println("map未找到...");
 			//第一次登陆返回result=1
@@ -44,7 +52,7 @@
 		writer.print(resultJson);
 		writer.flush();
 		writer.close();
-	%>
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,7 +61,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 
 </body>
 </html>

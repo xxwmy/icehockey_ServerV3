@@ -22,7 +22,7 @@ public class HonorDao {
 
 	
 	public List<Honor> getHonorRecordByUserId(String roleName, int userId) {
-		String sql = "SELECT * FROM USER, honor, honorrecord WHERE USER .userId = honorrecord.userId AND honor.honorId = honorrecord.honorId AND USER .userId = ?";
+		String sql = "SELECT honorrecord.HRecordId AS HRecordId, honorrecord.userId AS userId, USER .userName, honor.honorId AS honorId, honor.honorName, honorrecord.onDate AS onDate FROM honor, honorrecord, USER WHERE USER .userId = honorrecord.userId AND honor.honorId = honorrecord.honorId AND USER .userId =?";
 		honors=new ArrayList<Honor>();
 		try {
 			conn = util.openConnection();
@@ -35,7 +35,48 @@ public class HonorDao {
 				 int HRecordId=rs.getInt("HRecordId");
 				 int honorId=rs.getInt("honorId");
 				 String honorName=rs.getString("honorName");
-				 //int userId;
+				 userId=rs.getInt("userId");;
+				 String userName=rs.getString("userName");
+				 Date onDate=rs.getDate("onDate");
+				 honor=new Honor(HRecordId, honorId, honorName, userId, userName, onDate);
+				 System.out.println(honor);
+				 honors.add(honor);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return honors;
+	}
+	public List<Honor> getHonorRecordByUserId(int userId) {
+		String sql = "SELECT honorrecord.HRecordId AS HRecordId, honorrecord.userId AS userId, USER .userName, honor.honorId AS honorId, honor.honorName, honorrecord.onDate AS onDate FROM honor, honorrecord, USER WHERE USER .userId = honorrecord.userId AND honor.honorId = honorrecord.honorId AND USER .userId =?";
+		honors=new ArrayList<Honor>();
+		try {
+			conn = util.openConnection();
+			preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			rs = preparedStatement.executeQuery();
+			System.out.println(sql);
+			while (rs.next()) {
+
+				 int HRecordId=rs.getInt("HRecordId");
+				 int honorId=rs.getInt("honorId");
+				 String honorName=rs.getString("honorName");
+				 userId=rs.getInt("userId");;
 				 String userName=rs.getString("userName");
 				 Date onDate=rs.getDate("onDate");
 				 honor=new Honor(HRecordId, honorId, honorName, userId, userName, onDate);

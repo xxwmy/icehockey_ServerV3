@@ -19,21 +19,15 @@ public class CoachPlayerDao {
 	List<CoachPlayer> coachPlayers = null;
 	CoachPlayer coachPlayer = null;
 
-	/**
-	 * SELECT user1.userId coachId,user1.userName coachName,user2.userId,user2.userName
-	   FROM user user1 ,user user2 ,coachplayer
-	   WHERE user1.userId =coachplayer.coachUserId AND user2.userId=coachplayer.playerUserId
-	 * 
-	 * */
 	public List<CoachPlayer> getCoachPlayerRecordByCoachId(String roleName,int userId) {
 		String sql=null;
 		if("coach".equals(roleName)){
-			sql = "SELECT * FROM USER, coachplayer WHERE USER .userId = coachplayer.coachUserId AND user.userId=?";
+			sql = "SELECT coachplayer.CPRecord,puser.userId playerUserId, puser.userName playerName, cuser.userId coachUserId, cuser.userName coachName, coachplayer.bestScore FROM USER AS puser, USER AS cuser, coachplayer WHERE puser.userId = coachplayer.playerUserId AND cuser.userId = coachplayer.coachUserId AND cuser.userId = ?";
 		
 		}else if("judge".equals(roleName)){
 			
 		}else{
-			sql="SELECT * FROM USER, coachplayer WHERE USER .userId = coachplayer.playerUserId AND USER .userId = ?";
+			sql="SELECT coachplayer.CPRecord,puser.userId playerUserId, puser.userName playerName, cuser.userId coachUserId, cuser.userName coachName, coachplayer.bestScore FROM USER AS puser, USER AS cuser, coachplayer WHERE puser.userId = coachplayer.playerUserId AND cuser.userId = coachplayer.coachUserId AND puser.userId = ?";
 		}
 		coachPlayers = new ArrayList<CoachPlayer>();
 		try {
@@ -42,11 +36,10 @@ public class CoachPlayerDao {
 			preparedStatement.setInt(1, userId);
 			rs = preparedStatement.executeQuery();
 			System.out.println(sql);
-			while (rs.next()) {
-
+			while (rs.next()) {			
 				int CPRecord = rs.getInt("CPRecord");
 				int coachUserId = rs.getInt("coachUserId");
-				String coachName = rs.getString("userName");
+				String coachName = rs.getString("coachName");
 				int playerUserId = rs.getInt("playerUserId");
 				String playerName = rs.getString("playerName");
 				double bestScore = rs.getDouble("bestScore");
@@ -73,6 +66,4 @@ public class CoachPlayerDao {
 		}
 		return coachPlayers;
 	}
-	// SELECT * FROM USER, coachplayer WHERE USER .userId =
-	// coachplayer.coachUserId AND user.userId=100009
 }

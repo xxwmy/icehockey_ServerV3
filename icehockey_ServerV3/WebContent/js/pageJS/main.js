@@ -105,7 +105,7 @@ function mineClick() {
 							}
 							if (jsonReturn.roleName == "球员")// 球员的跳转
 							{
-								window.location.href = "../views/imformation.html?userid=" + jsonReturn.userid;
+								window.location.href = "../views/imformation/qiuyuan.html?userid=" + jsonReturn.userid;
 
 							}
 							if (jsonReturn.roleName = "")

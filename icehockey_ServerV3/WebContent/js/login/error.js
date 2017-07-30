@@ -7,7 +7,7 @@
 
 
 $(function(){
-    $('body').css({'min-height':$(window).height()})
+    $('body').css({'min-height':$(window).height()});
     $('.error-submit').on('click',function(){
         var $checkbox1=$('.checkboxBtn');//请简要说明value
         var $errorMain=$('.errorMain');//电话或邮箱value
@@ -23,7 +23,7 @@ $(function(){
             }
         });
         if(checkboxArr.length>0){
-            data['errorCheck']=checkboxArr.join(';')
+            data['errorCheck']=checkboxArr.join(';');
         }
         if($errorMain.val()){
             data['errorDesc']=$errorMain.val();
@@ -34,7 +34,7 @@ $(function(){
 
         $.post(ERROR_URL, data, function(result) {
             if (result != null) {
-                alert('错误信息提交成功')
+                alert('错误信息提交成功');
             } else {
                 alert("手机号码为：" + phoneNumber + "的用户不存在");
             }

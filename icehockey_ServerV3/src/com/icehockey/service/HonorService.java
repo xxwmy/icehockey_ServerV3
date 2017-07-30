@@ -24,5 +24,19 @@ public class HonorService {
 		}
 		
 	}
+	public List<Honor> queryHonorRecordByUserId(int userId) {
+		honors=honorDao.getHonorRecordByUserId(userId);
+		if(honors!=null){
+			System.out.println("荣誉记录:");
+			for(Honor honor : honors) {
+				  System.out.println(honor);
+				}
+			return honors;
+		}else{
+			System.out.println("未找到荣誉记录");
+			return null;
+		}
+		
+	}
 
 }
